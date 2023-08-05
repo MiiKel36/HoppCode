@@ -1,24 +1,34 @@
 ﻿namespace HoppCode;
+using Newtonsoft;
+using Newtonsoft.Json;
+using static System.Net.Mime.MediaTypeNames;
+using Newtonsoft.Json.Linq;
+
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+ 
+    public MainPage()
+    {
+        InitializeComponent();
 
-	public MainPage()
-	{
-		InitializeComponent();
-	}
+        //cria objeto do CreateButtons
+        CreateButtons classButons = new CreateButtons();
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
+        //a var buttons vira uma list contendo os objetos dos botões
+        dynamic buttons = classButons.CreatingButtonsToPage();
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+        foreach (var button in buttons)
+        {   //adiciona no stackLayout os botões com o valor dentro do button
+            stackClasses.Add(button);
+        }
 
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+    }
+
 }
+
+
+
+
+
 
