@@ -3,27 +3,24 @@ using Newtonsoft;
 using Newtonsoft.Json;
 using static System.Net.Mime.MediaTypeNames;
 using Newtonsoft.Json.Linq;
-
+using HoppCode.Classes;
 
 public partial class MainPage : ContentPage
 {
- 
+    
     public MainPage()
     {
         InitializeComponent();
+        
+        //funções para verificar e criar pasta de arquivo locar
+        CreateLocalStorageFolder createFolder = new CreateLocalStorageFolder();
+        createFolder.CreateStorage();
 
-        //cria objeto do CreateButtons
-        CreateButtons classButons = new CreateButtons();
-
-        //a var buttons vira uma list contendo os objetos dos botões
-        dynamic buttons = classButons.CreatingButtonsToPage();
-
-        foreach (var button in buttons)
-        {   //adiciona no stackLayout os botões com o valor dentro do button
-            stackClasses.Add(button);
-        }
+        //manda para a pagina ClassPage
+        Shell.Current.GoToAsync("ClassesPage");
 
     }
+
 
 }
 

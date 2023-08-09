@@ -5,12 +5,10 @@
 
     <ScrollView>
         <StackLayout
-            x:Name="stackClasses"
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center"
             Orientation="Vertical">
-
             
 
         </StackLayout>
