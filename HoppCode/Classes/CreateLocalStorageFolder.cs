@@ -11,9 +11,12 @@ namespace HoppCode.Classes
 {
     public class CreateLocalStorageFolder
     {
-        //diretorio da pasta e do arquivo json
-        string dir = "C:\\Users\\Usuario\\HoppCode\\JsonFiles\\";
-        public string dirJsonFile = "C:\\Users\\Usuario\\HoppCode\\JsonFiles\\changePage.json";
+        //Nome do usuario
+        static string User = Environment.UserName;
+
+        //Diretorio da pasta e do arquivo json
+        string dir = $"C:\\Users\\{User}\\HoppCode\\JsonFiles\\";
+        public string dirJsonFile = $"C:\\Users\\{User}\\HoppCode\\JsonFiles\\changePage.json";
 
         public void CreateStorage()
         {         
