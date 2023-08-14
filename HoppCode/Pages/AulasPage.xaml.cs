@@ -12,18 +12,17 @@ public partial class AulasPage : ContentPage
         InitializeComponent();
 
         //Pega o valor da classe guardade no json
-        JsonModifier jsonModifierAulas = new JsonModifier();
-		string valueAulas = jsonModifierAulas.jsonReadAulas();
+        aulasPage jsonModifierAulas = new aulasPage();
+		string valueAulas = jsonModifierAulas.jsonRead();
 
-        //APENAS UM PROTÓTIPO -- (mais tarde será a criação dos botões) -- 
-        //Cria label com valor no json e colca no stack
+        CreateButtonsAulas createButtons = new CreateButtonsAulas();
+        dynamic buttons = createButtons.CreatingButtonsToPage(valueAulas);
 
-        Label label = new Label()
-		{ Text = $"{valueAulas}",
-        };
-        stackAulas.Add(label);
+        foreach (var button in buttons)
+        {   //Adiciona no stackLayout os botões com o valor dentro do button
+            stackAulas.Add(button);
+        }
 
-        
 
     }
 }
