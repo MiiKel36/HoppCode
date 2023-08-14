@@ -19,7 +19,7 @@ namespace HoppCode.Classes
    
     public abstract class CreateButtons
     {
-    //Não possui funções abtratas pois algumas funções necessitam de parametros, e outras não
+    //Não possui funções abstratas pois algumas funções necessitam de parametros, e outras não
     }
 
     //Classe para a pagina ClassesPage
@@ -31,22 +31,24 @@ namespace HoppCode.Classes
             ClassesPage jsonModifierAulas = new ClassesPage();
             jsonModifierAulas.JsonReadAndWrite(num);
 
-            //Envia par AulasPage
+            //Envia para AulasPage
             Shell.Current.GoToAsync("AulasPage");
         }
         public  dynamic CreatingButtonsToPage()
         {
             ClassesPage json = new ClassesPage();
 
-            //Parte de extraçã dos conteudos do json
-            int buttonsNums = json.GetNumOfJson();
-            string[] buttonsNames = json.ArrayNames(buttonsNums);
+            //Pega o numero de quantos botões vai criar 
+            int quantButtons = json.GetNumOfJson();
+            //Cria um array com os nomes dos botões
+            string[] buttonsNames = json.ArrayNames(Convert.ToInt32(quantButtons));
+
 
             //Cria uma list para armazenar os objetos dos botões
             List<dynamic> botaoList = new List<dynamic>();
 
-            //Agora o loop roda com valores normais, mas depois, ira rodar com base na quantidade de resultados de uma pesquisa no json
-            for (int i = 0; i < buttonsNums; i++)
+            //O loop roda com a quantidade de botões armazenados no json
+            for (int i = 0; i < quantButtons; i++)
             {
                 bool BotãoDireitaEsquerda = i % 2 == 0;
                 Button botao = new Button()
@@ -75,7 +77,7 @@ namespace HoppCode.Classes
                 //Adiciona o botão para a list botao
                 botaoList.Add(botao);
             }
-            //Retorna a lista inteira, para o foreach no MainPage
+            //Retorna a lista inteira, para o foreach no ClassesPage
             return botaoList;
         }
     }
@@ -97,16 +99,16 @@ namespace HoppCode.Classes
             aulasPage json = new aulasPage();
 
             //Pega o numero de quantos botões vai criar 
-            int buttonsNums = json.GetNumOfJson(Convert.ToInt32(JsonClasseId));
-            //Cria um array com os nomes dos bot~es
-            string[] buttonsNames = json.ArrayNames(Convert.ToInt32(buttonsNums), Convert.ToInt32(JsonClasseId));
+            int quantButtons = json.GetNumOfJson(Convert.ToInt32(JsonClasseId));
+            //Cria um array com os nomes dos botões
+            string[] buttonsNames = json.ArrayNames(Convert.ToInt32(quantButtons), Convert.ToInt32(JsonClasseId));
             
 
             //Cria uma list para armazenar os objetos dos botões
             List<dynamic> botaoList = new List<dynamic>();
 
-            //Agora o loop roda com valores normais, mas depois, ira rodar com base na quantidade de resultados de uma pesquisa no json
-            for (int i = 0; i < buttonsNums; i++)
+            //O loop roda com a quantidade de botões armazenados no json
+            for (int i = 0; i < quantButtons; i++)
             {
                 bool BotãoDireitaEsquerda = i % 2 == 0;
                 Button botao = new Button()
@@ -133,7 +135,7 @@ namespace HoppCode.Classes
                 //Adiciona o botão para a list botao
                 botaoList.Add(botao);
             }
-            //Retorna a lista inteira, para o foreach no MainPage
+            //Retorna a lista inteira, para o foreach no AulasPage
             return botaoList;
         }
     }

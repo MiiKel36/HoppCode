@@ -11,10 +11,11 @@ namespace HoppCode.Classes
 {
     public abstract class JsonModifier
     {
+        
         protected static CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
-        protected static string jsonPath = JSON_PATH.dirJsonFile;
-        protected static string jsonFile = File.ReadAllText(jsonPath);
-        protected dynamic ObjJson = JsonConvert.DeserializeObject(jsonFile);
+        //Armazena onde fica a pasta dos json
+        protected static string jsonFolderPath = JSON_PATH.dirJsonFile;
+        //Armazena o caminho do arquivo json
 
     }
     class ClassesPage : JsonModifier
@@ -23,10 +24,10 @@ namespace HoppCode.Classes
         {
             //Cria o objeto e puxa o PATH do json
             CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
-            jsonPath = JSON_PATH.dirJsonFile;
+            jsonFolderPath = JSON_PATH.dirJsonFile;
 
             //Transforma o json em ojeto
-            string jsonFile = File.ReadAllText(jsonPath);
+            string jsonFile = File.ReadAllText(jsonFolderPath);
             dynamic ObjJson = JsonConvert.DeserializeObject(jsonFile);
 
             //Muda o valor classe do objeto
@@ -34,17 +35,17 @@ namespace HoppCode.Classes
 
             //Transforma em json denovo e escreve na pasta do json
             string ChangedJsonFile = JsonConvert.SerializeObject(ObjJson);
-            File.WriteAllText(jsonPath, ChangedJsonFile);
+            File.WriteAllText(jsonFolderPath, ChangedJsonFile);
         }
 
         public  string jsonRead()
         {
             //Cria o objeto e puxa o PATH do json
             CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
-            jsonPath = JSON_PATH.dirJsonFile;
+            jsonFolderPath = JSON_PATH.dirJsonFile;
 
             //Transforma o json em objeto
-            string jsonFile = File.ReadAllText(jsonPath);
+            string jsonFile = File.ReadAllText(jsonFolderPath);
             dynamic ObjJson = JsonConvert.DeserializeObject(jsonFile);
 
             //Retorna o valor classe
@@ -101,10 +102,10 @@ namespace HoppCode.Classes
         {
             //Cria o objeto e puxa o PATH do json
             CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
-            jsonPath = JSON_PATH.dirJsonFile;
+            jsonFolderPath = JSON_PATH.dirJsonFile;
 
             //Transforma o json em ojeto
-            string jsonFile = File.ReadAllText(jsonPath);
+            string jsonFile = File.ReadAllText(jsonFolderPath);
             dynamic ObjJson = JsonConvert.DeserializeObject(jsonFile);
 
             //Muda o valor classe do objeto
@@ -112,17 +113,17 @@ namespace HoppCode.Classes
 
             //Transforma em json denovo e escreve na pasta do json
             string ChangedJsonFile = JsonConvert.SerializeObject(ObjJson);
-            File.WriteAllText(jsonPath, ChangedJsonFile);
+            File.WriteAllText(jsonFolderPath, ChangedJsonFile);
         }
 
         public  string jsonRead()
         {
             //Cria o objeto e puxa o PATH do json
             CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
-            jsonPath = JSON_PATH.dirJsonFile;
+            jsonFolderPath = JSON_PATH.dirJsonFile;
 
             //Transforma o json em objeto
-            string jsonFile = File.ReadAllText(jsonPath);
+            string jsonFile = File.ReadAllText(jsonFolderPath);
             dynamic ObjJson = JsonConvert.DeserializeObject(jsonFile);
 
             //Retorna o valor classe
