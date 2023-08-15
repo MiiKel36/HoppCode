@@ -21,8 +21,6 @@ namespace HoppCode.Classes
         public void CreateStorage()
         {         
 
-     
-
             //Se a pasta HoppCode NÂO existe
             if (!Directory.Exists(dir))
             {
@@ -47,7 +45,6 @@ namespace HoppCode.Classes
 
         //Qual aula foi clicada na tela de aulas
         public string Aula { get; set; } 
-
 
     }
 
