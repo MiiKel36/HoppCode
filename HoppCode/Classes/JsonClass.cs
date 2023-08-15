@@ -15,7 +15,6 @@ namespace HoppCode.Classes
         protected static CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
         //Armazena onde fica a pasta dos json
         protected static string jsonFolderPath = JSON_PATH.dirJsonFile;
-        //Armazena o caminho do arquivo json
 
     }
     class ClassesPage : JsonModifier
@@ -71,8 +70,8 @@ namespace HoppCode.Classes
         }
         public  string[] ArrayNames(int numOfButtons) 
         { 
-                        //provisiorio
-        CreateLocalStorageFolder Path = new CreateLocalStorageFolder();
+            //provisiorio
+            CreateLocalStorageFolder Path = new CreateLocalStorageFolder();
 
             //Caminho do json
             string pathJsonTeste = Path.dir + "teste.json";

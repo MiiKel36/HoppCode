@@ -41,7 +41,7 @@ namespace HoppCode.Classes
             //Pega o numero de quantos botões vai criar 
             int quantButtons = json.GetNumOfJson();
             //Cria um array com os nomes dos botões
-            string[] buttonsNames = json.ArrayNames(Convert.ToInt32(quantButtons));
+            string[] buttonsNames = json.ArrayNames(quantButtons);
 
 
             //Cria uma list para armazenar os objetos dos botões
@@ -54,8 +54,12 @@ namespace HoppCode.Classes
                 Button botao = new Button()
                 {
                     Text = $"{buttonsNames[i]}",
-                    WidthRequest = 200,
-                    HeightRequest = 200,
+                    WidthRequest = 160,
+                    HeightRequest = 160,
+                    BackgroundColor = Color.FromArgb("0,105,12,124"),
+                    TextColor = Colors.White,
+                    FontSize = 20,
+                    FontAttributes = FontAttributes.Bold,
                     ClassId = i.ToString(),
 
                     //Foi o modo que eu achei para fazer if e else dentro dos parametros do botão

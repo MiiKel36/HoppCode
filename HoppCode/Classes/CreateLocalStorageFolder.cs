@@ -13,13 +13,16 @@ namespace HoppCode.Classes
     {
         //Nome do usuario
         static string User = Environment.UserName;
-
-        //Diretorio da pasta e do arquivo json versão windows
         public string dir = $"C:\\Users\\{User}\\HoppCode\\JsonFiles\\";
         public string dirJsonFile = $"C:\\Users\\{User}\\HoppCode\\JsonFiles\\changePage.json";
 
+
+        //Diretorio da pasta e do arquivo json versão windows  
         public void CreateStorage()
         {         
+
+     
+
             //Se a pasta HoppCode NÂO existe
             if (!Directory.Exists(dir))
             {
