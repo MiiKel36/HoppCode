@@ -12,9 +12,9 @@ namespace HoppCode.Classes
     public abstract class JsonModifier
     {
         
-        protected static CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
+        protected static CreateLocalStorageFolder json_path = new CreateLocalStorageFolder();
         //Armazena onde fica a pasta dos json
-        protected static string jsonFolderPath = JSON_PATH.dirJsonFile;
+        protected static string jsonFolderPath = json_path.dirJsonFile;
 
     }
     class ClassesPage : JsonModifier
@@ -169,5 +169,47 @@ namespace HoppCode.Classes
             return namesArray;
         }
     }
+
+    class SubAulaPage : JsonModifier
+    {
+        public string[] jsonReturnSubAulasTexto(string classe, string aula)
+        {
+            //provisiorio
+            CreateLocalStorageFolder Path = new CreateLocalStorageFolder();
+
+            //Caminho do json
+            string pathJsonTeste = Path.dir + "teste.json";
+
+            //Le o json e transforma em objeto
+            string data = File.ReadAllText(pathJsonTeste);
+            dynamic objJson = JsonConvert.DeserializeObject(data);
+            
+            //Quantas subAulas tem no json com os valores de classe e aula
+            dynamic subAulasObj = objJson.cSharp.classes[Convert.ToInt32(classe)].aulas[Convert.ToInt32(aula)].subAulas as JArray;
+            string[] jsonSubAula =  new string[subAulasObj.Count];
+            
+            //Coloca todos os textos em um array e o retorna
+            for(int i = 0; i < subAulasObj.Count; i++)
+            { jsonSubAula[i] = objJson.cSharp.classes[Convert.ToInt32(classe)].aulas[Convert.ToInt32(aula)].subAulas[i].texto; }
+            return jsonSubAula;
+
+        }
+        public string[] jsonRead()
+        {
+            //Cria o objeto e puxa o PATH do json
+            CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
+            jsonFolderPath = JSON_PATH.dirJsonFile;
+
+            //Transforma o json em objeto
+            string jsonFile = File.ReadAllText(jsonFolderPath);
+            dynamic ObjJson = JsonConvert.DeserializeObject(jsonFile);
+
+            //Retorna o valor classe
+            string[] ClasseEAula = { ObjJson.Classe, ObjJson.Aula };
+            return ClasseEAula;
+        }
+
+    }
+
 }
 

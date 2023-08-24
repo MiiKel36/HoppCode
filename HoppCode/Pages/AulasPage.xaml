@@ -3,9 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HoppCode.AulasPage"
              Title="NewPage1">
-    <StackLayout x:Name="stackAulas">
+    <ScrollView>
+        <StackLayout x:Name="stackAulas">
         <!--> Aqui será onde os botçoes das aualas irão aparecer <!-->
 
-    </StackLayout>
+        </StackLayout>
+    </ScrollView>
 
 </ContentPage>
