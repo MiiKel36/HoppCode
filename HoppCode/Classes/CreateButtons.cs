@@ -56,11 +56,12 @@ namespace HoppCode.Classes
                     Text = $"{buttonsNames[i]}",
                     WidthRequest = 160,
                     HeightRequest = 160,
-                    BackgroundColor = Color.FromArgb("0,105,12,124"),
+                    BackgroundColor = Color.FromRgb(99,50,155),
                     TextColor = Colors.White,
                     FontSize = 20,
                     FontAttributes = FontAttributes.Bold,
                     ClassId = i.ToString(),
+                    
 
                     //Foi o modo que eu achei para fazer if e else dentro dos parametros do botão
                     //Aaso o BotãoDireitaEsquerda seja true, o botão fica no final, se não no começo
@@ -76,6 +77,14 @@ namespace HoppCode.Classes
 
                     //Muda de pagina
                     ChangePage(ButtonId);
+                };
+                botao.Shadow = new Shadow()
+                {
+                    Brush = Color.FromRgb(57, 33, 93),
+                    Offset = new Point(-10, 10),
+                    Opacity = 0.5f,
+                    Radius = 1,
+                    
                 };
 
                 //Adiciona o botão para a list botao

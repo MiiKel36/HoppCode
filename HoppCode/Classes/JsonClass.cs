@@ -53,7 +53,7 @@ namespace HoppCode.Classes
 
         public  int GetNumOfJson()
         {
-            //provisiorio
+            //Provisiorio
             CreateLocalStorageFolder Path = new CreateLocalStorageFolder();
 
             //Caminho do json
@@ -70,7 +70,7 @@ namespace HoppCode.Classes
         }
         public  string[] ArrayNames(int numOfButtons) 
         { 
-            //provisiorio
+            //Provisiorio
             CreateLocalStorageFolder Path = new CreateLocalStorageFolder();
 
             //Caminho do json
@@ -131,7 +131,7 @@ namespace HoppCode.Classes
 
         public  int GetNumOfJson(int classesId)
         {
-            //provisiorio
+            //Provisiorio
             CreateLocalStorageFolder Path = new CreateLocalStorageFolder();
 
             //Caminho do json
@@ -148,7 +148,7 @@ namespace HoppCode.Classes
         }
         public  string[] ArrayNames(int numOfButtons, int classId)
         {
-            //provisiorio
+            //Provisiorio
             CreateLocalStorageFolder Path = new CreateLocalStorageFolder();
 
             //Caminho do json
@@ -174,7 +174,7 @@ namespace HoppCode.Classes
     {
         public string[] jsonReturnSubAulasTexto(string classe, string aula)
         {
-            //provisiorio
+            //Provisiorio
             CreateLocalStorageFolder Path = new CreateLocalStorageFolder();
 
             //Caminho do json
@@ -191,6 +191,7 @@ namespace HoppCode.Classes
             //Coloca todos os textos em um array e o retorna
             for(int i = 0; i < subAulasObj.Count; i++)
             { jsonSubAula[i] = objJson.cSharp.classes[Convert.ToInt32(classe)].aulas[Convert.ToInt32(aula)].subAulas[i].texto; }
+            
             return jsonSubAula;
 
         }

@@ -17,11 +17,19 @@ public partial class MainPage : ContentPage
         createFolder.CreateStorage();
 
         //manda para a pagina ClassPage
-        Shell.Current.GoToAsync("ClassesPage");
+        
 
     }
 
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync("ClassesPage");
+    }
 
+    private void Button_Clicked_1(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync("LoginPage");
+    }
 }
 
 

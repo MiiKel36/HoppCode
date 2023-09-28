@@ -3,32 +3,50 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HoppCode.Pages.SubAulasPage"
              Title="SubAulasPage">
-    <ScrollView>
-    <StackLayout>
+    <Grid Padding="10,20,0,30">
+        <!-- Definição das linhas do grid -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <!-- Conteúdo principal -->
+            <RowDefinition Height="Auto" />
+            <!-- Botão estático -->
+        </Grid.RowDefinitions>
 
-        <StackLayout            
-            x:Name="StackSubAulas"
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center"
-            HorizontalOptions="Center"
-            Orientation="Vertical">
+        <!-- ScrollView para rolar o conteúdo -->
+        <ScrollView Grid.Row="0">
+            <!-- Seu conteúdo principal aqui -->
+            <StackLayout x:Name="StackSubAulas"
+                         Orientation="Vertical"
+                         Spacing="25"
+                         HorizontalOptions="Center">
+                <!-- Conteúdo dinâmico será adicionado aqui -->
+            </StackLayout>
+        </ScrollView>
 
+        <!-- StackLayout para os botões de navegação -->
+        <StackLayout Orientation="Horizontal" Grid.Row="1" Spacing="25">
+            <!-- Botão "Voltar" -->
+            <Button Text="(-" 
+                    x:Name="BtnPassarTras"
+                    HorizontalOptions="StartAndExpand" 
+                    Clicked="MenosSubAulasPage"
+                    WidthRequest="100" 
+                    HeightRequest="45"/>
+
+            <!-- Botão "Começar" -->
+            <Button Text="Começar"                   
+                    x:Name="BtnPassarSubAula"
+                    Clicked="botao_Clicked"
+                    WidthRequest="100" 
+                    HeightRequest="45"/>
+
+            <!-- Botão "Avançar" -->
+            <Button Text="-)" 
+                    x:Name="BtnPassarFrente"
+                    HorizontalOptions="EndAndExpand"
+                    Clicked="MaisSubAulasPage"
+                    WidthRequest="100" 
+                    HeightRequest="45"/>
         </StackLayout>
-
-        <StackLayout x:Name="buttons"
-                         Orientation="Horizontal">
-                <Button Text="(-" 
-                        HorizontalOptions="StartAndExpand" 
-                        Clicked="MenosSubAulasPage"/>
-
-                <Button Text="-)" 
-                        HorizontalOptions="EndAndExpand"
-                        Clicked="MaisSubAulasPage"/>
-
-        </StackLayout>
-
-    </StackLayout>
-    </ScrollView>
-
+    </Grid>
 </ContentPage>

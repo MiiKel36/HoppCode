@@ -8,8 +8,20 @@
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center"
+            HorizontalOptions="Center"
             Orientation="Vertical">
+            <Label Text="Debug page" 
+                   HorizontalOptions="Center"
+                   FontSize="25"/>
             
+            <Button Text=" ClassesPage" Clicked="Button_Clicked"
+                    WidthRequest="150"
+                    HeightRequest="90"/>
+            
+            <Button Text=" LoginPage" Clicked="Button_Clicked_1"
+                    WidthRequest="150"
+                    HeightRequest="90"/>
+
 
         </StackLayout>
 

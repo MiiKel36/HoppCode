@@ -5,8 +5,7 @@
              Title="NewPage1">
     <ScrollView>
         <StackLayout x:Name="stackAulas">
-        <!--> Aqui será onde os botçoes das aualas irão aparecer <!-->
-
+        <!--> Aqui será onde os botões das aualas irão aparecer <!-->
         </StackLayout>
     </ScrollView>
 

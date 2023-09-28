@@ -15,6 +15,8 @@ namespace HoppCode.Classes
 
         //Nome do usuario
         static string User = Environment.UserName;
+
+
 #if WINDOWS
         public string dir = $"C:\\Users\\{User}\\HoppCode\\JsonFiles\\";
         public string dirJsonFile = $"C:\\Users\\{User}\\HoppCode\\JsonFiles\\changePage.json";
