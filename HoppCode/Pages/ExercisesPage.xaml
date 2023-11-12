@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HoppCode.Pages.ExercisesPage"
+             Title=""
+             Background="#391D72">
+
+    <!--Playground/Code part-->
+    <StackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Botões que mudam a página-->
+            <Button Text="Exercicio" 
+                    FontSize="16" Grid.Column="0" 
+                    HeightRequest="80" 
+                    Clicked="ChangePage" x:Name ="btnExercisePart" ClassId="exercisePart" 
+                    CornerRadius="0" 
+                    Background="#301D72" 
+                    TextColor="White"/>
+
+            <Button Text="Código"    
+                    FontSize="16" Grid.Column="1" 
+                    Clicked="ChangePage" x:Name ="btnCodePart" ClassId="codePart"   
+                    CornerRadius="0" 
+                    Background="#492EA8" 
+                    TextColor="White"/>
+
+            <Button Text="Saida"     
+                    FontSize="16" Grid.Column="2" 
+                    Clicked="ChangePage" x:Name ="btnOutputPart" ClassId="outputPart" 
+                    CornerRadius="0" 
+                    Background="#301D72" 
+                    TextColor="White"/>
+
+        </Grid>
+        <!--Onde fica o editor do código-->
+        <StackLayout Orientation="Vertical" Background="#311850"  x:Name="codePart" IsVisible="true">
+            <ScrollView Background="#311850" Padding="10" HeightRequest="550">
+                <WebView x:Name="editorWebView" HeightRequest="300" WidthRequest="400" IsVisible="true" Source="aceeditor.html"/>
+            </ScrollView>
+
+
+            <!--Botão de execução de código-->
+            <StackLayout Orientation="Horizontal" >
+                <Button Text="Run" 
+                        Background="#63329B" 
+                        HorizontalOptions="EndAndExpand" 
+                        WidthRequest="120" HeightRequest="50" 
+                        Clicked="RunCode" x:Name="btnRun" 
+                        Margin="10,-10,5,10"
+                        TextColor="White">
+
+                    <Button.Shadow>
+                        <Shadow Brush="#492C74" Offset="-20,20" Opacity="100" />
+                    </Button.Shadow>
+                </Button>
+
+            </StackLayout>
+
+
+            <StackLayout  Background="#391D72" HeightRequest="90">
+                <Grid VerticalOptions="EndAndExpand" HeightRequest="60">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <!--Botões que adicionam caracteres ao editor-->
+
+                    <Button Text="TAB"  Grid.Column="0" CornerRadius="0" BorderWidth="0" Clicked="AddCharacter" TextColor="White" FontSize="18" Background="#391D72"/>
+                    <Button Text="("    Grid.Column="1" CornerRadius="0" BorderWidth="0" Clicked="AddCharacter" TextColor="White" FontSize="18" Background="#391D72"/>
+                    <Button Text=")"    Grid.Column="2" CornerRadius="0" BorderWidth="0" Clicked="AddCharacter" TextColor="White" FontSize="18" Background="#391D72"/>
+                    <Button Text= "Se e colocado no código"  Grid.Column="3" CornerRadius="0" BorderWidth="0" Clicked="AddCharacter" TextColor="White" FontSize="18" Background="#391D72" x:Name="btnEspecialCharacter"/>
+                    <Button Text="}"    Grid.Column="4" CornerRadius="0" BorderWidth="0" Clicked="AddCharacter" TextColor="White" FontSize="18" Background="#391D72"/>
+                    <Button Text=";"    Grid.Column="5" CornerRadius="0" BorderWidth="0" Clicked="AddCharacter" TextColor="White" FontSize="18" Background="#391D72"/>
+                    <Button Text='"'    Grid.Column="6" CornerRadius="0" BorderWidth="0" Clicked="AddCharacter" TextColor="White" FontSize="18" Background="#391D72"/>
+                    <Button Text="."    Grid.Column="7" CornerRadius="0" BorderWidth="0" Clicked="AddCharacter" TextColor="White" FontSize="18" Background="#391D72"/>
+                    <Button Text="="    Grid.Column="8" CornerRadius="0" BorderWidth="0" Clicked="AddCharacter" TextColor="White" FontSize="18" Background="#391D72"/>
+
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+
+
+
+
+        <!--Output part-->
+        <Grid x:Name="outputPart" IsVisible="false">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="440"/>
+                <RowDefinition Height="316"/>
+
+            </Grid.RowDefinitions>
+
+            <ScrollView  
+                    Grid.Row="0"                                      
+                    BackgroundColor="#101010"
+                    Padding="10">
+
+                <Label x:Name="lblOutput" Text="Bictor, Bictor, Bictorrrc"/>
+            </ScrollView>
+
+            <StackLayout 
+                     BackgroundColor="#391D72"                     
+                     Grid.Row="1"
+                     Padding="10">
+                <Image/>
+
+                <Frame BackgroundColor="#5B40BD"
+                       HorizontalOptions="EndAndExpand"
+                       BorderColor="Transparent">
+
+                    <Label Text="Uau bom trabalho caraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -Teste- "
+                           MinimumHeightRequest="20"
+                           MaximumWidthRequest="200"/>
+                </Frame>
+
+
+            </StackLayout>
+
+        </Grid>
+
+
+
+
+
+
+        <!--Exercise explanation part-->
+        <ScrollView Orientation="Vertical" BackgroundColor="Transparent" IsVisible="false" x:Name="exercisePart" Padding="20">
+
+
+
+        </ScrollView>
+
+    </StackLayout>
+
+</ContentPage>

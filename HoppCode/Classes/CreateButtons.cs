@@ -39,9 +39,9 @@ namespace HoppCode.Classes
             ClassesPage json = new ClassesPage();
 
             //Pega o numero de quantos botões vai criar 
-            int quantButtons = json.GetNumOfJson();
+            int quantButtons = json.ReturnNumOfClasses();
             //Cria um array com os nomes dos botões
-            string[] buttonsNames = json.ArrayNames(quantButtons);
+            string[] buttonsNames = json.ArrayClassesNames(quantButtons);
 
 
             //Cria uma list para armazenar os objetos dos botões
@@ -104,18 +104,19 @@ namespace HoppCode.Classes
             aulasPage jsonModifierAulas = new aulasPage();
             jsonModifierAulas.JsonReadAndWrite(JsonClasseId);
 
-            //Envia par AulasPage
-            Shell.Current.GoToAsync("SubAulasPage");
+            //Envia para IdentficarAulaOuExercicio e lá, verifica se é exercício ou aula
+            Shell.Current.GoToAsync("IdentficarAulaOuExercicio");
         }
         public  dynamic CreatingButtonsToPage(string JsonClasseId)
         {
             aulasPage json = new aulasPage();
 
             //Pega o numero de quantos botões vai criar 
-            int quantButtons = json.GetNumOfJson(Convert.ToInt32(JsonClasseId));
+            int quantButtons = json.ReturnNumOfAulas(Convert.ToInt32(JsonClasseId));
+            
             //Cria um array com os nomes dos botões
             string[] buttonsNames = json.ArrayNames(Convert.ToInt32(quantButtons), Convert.ToInt32(JsonClasseId));
-            
+
 
             //Cria uma list para armazenar os objetos dos botões
             List<dynamic> botaoList = new List<dynamic>();
@@ -129,7 +130,7 @@ namespace HoppCode.Classes
                     Text = $"{buttonsNames[i]}",
                     WidthRequest = 200,
                     HeightRequest = 200,
-                    ClassId = i.ToString(),
+                    ClassId = i.ToString(), //define o id do botão junto se é aula ou exercicio
 
                     //Os bõtoes ficam apenas no centro
                     HorizontalOptions =  new LayoutOptions(LayoutAlignment.Center, true)

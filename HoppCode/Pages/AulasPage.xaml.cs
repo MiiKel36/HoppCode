@@ -13,7 +13,7 @@ public partial class AulasPage : ContentPage
 
         //Pega o valor da classe guardade no json
         aulasPage jsonModifierAulas = new aulasPage();
-		string valueAulas = jsonModifierAulas.jsonRead();
+		string valueAulas = jsonModifierAulas.JsonReadReturnClasse();
 
         CreateButtonsAulas createButtons = new CreateButtonsAulas();
         dynamic buttons = createButtons.CreatingButtonsToPage(valueAulas);
@@ -24,5 +24,10 @@ public partial class AulasPage : ContentPage
         }
 
 
+    }
+    protected override bool OnBackButtonPressed()
+    {
+        Shell.Current.GoToAsync("ClassesPage");
+        return true;
     }
 }
