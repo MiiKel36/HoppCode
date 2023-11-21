@@ -1,9 +1,6 @@
 ﻿namespace HoppCode;
-using Newtonsoft;
-using Newtonsoft.Json;
-using static System.Net.Mime.MediaTypeNames;
-using Newtonsoft.Json.Linq;
 using HoppCode.Classes;
+using Newtonsoft.Json;
 
 public partial class MainPage : ContentPage
 {
@@ -11,14 +8,12 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
-        
-        //funções para verificar e criar pasta de arquivo locar
+
+        // funções para verificar e criar pasta de arquivo local
         CreateLocalStorageFolder createFolder = new CreateLocalStorageFolder();
         createFolder.CreateStorage();
 
-        //manda para a pagina ClassPage
-        
-
+        GetInfoPerfil();
     }
 
     private void Button_Clicked(object sender, EventArgs e)
@@ -30,10 +25,11 @@ public partial class MainPage : ContentPage
     {
         Shell.Current.GoToAsync("LoginPage");
     }
+
+    private void GetInfoPerfil()
+    {
+        // Acessa as informações que já coletamos do usuário
+        var infoUsuario = JsonConvert.DeserializeObject<Firebase.Auth.FirebaseAuth>(Preferences.Get("FreshFirebaseToken", ""));
+        EmailSessao.Text += infoUsuario.User.Email;
+    }
 }
-
-
-
-
-
-

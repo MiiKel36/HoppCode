@@ -14,15 +14,15 @@
                    HorizontalOptions="Center"
                    FontSize="25"/>
             
-            <Button Text=" ClassesPage" Clicked="Button_Clicked"
-                    WidthRequest="150"
-                    HeightRequest="90"/>
-            
-            <Button Text=" LoginPage" Clicked="Button_Clicked_1"
+            <Button Text="ClassesPage" Clicked="Button_Clicked"
                     WidthRequest="150"
                     HeightRequest="90"/>
 
+            <Button Text="LoginPage" Clicked="Button_Clicked_1"
+                    WidthRequest="150"
+                    HeightRequest="90"/>
 
+            <Label x:Name="EmailSessao" Text="Conectado como "/>
         </StackLayout>
 
 

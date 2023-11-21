@@ -1,40 +1,24 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HoppCode.Pages.LoginPage"
-             Title="NewPage1">
-   
-    <StackLayout
-        VerticalOptions="Center"
-        HorizontalOptions="Center"
-        Spacing="10">
-        
-        <Label 
-            Text="Email"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" 
-            FontSize="25"
-            />
-        
-        <Entry Placeholder="Email"
-               WidthRequest="200"/>
-        
-        <Label 
-            Text="Senha"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" 
-            FontSize="25"/>
-        <Entry Placeholder="Senha"
-               WidthRequest="200"/>
+             Title="Página de Login"
+             NavigationPage.HasNavigationBar="False">
+            
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10">
 
-        <Button Text="Entrar"
-                WidthRequest="200"/>
+        <Label Text="Email" VerticalOptions="Center" HorizontalOptions="Center" FontSize="25"/>
+        <Entry x:Name="entryEmail" Placeholder="Email" Text="{Binding LoginEmail}" WidthRequest="300"/>
         
-        <Label Text="" TextColor="Red"/>
-        <Label Text="Ainda não possui uma conta? Clique Aqui!" />
+        <Label Text="Senha" VerticalOptions="Center" HorizontalOptions="Center" FontSize="25"/>
+        <Entry x:Name="entrySenha" Placeholder="Senha" Text="{Binding LoginSenha}" IsPassword="True" MaxLength="30" WidthRequest="300"/>
 
+        <Button Text="Entrar" Margin="0,20,0,0" WidthRequest="200" Command="{Binding BtnLogin}"/>
+
+        <Label Text="Não tem uma conta? Clique Aqui!" TextColor="Blue" TextDecorations="Underline" VerticalOptions="Center" HorizontalOptions="Center">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding HLCadastrar}"/>
+            </Label.GestureRecognizers>
+        </Label>
         
-
-
     </StackLayout>
 </ContentPage>
