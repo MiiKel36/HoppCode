@@ -1,10 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Maui.Controls;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace HoppCode.Classes
@@ -13,11 +15,11 @@ namespace HoppCode.Classes
     {
         //Dá um id para o frame, usado para o codigo conseguir achar o frame no SubAulaPAge.xaml
         int frameId = 0;
-        public dynamic ReadJsonAndReturnStyle(string classe, string aula, bool comOuSemTxt)
+        public dynamic ReadJsonAndReturnStyle(string classe, string aula)
         {
             //Retorn um array com os textos da subAula no json
             SubAulaPage subAula = new SubAulaPage();
-            string[] arrayTextsFromJson = subAula.jsonReturnSubAulasTexto(classe, aula);
+            string[] arrayTextsFromJson = subAula.JsonReturnSubAulasTexto(classe, aula);
 
             //Variaveis para o loop da formatação
             bool openClose = false;
@@ -60,7 +62,7 @@ namespace HoppCode.Classes
 
                     }
                     //Formatação para a criação de uma caixa de texto com codigo
-                    else if (arrayTextsFromJson[i][j] == ':')
+                    else if (arrayTextsFromJson[i][j] == '~')
                     {
                         //Caso ja estivesse lendo um frase, fechar formatação
                         if (openClose)
@@ -93,24 +95,29 @@ namespace HoppCode.Classes
         }
         private dynamic CreateBox(string text, string id)
         {
+            
+            
             Frame frameWithLabel = new Frame
             {
                 CornerRadius = 10,           // Set corner radius for the frame
-                BorderColor = Colors.Black,   // Set border color for the frame
+                BorderColor = Color.FromRgb(99, 50, 155),   // Set border color for the frame
                 Padding = new Thickness(20), // Set padding for the frame
-                BackgroundColor = Colors.Red, // Set background color for the frame
-                ClassId = $"T {id}",
                 IsVisible = false,
+                BackgroundColor = Color.FromRgb(99, 50, 155), // Set background color for the frame
                 HorizontalOptions = LayoutOptions.Fill,
-                
-            };
+                ClassId = $"T {id}",
 
+            };
+            
             Label lbl = new Label()
             {
                 Text = text,            
-                FontSize = 25,
+                FontSize = 17,
             };
             frameWithLabel.Content = lbl;
+            
+
+
 
             return frameWithLabel;
         }
@@ -119,22 +126,22 @@ namespace HoppCode.Classes
             Frame frameWithLabel = new Frame
             {
                 CornerRadius = 10,           // Set corner radius for the frame
-                BorderColor = Colors.Black,   // Set border color for the frame
+                BorderColor = Color.FromRgb(49, 24, 80),   // Set border color for the frame
                 Padding = new Thickness(20), // Set padding for the frame
-                BackgroundColor = Colors.Blue, // Set background color for the frame
+                BackgroundColor = Color.FromRgb(49, 24, 80), // Set background color for the frame
                 ClassId = $"C {id}",
                 IsVisible = false,
                 HorizontalOptions = LayoutOptions.Fill,
-                WidthRequest = 500,
-            };
+                Margin = new Thickness(0),
 
+            };
             Label lbl = new Label()
             {
                 Text = text,                
-                FontSize = 18,
-
+                FontSize = 15,                        
             };
             frameWithLabel.Content = lbl;
+
             return frameWithLabel;
         }
 
@@ -143,7 +150,7 @@ namespace HoppCode.Classes
         {                     
             //Retorn um array com os textos da subAula no json
             SubAulaPage subAula = new SubAulaPage();
-            string[] arrayTextsFromJson = subAula.jsonReturnSubAulasTexto(classe, aula);
+            string[] arrayTextsFromJson = subAula.JsonReturnSubAulasTexto(classe, aula);
 
             List<List<string>> textsList = new List<List<string>> { };
 
@@ -174,7 +181,7 @@ namespace HoppCode.Classes
 
                     }
                     //Formatação para a criação de uma caixa de texto com codigo
-                    else if (arrayTextsFromJson[i][j] == ':')
+                    else if (arrayTextsFromJson[i][j] == '~')
                     {
                         if (openClose)
                         {
@@ -199,5 +206,9 @@ namespace HoppCode.Classes
             return textsList;
 
         }
+
+
     }
 }
+
+

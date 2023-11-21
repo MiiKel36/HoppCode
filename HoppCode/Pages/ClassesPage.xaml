@@ -2,13 +2,24 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HoppCode.Pages.ClassesPage"
-             BackgroundColor="#37247B">
-
-    <ScrollView>
-        <StackLayout
+             BackgroundColor="#37247B"
+             Title="">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
+    <StackLayout>
+        <StackLayout HeightRequest="50"
+                     BackgroundColor="White">
+        </StackLayout>
+        <ScrollView>
+            <StackLayout
             x:Name="stackClasses"
             Padding="10,0,10,50">
-            <!--> Stack onde vai aparecer os botões das classes, onde irá levar para as aualas <!-->  
-        </StackLayout>
-    </ScrollView>
+                <!--> Stack onde vai aparecer os botões das classes, onde irá levar para as aualas <!-->
+
+                <Label x:Name="lbl"/>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+    
 </ContentPage>

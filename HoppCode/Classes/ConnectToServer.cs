@@ -8,6 +8,6 @@ namespace HoppCode.Classes
 {
     internal class ConnectToServer
     {
-        //Ainda em desenvolvimento
+        
     }
 }
