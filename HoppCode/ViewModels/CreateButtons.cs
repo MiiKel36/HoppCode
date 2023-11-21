@@ -12,36 +12,45 @@ using static System.Reflection.Metadata.BlobBuilder;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static Microsoft.Maui.ApplicationModel.Permissions;
 
+/* Alteração não mesclada do projeto 'HoppCode (net7.0-android)'
+Antes:
+using HoppCode.Classes;
+
 
 
 namespace HoppCode.Classes
+Após:
+using HoppCode.Classes;
+using HoppCode;
+using HoppCode.ViewModels;
+
+namespace HoppCode.Classes
+*/
+using HoppCode.Classes;
+using System.ComponentModel;
+
+namespace HoppCode.ViewModels
 {
-   
-    public abstract class CreateButtons
+
+    public abstract class CreateButtons 
     {
-    //Não possui funções abstratas pois algumas funções necessitam de parametros, e outras não
+        //Não possui funções abstratas pois algumas funções necessitam de parametros, e outras não
     }
 
-    //Classe para a pagina ClassesPage
-    public class CreateButtonsClasses : CreateButtons
-    {
-        public void ChangePage(string num)
-        {
-            //Muda o valor classe para a classe no qual clicamos
-            ClassesPage jsonModifierAulas = new ClassesPage();
-            jsonModifierAulas.JsonReadAndWrite(num);
 
-            //Envia para AulasPage
-            Shell.Current.GoToAsync("AulasPage");
-        }
-        public  dynamic CreatingButtonsToPage()
+
+    //Classe para a pagina ClassesPage
+    public class CreateButtonsClasses : CreateButtons 
+    {
+
+        public dynamic CreatingButtonsToPage()
         {
-            ClassesPage json = new ClassesPage();
+            JsonClassesPage json = new JsonClassesPage();
 
             //Pega o numero de quantos botões vai criar 
-            int quantButtons = json.GetNumOfJson();
+            int quantButtons = json.ReturnNumOfClasses();
             //Cria um array com os nomes dos botões
-            string[] buttonsNames = json.ArrayNames(quantButtons);
+            string[] buttonsNames = json.ArrayClassesNames(quantButtons);
 
 
             //Cria uma list para armazenar os objetos dos botões
@@ -54,14 +63,15 @@ namespace HoppCode.Classes
                 Button botao = new Button()
                 {
                     Text = $"{buttonsNames[i]}",
-                    WidthRequest = 160,
+                    WidthRequest = 220,
                     HeightRequest = 160,
-                    BackgroundColor = Color.FromRgb(99,50,155),
+                    BackgroundColor = Color.FromRgb(99, 50, 155),
                     TextColor = Colors.White,
-                    FontSize = 20,
+                    FontSize = 15,
                     FontAttributes = FontAttributes.Bold,
                     ClassId = i.ToString(),
-                    
+                    LineBreakMode = LineBreakMode.WordWrap,
+
 
                     //Foi o modo que eu achei para fazer if e else dentro dos parametros do botão
                     //Aaso o BotãoDireitaEsquerda seja true, o botão fica no final, se não no começo
@@ -69,22 +79,14 @@ namespace HoppCode.Classes
                                                                new LayoutOptions(LayoutAlignment.End, true)/*false*/
 
                 };
-                botao.Clicked += (sender, args) =>
-                {
-                    //Pega ID do botão clicado
-                    Button clickedButton = (Button)sender;
-                    string ButtonId = clickedButton.ClassId;
 
-                    //Muda de pagina
-                    ChangePage(ButtonId);
-                };
                 botao.Shadow = new Shadow()
                 {
                     Brush = Color.FromRgb(57, 33, 93),
                     Offset = new Point(-10, 10),
                     Opacity = 0.5f,
                     Radius = 1,
-                    
+
                 };
 
                 //Adiciona o botão para a list botao
@@ -94,28 +96,20 @@ namespace HoppCode.Classes
             return botaoList;
         }
     }
-    
+
     //Classe para a pagina AulasPage
     public class CreateButtonsAulas : CreateButtons
     {
-        public  void ChangePage(string JsonClasseId)
-        {
-            //Muda o valor classe para a classe no qual clicamos
-            aulasPage jsonModifierAulas = new aulasPage();
-            jsonModifierAulas.JsonReadAndWrite(JsonClasseId);
-
-            //Envia par AulasPage
-            Shell.Current.GoToAsync("SubAulasPage");
-        }
-        public  dynamic CreatingButtonsToPage(string JsonClasseId)
+        public dynamic CreatingButtonsToPage(string JsonClasseId)
         {
             aulasPage json = new aulasPage();
 
             //Pega o numero de quantos botões vai criar 
-            int quantButtons = json.GetNumOfJson(Convert.ToInt32(JsonClasseId));
+            int quantButtons = json.ReturnNumOfAulas(Convert.ToInt32(JsonClasseId));
+
             //Cria um array com os nomes dos botões
             string[] buttonsNames = json.ArrayNames(Convert.ToInt32(quantButtons), Convert.ToInt32(JsonClasseId));
-            
+
 
             //Cria uma list para armazenar os objetos dos botões
             List<dynamic> botaoList = new List<dynamic>();
@@ -127,22 +121,14 @@ namespace HoppCode.Classes
                 Button botao = new Button()
                 {
                     Text = $"{buttonsNames[i]}",
-                    WidthRequest = 200,
+                    WidthRequest = 300,
                     HeightRequest = 200,
-                    ClassId = i.ToString(),
+                    ClassId = i.ToString(), //define o id do botão junto se é aula ou exercicio
+                    LineBreakMode = LineBreakMode.WordWrap,
 
                     //Os bõtoes ficam apenas no centro
-                    HorizontalOptions =  new LayoutOptions(LayoutAlignment.Center, true)
+                    HorizontalOptions = new LayoutOptions(LayoutAlignment.Center, true)
 
-                };
-                botao.Clicked += (sender, args) =>
-                {
-                    //Pega o id do botão clicado
-                    Button clickedButton = (Button)sender;
-                    string ButtonId = clickedButton.ClassId;
-
-                    //Muda de pagina
-                    ChangePage(ButtonId);
                 };
 
                 //Adiciona o botão para a list botao

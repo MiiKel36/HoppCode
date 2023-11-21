@@ -2,51 +2,69 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HoppCode.Pages.SubAulasPage"
-             Title="SubAulasPage">
-    <Grid Padding="10,20,0,30">
+             x:Name="ContenPage"
+             Title=""
+             BackgroundColor="#37247b">
+    
+    <Grid >
         <!-- Definição das linhas do grid -->
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <!-- Conteúdo principal -->
-            <RowDefinition Height="Auto" />
-            <!-- Botão estático -->
+            <RowDefinition Height="Auto"/>
+
         </Grid.RowDefinitions>
 
         <!-- ScrollView para rolar o conteúdo -->
-        <ScrollView Grid.Row="0">
+        <ScrollView  Grid.Row="0">
             <!-- Seu conteúdo principal aqui -->
             <StackLayout x:Name="StackSubAulas"
                          Orientation="Vertical"
-                         Spacing="25"
-                         HorizontalOptions="Center">
+                         Spacing="15"
+                         HorizontalOptions="Center"
+                         Padding="5,40,5,0"
+                         
+                         >
                 <!-- Conteúdo dinâmico será adicionado aqui -->
             </StackLayout>
         </ScrollView>
 
-        <!-- StackLayout para os botões de navegação -->
-        <StackLayout Orientation="Horizontal" Grid.Row="1" Spacing="25">
+
+            <!-- StackLayout para os botões de navegação -->
+        <StackLayout HeightRequest="100"               
+                     Orientation="Horizontal" 
+                     Grid.Row="1" Spacing="0" Padding="50,0,30,0" 
+                     x:Name="stackButtons"
+                     BackgroundColor="#301d72">
+             
             <!-- Botão "Voltar" -->
-            <Button Text="(-" 
+            <Button Text="" 
                     x:Name="BtnPassarTras"
                     HorizontalOptions="StartAndExpand" 
                     Clicked="MenosSubAulasPage"
-                    WidthRequest="100" 
-                    HeightRequest="45"/>
+                    WidthRequest="50" 
+                    HeightRequest="50"
+                    FontSize="30"
+                    CornerRadius="30"
+                    TextColor="White"/>
 
             <!-- Botão "Começar" -->
             <Button Text="Começar"                   
                     x:Name="BtnPassarSubAula"
                     Clicked="botao_Clicked"
                     WidthRequest="100" 
-                    HeightRequest="45"/>
+                    HeightRequest="45"
+                    TextColor="White"/>
 
             <!-- Botão "Avançar" -->
-            <Button Text="-)" 
+            <Button Text="" 
                     x:Name="BtnPassarFrente"
                     HorizontalOptions="EndAndExpand"
                     Clicked="MaisSubAulasPage"
-                    WidthRequest="100" 
-                    HeightRequest="45"/>
+                    WidthRequest="50" 
+                    HeightRequest="50"
+                    FontSize="30"
+                    CornerRadius="30"
+                    TextColor="White"/>
         </StackLayout>
     </Grid>
 </ContentPage>

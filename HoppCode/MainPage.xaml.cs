@@ -14,11 +14,12 @@ public partial class MainPage : ContentPage
         createFolder.CreateStorage();
 
         GetInfoPerfil();
+        
     }
 
-    private void Button_Clicked(object sender, EventArgs e)
+    private async void Button_Clicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync("ClassesPage");
+        await Navigation.PushAsync(new Pages.ClassesPage());      
     }
 
     private void Button_Clicked_1(object sender, EventArgs e)

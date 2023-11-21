@@ -1,11 +1,5 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HoppCode.Classes
 {
@@ -17,7 +11,7 @@ namespace HoppCode.Classes
         protected static string jsonFolderPath = json_path.dirJsonFile;
 
     }
-    class ClassesPage : JsonModifier
+    class JsonClassesPage : JsonModifier
     {
         public  void JsonReadAndWrite(string num)
         {
@@ -51,7 +45,7 @@ namespace HoppCode.Classes
             return ObjJson.Classe;
         }
 
-        public  int GetNumOfJson()
+        public  int ReturnNumOfClasses()
         {
             //Provisiorio
             CreateLocalStorageFolder Path = new CreateLocalStorageFolder();
@@ -68,7 +62,7 @@ namespace HoppCode.Classes
 
             return classsOrAulaLength.Count();
         }
-        public  string[] ArrayNames(int numOfButtons) 
+        public  string[] ArrayClassesNames(int numOfButtons) 
         { 
             //Provisiorio
             CreateLocalStorageFolder Path = new CreateLocalStorageFolder();
@@ -115,7 +109,7 @@ namespace HoppCode.Classes
             File.WriteAllText(jsonFolderPath, ChangedJsonFile);
         }
 
-        public  string jsonRead()
+        public  string JsonReadReturnClasse()
         {
             //Cria o objeto e puxa o PATH do json
             CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
@@ -129,7 +123,7 @@ namespace HoppCode.Classes
             return ObjJson.Classe;
         }
 
-        public  int GetNumOfJson(int classesId)
+        public  int ReturnNumOfAulas(int classesId)
         {
             //Provisiorio
             CreateLocalStorageFolder Path = new CreateLocalStorageFolder();
@@ -163,16 +157,34 @@ namespace HoppCode.Classes
 
             for (int i = 0; i < numOfButtons; i++)
             {
-                namesArray[i] = objJson.cSharp.classes[classId].aulas[i].aula;
+                namesArray[i] = objJson.cSharp.classes[classId].aulas[i].nomeAulaOuExercicio;
             }
 
             return namesArray;
         }
+
+        
     }
 
     class SubAulaPage : JsonModifier
     {
-        public string[] jsonReturnSubAulasTexto(string classe, string aula)
+        public void WriteJson(string valueToModfy)
+        {
+            //Cria o objeto e puxa o PATH do json
+            CreateLocalStorageFolder Path = new CreateLocalStorageFolder();
+            jsonFolderPath = Path.dirJsonFile;
+
+            //Transforma o json em objeto
+            string jsonFile = File.ReadAllText(jsonFolderPath);
+            dynamic ObjJson = JsonConvert.DeserializeObject(jsonFile);
+
+            ObjJson.Aula = valueToModfy;
+
+            //Transforma em json denovo e escreve na pasta do json
+            string ChangedJsonFile = JsonConvert.SerializeObject(ObjJson);
+            File.WriteAllText(jsonFolderPath, ChangedJsonFile);
+        }
+        public string[] JsonReturnSubAulasTexto(string classe, string aula)
         {
             //Provisiorio
             CreateLocalStorageFolder Path = new CreateLocalStorageFolder();
@@ -195,7 +207,7 @@ namespace HoppCode.Classes
             return jsonSubAula;
 
         }
-        public string[] jsonRead()
+        public string[] JsonReadReturnClasseAula()
         {
             //Cria o objeto e puxa o PATH do json
             CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
@@ -208,6 +220,85 @@ namespace HoppCode.Classes
             //Retorna o valor classe
             string[] ClasseEAula = { ObjJson.Classe, ObjJson.Aula };
             return ClasseEAula;
+        }
+
+    }
+
+    class IdentificarAulaOuExercicioPage : JsonModifier
+    {
+        public string JsonReturnExercicioTexto()
+        {
+            //Provisiorio
+            CreateLocalStorageFolder Path = new CreateLocalStorageFolder();
+
+            //Classe que possui a função qu le o json e retorna a classe e a aula
+            IdentificarAulaOuExercicioPage identificarAulaOuExercicio = new IdentificarAulaOuExercicioPage();
+
+            //Contem o valor "Classe" e "Aulas" do json
+            string[] ClasseAula = identificarAulaOuExercicio.JsonReadReturnClasseAula();
+
+            //Converte os valores Aula e classe para int
+            int classe = Convert.ToInt32(ClasseAula[0]);
+            int aula = Convert.ToInt32(ClasseAula[1]);
+
+
+            //Caminho do json
+            string pathJsonTeste = Path.dir + "teste.json";
+
+            //Le o json e transforma em objeto
+            string data = File.ReadAllText(pathJsonTeste);
+            dynamic objJson = JsonConvert.DeserializeObject(data);
+
+            //Texto do exercicio atual
+            string exercicioTexto = objJson.cSharp.classes[classe].aulas[aula].Texto;
+
+            return exercicioTexto;
+        }
+        public string[] JsonReadReturnClasseAula()
+        {
+            //Cria o objeto e puxa o PATH do json
+            CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
+            jsonFolderPath = JSON_PATH.dirJsonFile;
+
+            //Transforma o json em objeto
+            string jsonFile = File.ReadAllText(jsonFolderPath);
+            dynamic ObjJson = JsonConvert.DeserializeObject(jsonFile);
+
+            //Retorna o valor classe
+            string[] ClasseEAula = { ObjJson.Classe, ObjJson.Aula };
+            return ClasseEAula;
+        }
+
+        //Depois modificar para se enccaixar com exercicios
+        public string JsonReturnType()
+        {
+            //Classe que possui o camiho do json
+            CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
+
+            //Classe que possui a função qu le o json e retorna a classe e a aula
+            IdentificarAulaOuExercicioPage identificarAulaOuExercicio = new IdentificarAulaOuExercicioPage();
+
+            //Cria o objeto e puxa o PATH do json
+            jsonFolderPath = JSON_PATH.dirJsonFile;
+
+            //Caminho do json
+            string pathJsonTeste = JSON_PATH.dir + "teste.json";
+
+            //Le o json e transforma em objeto
+            string data = File.ReadAllText(pathJsonTeste);
+            dynamic objJson = JsonConvert.DeserializeObject(data);
+
+            //Contem o valor "Classe" e "Aulas" do json
+            string[] ClasseAula = identificarAulaOuExercicio.JsonReadReturnClasseAula();
+
+            //Converte os valores Aula e classe para int
+            int classe = Convert.ToInt32(ClasseAula[0]);
+            int aula = Convert.ToInt32(ClasseAula[1]);
+
+            //Retorna o tipo do botão clicado dentro do json
+            string classsOrAulaLength = objJson.cSharp.classes[classe].aulas[aula].Type;
+
+            return classsOrAulaLength;
         }
 
     }
