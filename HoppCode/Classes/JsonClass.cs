@@ -31,7 +31,7 @@ namespace HoppCode.Classes
             File.WriteAllText(jsonFolderPath, ChangedJsonFile);
         }
 
-        public  string jsonRead()
+        public string jsonRead()
         {
             //Cria o objeto e puxa o PATH do json
             CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
@@ -45,34 +45,34 @@ namespace HoppCode.Classes
             return ObjJson.Classe;
         }
 
-        public  int ReturnNumOfClasses()
+        public async Task<int> ReturnNumOfClasses()
         {
             //Provisiorio
             CreateLocalStorageFolder Path = new CreateLocalStorageFolder();
 
             //Caminho do json
-            string pathJsonTeste = Path.dir + "teste.json";
+            string JsonAulas = await Path.PushAulaJson();
 
             //Le o json e transforma em objeto
-            string data = File.ReadAllText(pathJsonTeste);
-            dynamic objJson = JsonConvert.DeserializeObject(data);
+            //string data = File.ReadAllText(JsonAulas);
+            dynamic objJson = JsonConvert.DeserializeObject(JsonAulas);
 
             //Trasnforma em JArray para contar quantos elementos possui
             var classsOrAulaLength = objJson.cSharp.classes as JArray;
 
             return classsOrAulaLength.Count();
         }
-        public  string[] ArrayClassesNames(int numOfButtons) 
+        public  async Task<string[]> ArrayClassesNames(int numOfButtons) 
         { 
             //Provisiorio
             CreateLocalStorageFolder Path = new CreateLocalStorageFolder();
 
             //Caminho do json
-            string pathJsonTeste = Path.dir + "teste.json";
+            string JsonAulas = await Path.PushAulaJson();
 
             //Le o json e transforma em objeto
-            string data = File.ReadAllText(pathJsonTeste);
-            dynamic objJson = JsonConvert.DeserializeObject(data);
+            //string data = File.ReadAllText(JsonAulas);
+            dynamic objJson = JsonConvert.DeserializeObject(JsonAulas);
 
             //Cria um array para armazenar os nomes
             string[] namesArray = new string[numOfButtons];
@@ -123,34 +123,34 @@ namespace HoppCode.Classes
             return ObjJson.Classe;
         }
 
-        public  int ReturnNumOfAulas(int classesId)
+        public async Task<int> ReturnNumOfAulas(int classesId)
         {
             //Provisiorio
             CreateLocalStorageFolder Path = new CreateLocalStorageFolder();
 
             //Caminho do json
-            string pathJsonTeste = Path.dir + "teste.json";
+            string JsonAulas = await Path.PushAulaJson();
 
             //Le o json e transforma em objeto
-            string data = File.ReadAllText(pathJsonTeste);
-            dynamic objJson = JsonConvert.DeserializeObject(data);
+            //string data = File.ReadAllText(JsonAulas);
+            dynamic objJson = JsonConvert.DeserializeObject(JsonAulas);
 
             //Trasnforma em JArray para contar quantos elementos possui no botão selecionado na page ClassesPage
             var classsOrAulaLength = objJson.cSharp.classes[classesId].aulas as JArray;
 
             return classsOrAulaLength.Count();
         }
-        public  string[] ArrayNames(int numOfButtons, int classId)
+        public async Task<string[]> ArrayNames(int numOfButtons, int classId)
         {
             //Provisiorio
             CreateLocalStorageFolder Path = new CreateLocalStorageFolder();
 
             //Caminho do json
-            string pathJsonTeste = Path.dir + "teste.json";
+            string JsonAulas = await Path.PushAulaJson();
 
             //Le o json e transforma em objeto
-            string data = File.ReadAllText(pathJsonTeste);
-            dynamic objJson = JsonConvert.DeserializeObject(data);
+            //string data = File.ReadAllText(JsonAulas);
+            dynamic objJson = JsonConvert.DeserializeObject(JsonAulas);
             
             //Cria um array para armazenar os nomes dos botões
             string[] namesArray = new string[numOfButtons];
@@ -184,17 +184,17 @@ namespace HoppCode.Classes
             string ChangedJsonFile = JsonConvert.SerializeObject(ObjJson);
             File.WriteAllText(jsonFolderPath, ChangedJsonFile);
         }
-        public string[] JsonReturnSubAulasTexto(string classe, string aula)
+        public async Task<string[]> JsonReturnSubAulasTexto(string classe, string aula)
         {
             //Provisiorio
             CreateLocalStorageFolder Path = new CreateLocalStorageFolder();
 
             //Caminho do json
-            string pathJsonTeste = Path.dir + "teste.json";
+            string JsonAulas = await Path.PushAulaJson();
 
             //Le o json e transforma em objeto
-            string data = File.ReadAllText(pathJsonTeste);
-            dynamic objJson = JsonConvert.DeserializeObject(data);
+            //string data = File.ReadAllText(JsonAulas);
+            dynamic objJson = JsonConvert.DeserializeObject(JsonAulas);
             
             //Quantas subAulas tem no json com os valores de classe e aula
             dynamic subAulasObj = objJson.cSharp.classes[Convert.ToInt32(classe)].aulas[Convert.ToInt32(aula)].subAulas as JArray;
@@ -226,7 +226,7 @@ namespace HoppCode.Classes
 
     class IdentificarAulaOuExercicioPage : JsonModifier
     {
-        public string JsonReturnExercicioTexto()
+        public async Task<string> JsonReturnExercicioTexto()
         {
             //Provisiorio
             CreateLocalStorageFolder Path = new CreateLocalStorageFolder();
@@ -243,11 +243,11 @@ namespace HoppCode.Classes
 
 
             //Caminho do json
-            string pathJsonTeste = Path.dir + "teste.json";
+            string JsonAulas = await Path.PushAulaJson();
 
             //Le o json e transforma em objeto
-            string data = File.ReadAllText(pathJsonTeste);
-            dynamic objJson = JsonConvert.DeserializeObject(data);
+            //string data = File.ReadAllText(JsonAulas);
+            dynamic objJson = JsonConvert.DeserializeObject(JsonAulas);
 
             //Texto do exercicio atual
             string exercicioTexto = objJson.cSharp.classes[classe].aulas[aula].Texto;
@@ -270,7 +270,7 @@ namespace HoppCode.Classes
         }
 
         //Depois modificar para se enccaixar com exercicios
-        public string JsonReturnType()
+        public async Task<string> JsonReturnType()
         {
             //Classe que possui o camiho do json
             CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
@@ -282,11 +282,11 @@ namespace HoppCode.Classes
             jsonFolderPath = JSON_PATH.dirJsonFile;
 
             //Caminho do json
-            string pathJsonTeste = JSON_PATH.dir + "teste.json";
+            string JsonAulas = await JSON_PATH.PushAulaJson();
 
             //Le o json e transforma em objeto
-            string data = File.ReadAllText(pathJsonTeste);
-            dynamic objJson = JsonConvert.DeserializeObject(data);
+            //string data = File.ReadAllText(JsonAulas);
+            dynamic objJson = JsonConvert.DeserializeObject(JsonAulas);
 
             //Contem o valor "Classe" e "Aulas" do json
             string[] ClasseAula = identificarAulaOuExercicio.JsonReadReturnClasseAula();

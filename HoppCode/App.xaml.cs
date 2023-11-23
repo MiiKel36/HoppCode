@@ -1,5 +1,4 @@
 ﻿using HoppCode.Pages;
-
 namespace HoppCode;
 
 public partial class App : Application
@@ -8,6 +7,6 @@ public partial class App : Application
 	{
 		InitializeComponent();
 		// Aplicativo inicia na tela de login
-		MainPage = new NavigationPage(new LoginPage());
+		MainPage = new NavigationPage(new Pages.ClassesPage());
 	}
 }

@@ -24,7 +24,7 @@ public partial class MainPage : ContentPage
 
     private void Button_Clicked_1(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync("LoginPage");
+        
     }
 
     private void GetInfoPerfil()

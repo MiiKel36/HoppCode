@@ -24,6 +24,12 @@ namespace HoppCode.Classes
         public string dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "HoppCode","JsonFile");
         public string dirJsonFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "HoppCode","JsonFile","changePage.json");
 #endif
+        public async Task<string> PushAulaJson()
+        {
+            using var stream = await FileSystem.OpenAppPackageFileAsync("JsonFile/aulasJson.json");
+            using var reader = new StreamReader(stream);
+            return reader.ReadToEnd();
+        }
 
         //Diretorio da pasta e do arquivo json versão windows  
         public void CreateStorage()

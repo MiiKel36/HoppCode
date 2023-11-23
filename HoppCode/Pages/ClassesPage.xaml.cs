@@ -8,39 +8,34 @@ public partial class ClassesPage : ContentPage
     public ClassesPage()
 	{
 		InitializeComponent();
-        BindingContext = new CreateButtonsClasses();
-        
 
-        try
+        AddButtonsToStack();
+    }
+
+    public async void AddButtonsToStack()
+    {
+        //Cria objeto do CreateButtons
+        CreateButtonsClasses classButons = new CreateButtonsClasses();
+
+        //A var buttons vira uma list contendo os objetos dos botões
+        dynamic buttons = await classButons.CreatingButtonsToPage();
+
+        foreach (Button button in buttons)
         {
-            //Cria objeto do CreateButtons
-            CreateButtonsClasses classButons = new CreateButtonsClasses();
-
-            //A var buttons vira uma list contendo os objetos dos botões
-            dynamic buttons = classButons.CreatingButtonsToPage();
-
-            foreach (Button button in buttons)
+            button.Clicked += (sender, e) =>
             {
-                button.Clicked += (sender, e) =>
-                {
-                    Button clickedButton = (Button)sender;
-                    string ButtonId = clickedButton.ClassId;
+                Button clickedButton = (Button)sender;
+                string ButtonId = clickedButton.ClassId;
 
-                    // Executa a função
-                    ChangePage(ButtonId);
-                };
+                // Executa a função
+                ChangePage(ButtonId);
+            };
 
-                //Adiciona no stackLayout os botões com o valor dentro do button
-                stackClasses.Add(button);
-            }
-        }
-        catch
-        {
-            CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
-            string jsonFolderPath = JSON_PATH.dirJsonFile;
-            lbl.Text = jsonFolderPath;
+            //Adiciona no stackLayout os botões com o valor dentro do button
+            stackClasses.Add(button);
         }
     }
+
     //Daixa o botão de voltar não funcional
     protected override bool OnBackButtonPressed()
     {

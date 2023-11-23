@@ -15,11 +15,11 @@ namespace HoppCode.Classes
     {
         //Dá um id para o frame, usado para o codigo conseguir achar o frame no SubAulaPAge.xaml
         int frameId = 0;
-        public dynamic ReadJsonAndReturnStyle(string classe, string aula)
+        public async Task<dynamic> ReadJsonAndReturnStyle(string classe, string aula)
         {
             //Retorn um array com os textos da subAula no json
             SubAulaPage subAula = new SubAulaPage();
-            string[] arrayTextsFromJson = subAula.JsonReturnSubAulasTexto(classe, aula);
+            string[] arrayTextsFromJson = await subAula.JsonReturnSubAulasTexto(classe, aula);
 
             //Variaveis para o loop da formatação
             bool openClose = false;
@@ -146,11 +146,11 @@ namespace HoppCode.Classes
         }
 
         //Mesmo codigo para criação de frames, porem retorna os textos
-        public List<List<string>> ReadJsonAndReturnTexts(string classe, string aula)
+        public async Task<List<List<string>>> ReadJsonAndReturnTexts(string classe, string aula)
         {                     
             //Retorn um array com os textos da subAula no json
             SubAulaPage subAula = new SubAulaPage();
-            string[] arrayTextsFromJson = subAula.JsonReturnSubAulasTexto(classe, aula);
+            string[] arrayTextsFromJson = await subAula.JsonReturnSubAulasTexto(classe, aula);
 
             List<List<string>> textsList = new List<List<string>> { };
 

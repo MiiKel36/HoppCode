@@ -12,9 +12,9 @@ namespace HoppCode.Classes
         //Cria objeto do identificar aula
         IdentificarAulaOuExercicioPage identificarAulaOuExercicio = new IdentificarAulaOuExercicioPage();
 
-        public Frame ReadJsonAndReturStyle(string classe, string aula)
+        public async Task<Frame> ReadJsonAndReturStyle(string classe, string aula)
         {
-            string exercicioText = identificarAulaOuExercicio.JsonReturnExercicioTexto();
+            string exercicioText = await identificarAulaOuExercicio.JsonReturnExercicioTexto();
 
             Frame frame = new Frame()
             {

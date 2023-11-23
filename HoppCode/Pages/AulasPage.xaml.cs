@@ -10,13 +10,18 @@ public partial class AulasPage : ContentPage
     public AulasPage()
 	{        
         InitializeComponent();
+        AddButtonsToStack();
+
+    }
+    public async void AddButtonsToStack()
+    {
 
         //Pega o valor da classe guardade no json
         aulasPage jsonModifierAulas = new aulasPage();
-		string valueAulas = jsonModifierAulas.JsonReadReturnClasse();
+        string valueAulas = jsonModifierAulas.JsonReadReturnClasse();
 
         CreateButtonsAulas createButtons = new CreateButtonsAulas();
-        dynamic buttons = createButtons.CreatingButtonsToPage(valueAulas);
+        dynamic buttons = await createButtons.CreatingButtonsToPage(valueAulas);
 
 
         foreach (Button button in buttons)
@@ -33,8 +38,6 @@ public partial class AulasPage : ContentPage
             //Adiciona no stackLayout os botões com o valor dentro do button
             stackAulas.Add(button);
         }
-
-
     }
     public void ChangePage(string JsonClasseId)
     {
@@ -43,7 +46,7 @@ public partial class AulasPage : ContentPage
         jsonModifierAulas.JsonReadAndWrite(JsonClasseId);
 
         //Envia para IdentficarAulaOuExercicio e lá, verifica se é exercício ou aula
-        Navigation.PushAsync(new Pages.IdentficarAulaOuExercicio());
+        Navigation.PushAsync(new Pages.IdentificarAulaOuExercicio());
     }
     protected override bool OnBackButtonPressed()
     {

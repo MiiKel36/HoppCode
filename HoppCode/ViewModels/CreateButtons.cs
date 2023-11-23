@@ -43,14 +43,14 @@ namespace HoppCode.ViewModels
     public class CreateButtonsClasses : CreateButtons 
     {
 
-        public dynamic CreatingButtonsToPage()
+        public async Task<dynamic> CreatingButtonsToPage()
         {
             JsonClassesPage json = new JsonClassesPage();
 
             //Pega o numero de quantos botões vai criar 
-            int quantButtons = json.ReturnNumOfClasses();
+            int quantButtons = await json.ReturnNumOfClasses();
             //Cria um array com os nomes dos botões
-            string[] buttonsNames = json.ArrayClassesNames(quantButtons);
+            string[] buttonsNames = await json.ArrayClassesNames(quantButtons);
 
 
             //Cria uma list para armazenar os objetos dos botões
@@ -63,8 +63,8 @@ namespace HoppCode.ViewModels
                 Button botao = new Button()
                 {
                     Text = $"{buttonsNames[i]}",
-                    WidthRequest = 220,
-                    HeightRequest = 160,
+                    WidthRequest = 200,
+                    HeightRequest = 200,
                     BackgroundColor = Color.FromRgb(99, 50, 155),
                     TextColor = Colors.White,
                     FontSize = 15,
@@ -100,15 +100,15 @@ namespace HoppCode.ViewModels
     //Classe para a pagina AulasPage
     public class CreateButtonsAulas : CreateButtons
     {
-        public dynamic CreatingButtonsToPage(string JsonClasseId)
+        public async Task<dynamic> CreatingButtonsToPage(string JsonClasseId)
         {
             aulasPage json = new aulasPage();
 
             //Pega o numero de quantos botões vai criar 
-            int quantButtons = json.ReturnNumOfAulas(Convert.ToInt32(JsonClasseId));
+            int quantButtons = await json.ReturnNumOfAulas(Convert.ToInt32(JsonClasseId));
 
             //Cria um array com os nomes dos botões
-            string[] buttonsNames = json.ArrayNames(Convert.ToInt32(quantButtons), Convert.ToInt32(JsonClasseId));
+            string[] buttonsNames = await json.ArrayNames(Convert.ToInt32(quantButtons), Convert.ToInt32(JsonClasseId));
 
 
             //Cria uma list para armazenar os objetos dos botões
@@ -121,7 +121,7 @@ namespace HoppCode.ViewModels
                 Button botao = new Button()
                 {
                     Text = $"{buttonsNames[i]}",
-                    WidthRequest = 300,
+                    WidthRequest = 200,
                     HeightRequest = 200,
                     ClassId = i.ToString(), //define o id do botão junto se é aula ou exercicio
                     LineBreakMode = LineBreakMode.WordWrap,

@@ -1,7 +1,9 @@
-using HoppCode.Classes;
+Ôªøusing HoppCode.Classes;
 using Microsoft.Maui.Controls;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using Firebase.Storage;
+using System.Net;
 
 namespace HoppCode.Pages;
 
@@ -10,22 +12,24 @@ public partial class SubAulasPage : ContentPage
     static SubAulaPage subAula = new SubAulaPage();
     static ReadSubAula read_Sub_Aula = new ReadSubAula();
 
-    //List de frames que ser„o colocados no stackLayout                                                  
+    //List de frames que ser√£o colocados no stackLayout                                                  
     List<List<dynamic>> styleList = null;
 
     //Cria uma lista que dentro, tenha os textos de cada style na lista acima
     List<List<string>> listaDosTextos = null;
 
-    //Variaveis para manipulaÁ„o dos frames, labels, e subAulas
+    //Variaveis para manipula√ß√£o dos frames, labels, e subAulas
     int subAulasPage = 0, maxSubAulasPage = 0;
     int labelId = 0;
 
     //Contem o valor "Classe" e "Aulas" do json       
     string[] ClasseAula = subAula.JsonReadReturnClasseAula();
 
+    public string webApiKey = "AIzaSyB1m5xiuM-tOk0GUHnhrcJ2uVmkJr1ogwE"; // N√£o √© dado sens√≠vel üëç
+
     Image image = new Image
     {
-        Source = ImageSource.FromResource("https://firebasestorage.googleapis.com/v0/b/hoppcode-4f4e8.appspot.com/o/HoppCodeMascote.png?alt=media&token=90217b75-e18b-481c-9dfb-72a7d25baf1e"),
+
         WidthRequest = 150,
         HeightRequest = 237,
         HorizontalOptions = LayoutOptions.End,
@@ -34,14 +38,17 @@ public partial class SubAulasPage : ContentPage
     public SubAulasPage()
 	{
 		InitializeComponent();
+        AddButtonToStack();
+    }
+    public async void AddButtonToStack()
+    {
+        //Cria uma lista com duas dimens√µes, dentro, os styles criados na fun√ß√£o ReadJsonAndReturnStyle                                                       
+        styleList = await read_Sub_Aula.ReadJsonAndReturnStyle(ClasseAula[0], ClasseAula[1]);
 
-        //Cria uma lista com duas dimensıes, dentro, os styles criados na funÁ„o ReadJsonAndReturnStyle                                                       
-        styleList = read_Sub_Aula.ReadJsonAndReturnStyle(ClasseAula[0], ClasseAula[1]);
-        
         //Cria uma lista que dentro, tem os textos de cada style na lsita acima
-        listaDosTextos = read_Sub_Aula.ReadJsonAndReturnTexts(ClasseAula[0], ClasseAula[1]);
+        listaDosTextos = await read_Sub_Aula.ReadJsonAndReturnTexts(ClasseAula[0], ClasseAula[1]);
 
-        //Desabilita os botıes de ir para frente e ir para tras
+        //Desabilita os bot√µes de ir para frente e ir para tras
         IsEnableOrNotButton(false, BtnPassarTras);
         IsEnableOrNotButton(false, BtnPassarFrente);
         IsEnableOrNotButton(true, BtnPassarSubAula);
@@ -49,17 +56,16 @@ public partial class SubAulasPage : ContentPage
         BtnPassarFrente.Text = ">";
         BtnPassarTras.Text = "<";
 
-        //Adiciona as styles na primeira dimes„o da lista
+        //Adiciona as styles na primeira dimes√£o da lista
         foreach (Frame frame in styleList[subAulasPage])
-        {StackSubAulas.Add(frame);}
+        { StackSubAulas.Add(frame); }
         StackSubAulas.Add(image);
-
     }
 
-    //Bot„o para mudar de pagina para frente
+    //Bot√£o para mudar de pagina para frente
     public void MaisSubAulasPage(object sender, EventArgs e)
     {
-        //Quando passar para frente, o bot„o de ir para tras sempre ser· habilitado
+        //Quando passar para frente, o bot√£o de ir para tras sempre ser√° habilitado
         IsEnableOrNotButton(true, BtnPassarTras);
         subAulasPage++;
 
@@ -88,10 +94,10 @@ public partial class SubAulasPage : ContentPage
         {//Caso seja a primeira vez na subAula
             if (maxSubAulasPage < subAulasPage)
             {
-                //Texto do bot„o no meio fica como comeÁar
-                BtnPassarSubAula.Text = "ComeÁar";
+                //Texto do bot√£o no meio fica como come√ßar
+                BtnPassarSubAula.Text = "Come√ßar";
 
-                //Deixa bot„o de passar e voltar desabilitados
+                //Deixa bot√£o de passar e voltar desabilitados
                 IsEnableOrNotButton(false, BtnPassarFrente);
                 IsEnableOrNotButton(false, BtnPassarTras);
 
@@ -103,14 +109,14 @@ public partial class SubAulasPage : ContentPage
 
                 StackSubAulas.Children.Clear();
 
-                //Adiciona as styles na primeira dimes„o da lista
+                //Adiciona as styles na primeira dimes√£o da lista
                 foreach (Frame frame in styleList[subAulasPage])
                 { StackSubAulas.Add(frame); }
                 StackSubAulas.Add(image);
 
 
             }
-            //Caso n„o seja a primeira vez na subAula
+            //Caso n√£o seja a primeira vez na subAula
             else
             {
                 IsEnableOrNotButton(true, BtnPassarFrente);
@@ -131,10 +137,10 @@ public partial class SubAulasPage : ContentPage
 
     }
     
-    //Bot„o para mudar de pagina para atr·s
+    //Bot√£o para mudar de pagina para atr√°s
     public void MenosSubAulasPage(object sender, EventArgs e)
     {
-        //DEixa o bot„o de passar para frente em seu setup inicial
+        //DEixa o bot√£o de passar para frente em seu setup inicial
         BtnPassarFrente.Text = ">";
         BtnPassarFrente.WidthRequest = 50;
         BtnPassarFrente.FontSize = 30;
@@ -146,7 +152,7 @@ public partial class SubAulasPage : ContentPage
             subAulasPage--;
             labelId = 0;
 
-            //Se for a primeira pagina, n„o se pode voltar
+            //Se for a primeira pagina, n√£o se pode voltar
             if (subAulasPage == 0)
             { IsEnableOrNotButton(true, BtnPassarTras); }
 
@@ -175,31 +181,31 @@ public partial class SubAulasPage : ContentPage
     {
         BtnPassarSubAula.Text = "Passar";
 
-        //Enquato as subAulas ainda estiverem aparecendo, os todos os botıes estar„o inacessiveis
+        //Enquato as subAulas ainda estiverem aparecendo, os todos os bot√µes estar√£o inacessiveis
         IsEnableOrNotButton(false, BtnPassarSubAula);
         IsEnableOrNotButton(false, BtnPassarFrente);
         IsEnableOrNotButton(false, BtnPassarTras);
 
-        string targetId = $"{labelId}"; // ID do elemento que vocÍ deseja modificar
+        string targetId = $"{labelId}"; // ID do elemento que voc√™ deseja modificar
 
         if (styleList [subAulasPage].Count > labelId)
         {
             foreach (Frame frame in styleList [subAulasPage])
             {
-                //Para que a verifiaÁ„o do ClassId com a substrig seja possivel, preciso definir o class id como uma string
+                //Para que a verifia√ß√£o do ClassId com a substrig seja possivel, preciso definir o class id como uma string
                 string frameId = frame.ClassId;
                 if (frameId.Substring(2) == targetId)
                 {
                     
                     Label label = frame.Content as Label;
 
-                    //Caso o bal„o de texto seja de codigo
+                    //Caso o bal√£o de texto seja de codigo
                     if (frameId.Substring(0, 1) == "C")
                     {
                         frame.IsVisible = true;
                         label.FormattedText = returnFormatedText(listaDosTextos[subAulasPage][labelId]);
                     }
-                    //Caso o bal„o de texto seja um simples bal„o de texto
+                    //Caso o bal√£o de texto seja um simples bal√£o de texto
                     else if (frameId.Substring(0, 1) == "T")
                     {
                         if (label != null)
@@ -212,10 +218,10 @@ public partial class SubAulasPage : ContentPage
                             {
                                 label.Text += listaDosTextos[subAulasPage][labelId][currentIndex];
                                 currentIndex++;
-                                await Task.Delay(20); // Aguarde meio segundo
+                                await Task.Delay(15); // Aguarde 15 mil√©simos
                                 
                             }
-                            break; // Sai do loop apÛs encontrar o Frame desejado
+                            break; // Sai do loop ap√≥s encontrar o Frame desejado
                         }
                     }
                 }
@@ -223,7 +229,7 @@ public partial class SubAulasPage : ContentPage
            
             labelId++;
 
-            //Caso seja a ultima p·gina
+            //Caso seja a ultima p√°gina
             if (styleList [subAulasPage].Count == labelId)
             {
                 IsEnableOrNotButton(true, BtnPassarFrente);
