@@ -43,7 +43,7 @@ public partial class AulasPage : ContentPage
         jsonModifierAulas.JsonReadAndWrite(JsonClasseId);
 
         //Envia para IdentficarAulaOuExercicio e lá, verifica se é exercício ou aula
-        Navigation.PushAsync(new Pages.IdentficarAulaOuExercicio());
+        Navigation.PushAsync(new Pages.IdentificarAulaOuExercicio());
     }
     protected override bool OnBackButtonPressed()
     {

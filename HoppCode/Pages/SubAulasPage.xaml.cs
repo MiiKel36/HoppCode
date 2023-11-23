@@ -25,7 +25,7 @@ public partial class SubAulasPage : ContentPage
 
     Image image = new Image
     {
-        Source = ImageSource.FromResource("https://firebasestorage.googleapis.com/v0/b/hoppcode-4f4e8.appspot.com/o/HoppCodeMascote.png?alt=media&token=90217b75-e18b-481c-9dfb-72a7d25baf1e"),
+        Source = ImageSource.FromFile("mascot.png"),
         WidthRequest = 150,
         HeightRequest = 237,
         HorizontalOptions = LayoutOptions.End,

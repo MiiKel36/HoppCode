@@ -15,7 +15,7 @@
 		<ApplicationTitle>HoppCode</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.hoppcode</ApplicationId>
+		<ApplicationId>com.dsnt3a.hoppcode</ApplicationId>
 		<ApplicationIdGuid>bfdb6643-4cae-45c2-a841-8fe09a99693e</ApplicationIdGuid>
 
 		<!-- Versions -->
@@ -49,10 +49,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Pages\IdentfyAulaOrExercise.cs" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="5.2.0" />
 		<PackageReference Include="FirebaseAuthentication.net" Version="3.7.2" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
@@ -76,9 +72,9 @@
 	    <Generator></Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\ExercisesPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
+	    <Generator></Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\IdentficarAulaOuExercicio.xaml">
+	  <MauiXaml Update="Pages\IdentificarAulaOuExercicio.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\LoginPage.xaml">

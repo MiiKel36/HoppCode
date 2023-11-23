@@ -2,27 +2,27 @@ using HoppCode.Classes;
 
 namespace HoppCode.Pages;
 
-public partial class IdentficarAulaOuExercicio : ContentPage
+public partial class IdentificarAulaOuExercicio : ContentPage
 {
-	public IdentficarAulaOuExercicio()
-	{
-		InitializeComponent();
+    public IdentificarAulaOuExercicio()
+    {
+        InitializeComponent();
 
-		IdentificarAulaOuExercicioPage identfyType = new IdentificarAulaOuExercicioPage();
-		string type = identfyType.JsonReturnType();
-        
+        IdentificarAulaOuExercicioPage identifyType = new IdentificarAulaOuExercicioPage();
+        string type = identifyType.JsonReturnType();
+
         switch (type)
-		{
-			case "Aula":
+        {
+            case "Aula":
                 //Envia par AulasPage
                 Navigation.PushAsync(new Pages.SubAulasPage());
                 break;
 
-			case "Exercicio":
+            case "Exercicio":
                 //Envia par AulasPage
                 Navigation.PushAsync(new Pages.ExercisesPage());
                 break;
-		}
+        }
 
 
     }
