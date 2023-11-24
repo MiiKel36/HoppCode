@@ -29,7 +29,7 @@ public partial class SubAulasPage : ContentPage
 
     Image image = new Image
     {
-
+        Source = ImageSource.FromFile("mascot.png"),
         WidthRequest = 150,
         HeightRequest = 237,
         HorizontalOptions = LayoutOptions.End,

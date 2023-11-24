@@ -4,7 +4,7 @@ namespace HoppCode.Pages;
 
 public partial class IdentificarAulaOuExercicio : ContentPage
 {
-    public IdentificarAulaOuExercicio() 
+    public IdentificarAulaOuExercicio()
     {
         InitializeComponent();
         teste();
@@ -26,6 +26,8 @@ public partial class IdentificarAulaOuExercicio : ContentPage
                 await Navigation.PushAsync(new Pages.ExercisesPage());
                 break;
         }
+
+
     }
 
     protected override bool OnBackButtonPressed()
