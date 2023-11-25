@@ -188,7 +188,7 @@ public partial class SubAulasPage : ContentPage
             await mascotImage.TranslateTo(0, originalTranslationY - 50, 200, Easing.CubicOut);
             await mascotImage.TranslateTo(0, originalTranslationY, 200, Easing.CubicIn);
         }
-        // Quando tem mais de 4 frames visíveis, manda o mascote pra fora (não dá pra ver nada com ele na frente!)
+        // Quando tem mais de 3 frames visíveis, manda o mascote pra fora (não dá pra ver nada com ele na frente!)
         else if (mascotImage.IsVisible)
         {
             await mascotImage.TranslateTo(500, originalTranslationY, 400, Easing.CubicOut);
