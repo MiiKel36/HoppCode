@@ -6,27 +6,24 @@
              Title=""
              BackgroundColor="#37247b">
     
-    <Grid >
+    <Grid>
         <!-- Definição das linhas do grid -->
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- ScrollView para rolar o conteúdo -->
-        <ScrollView  Grid.Row="0">
-            <!-- Seu conteúdo principal aqui -->
-            <StackLayout x:Name="StackSubAulas"
-                         Orientation="Vertical"
-                         Spacing="15"
-                         HorizontalOptions="Center"
-                         Padding="5,40,5,0"
-                         WidthRequest="500"
-                         
-                         >
+        <ScrollView VerticalOptions="FillAndExpand">
+            <VerticalStackLayout x:Name="StackSubAulas" Spacing="15" Padding="5,40,5,0" WidthRequest="500">
                 <!-- Conteúdo dinâmico será adicionado aqui -->
-            </StackLayout>
+            </VerticalStackLayout>
         </ScrollView>
+        
+        <AbsoluteLayout HorizontalOptions="Center">
+            <VerticalStackLayout x:Name="StackMascote" Padding="0,350,0,0" WidthRequest="500">
+                    <!-- Mascote ficará separado do conteúdo, numa posição fixa, aqui! -->
+            </VerticalStackLayout>
+        </AbsoluteLayout>
 
 
             <!-- StackLayout para os botões de navegação -->

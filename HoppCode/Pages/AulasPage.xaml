@@ -5,7 +5,7 @@
              Title="">
     <ScrollView>
         <StackLayout x:Name="stackAulas">
-        <!--> Aqui será onde os botões das aualas irão aparecer <!-->
+        <!-- Aqui será onde os botões das aulas irão aparecer -->
         </StackLayout>
     </ScrollView>
 
