@@ -1,10 +1,12 @@
 ﻿namespace HoppCode;
+
 using HoppCode.Classes;
 using Newtonsoft.Json;
 
-public partial class MainPage : ContentPage
+public partial class MainPage : FlyoutPage
 {
-    
+    public string webApiKey = "AIzaSyB1m5xiuM-tOk0GUHnhrcJ2uVmkJr1ogwE";
+
     public MainPage()
     {
         InitializeComponent();
@@ -22,9 +24,13 @@ public partial class MainPage : ContentPage
         await Navigation.PushAsync(new Pages.ClassesPage());      
     }
 
-    private void Button_Clicked_1(object sender, EventArgs e)
+    private async void LogoutBtn_Clicked(object sender, EventArgs e)
     {
-        
+        bool logoutResposta = await App.Current.MainPage.DisplayAlert("CONFIRMAR AÇÃO", "Tem certeza que deseja sair?", "Sim", "Não");
+        if (logoutResposta)
+        {
+            await Navigation.PopToRootAsync();
+        }
     }
 
     private void GetInfoPerfil()
