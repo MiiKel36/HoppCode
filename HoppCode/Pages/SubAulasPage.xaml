@@ -6,10 +6,10 @@
              Title=""
              BackgroundColor="#37247b">
     
-    <Grid >
+    <Grid>
         <!-- Definição das linhas do grid -->
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
@@ -24,8 +24,14 @@
                          
                          >
                 <!-- Conteúdo dinâmico será adicionado aqui -->
-            </StackLayout>
+            </VerticalStackLayout>
         </ScrollView>
+        
+        <AbsoluteLayout HorizontalOptions="Center">
+            <VerticalStackLayout x:Name="StackMascote" Padding="0,350,0,0" WidthRequest="500">
+                    <!-- Mascote ficará separado do conteúdo, numa posição fixa, aqui! -->
+            </VerticalStackLayout>
+        </AbsoluteLayout>
 
 
             <!-- StackLayout para os botões de navegação -->

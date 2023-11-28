@@ -1,9 +1,4 @@
 ﻿using HoppCode.Classes;
-using Microsoft.Maui.Controls;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using Firebase.Storage;
-using System.Net;
 
 namespace HoppCode.Pages;
 
@@ -62,20 +57,21 @@ public partial class SubAulasPage : ContentPage
         //Adiciona as styles na primeira dimesão da lista
         foreach (Frame frame in styleList[subAulasPage])
         { StackSubAulas.Add(frame); }
-        StackSubAulas.Add(image);
+
+        StackMascote.Add(mascotImage);
     }
 
     //Botão para mudar de pagina para frente
     public void MaisSubAulasPage(object sender, EventArgs e)
     {
-        //Quando passar para frente, o botão de ir para tras sempre será habilitado
+        //Quando passar para frente, o botão de ir para trás sempre será habilitado
         IsEnableOrNotButton(true, BtnPassarTras);
         subAulasPage++;
 
-        //Quando o subAulasPage atingir o numero completo de auas
+        //Quando o subAulasPage atingir o número completo de aulas
         if (subAulasPage == (styleList.Count - 1))
         {
-            //Finaliza a aula e a coloca como completa           
+            //Finaliza a aula e a coloca como completa          
             BtnPassarFrente.Text = "Passar para proxima aula";
 
             BtnPassarFrente.WidthRequest = 250;
@@ -110,19 +106,21 @@ public partial class SubAulasPage : ContentPage
                 BtnPassarSubAula.IsVisible = true;
 
                 StackSubAulas.Children.Clear();
+                StackMascote.Children.Clear();
 
-                //Adiciona as styles na primeira dimesão da lista
+                //Adiciona as styles na primeira dimensão da lista
                 foreach (Frame frame in styleList[subAulasPage])
                 { StackSubAulas.Add(frame); }
-                StackSubAulas.Add(image);
 
-
+                mascotImage.IsVisible = true;
+                StackMascote.Add(mascotImage);
             }
             //Caso não seja a primeira vez na subAula
             else
             {
                 IsEnableOrNotButton(true, BtnPassarFrente);
                 StackSubAulas.Children.Clear();
+                StackMascote.Children.Clear();
 
                 //Adiciona os estilos da pagina do valor subAulasPage
                 foreach (Frame frame in styleList[subAulasPage])
@@ -131,7 +129,8 @@ public partial class SubAulasPage : ContentPage
                     frame.IsVisible = true;
                 }
 
-                StackSubAulas.Add(image);
+                mascotImage.IsVisible = true;
+                StackMascote.Add(mascotImage);
             }
             //Se o numero subAulasPage atingir o limite (quantas paginas de subAulas tem)
         }
@@ -148,8 +147,9 @@ public partial class SubAulasPage : ContentPage
         BtnPassarFrente.FontSize = 30;
 
         if (subAulasPage != 0)
-        {   //Limpa a stack
+        {   //Limpa as stacks
             StackSubAulas.Children.Clear();
+            StackMascote.Children.Clear();
 
             subAulasPage--;
             labelId = 0;
@@ -168,20 +168,42 @@ public partial class SubAulasPage : ContentPage
 
                 if (frameId.Substring(0, 1) == "C")
                 {
-                    label.FormattedText = returnFormatedText(listaDosTextos[subAulasPage][labelId]);
+                    label.FormattedText = ReturnFormattedText(listaDosTextos[subAulasPage][labelId]);
                 }
                 frame.IsVisible = true;
                 labelId++;
 
             }
-            StackSubAulas.Add(image);
+
+            mascotImage.IsVisible = true;
+            StackMascote.Add(mascotImage);
         }
         
+    }
+
+    private async void AnimateMascot()
+    {
+        // Função que anima o pulinho do mascote (e a saída da tela também)
+        double originalTranslationY = mascotImage.TranslationY;
+        if (labelId <= 2)
+        {
+            await mascotImage.TranslateTo(0, originalTranslationY - 50, 200, Easing.CubicOut);
+            await mascotImage.TranslateTo(0, originalTranslationY, 200, Easing.CubicIn);
+        }
+        // Quando tem mais de 3 frames visíveis, manda o mascote pra fora (não dá pra ver nada com ele na frente!)
+        else if (mascotImage.IsVisible)
+        {
+            await mascotImage.TranslateTo(500, originalTranslationY, 400, Easing.CubicOut);
+            mascotImage.IsVisible = false;
+        }
+        else return;
     }
 
     private async void botao_Clicked(object sender, EventArgs e)
     {
         BtnPassarSubAula.Text = "Passar";
+
+        AnimateMascot();
 
         //Enquato as subAulas ainda estiverem aparecendo, os todos os botões estarão inacessiveis
         IsEnableOrNotButton(false, BtnPassarSubAula);
@@ -205,7 +227,7 @@ public partial class SubAulasPage : ContentPage
                     if (frameId.Substring(0, 1) == "C")
                     {
                         frame.IsVisible = true;
-                        label.FormattedText = returnFormatedText(listaDosTextos[subAulasPage][labelId]);
+                        label.FormattedText = ReturnFormattedText(listaDosTextos[subAulasPage][labelId]);
                     }
                     //Caso o balão de texto seja um simples balão de texto
                     else if (frameId.Substring(0, 1) == "T")
@@ -242,14 +264,11 @@ public partial class SubAulasPage : ContentPage
             {
                 IsEnableOrNotButton(true, BtnPassarSubAula);
             }
-
-            
-
         }
        
     }
 
-    public FormattedString returnFormatedText(string code)
+    public FormattedString ReturnFormattedText(string code)
     {
         FormattedString formattedString = new FormattedString();
         int stringLen = (code.Length - 1);
@@ -309,11 +328,10 @@ public partial class SubAulasPage : ContentPage
 
     }
 
-    public void IsEnableOrNotButton(bool IsOrNot, Button button)
+    public static void IsEnableOrNotButton(bool IsOrNot, Button button)
     {
         button.IsEnabled = IsOrNot;
         button.BackgroundColor = IsOrNot ? Color.FromRgb(74, 51, 189) : Color.FromRgb(54, 34, 150);
-
     }
 
 

@@ -7,6 +7,6 @@ public partial class App : Application
 	{
 		InitializeComponent();
 		// Aplicativo inicia na tela de login
-		MainPage = new NavigationPage(new Pages.ClassesPage());
+		MainPage = new NavigationPage(new LoginPage());
 	}
 }
