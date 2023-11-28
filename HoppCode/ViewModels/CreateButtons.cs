@@ -64,7 +64,7 @@ namespace HoppCode.ViewModels
                 {
                     Text = $"{buttonsNames[i]}",
                     WidthRequest = 200,
-                    HeightRequest = 200,
+                    HeightRequest = 150,
                     BackgroundColor = Color.FromRgb(99, 50, 155),
                     TextColor = Colors.White,
                     FontSize = 15,

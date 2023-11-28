@@ -22,10 +22,9 @@ public partial class SubAulasPage : ContentPage
     int subAulasPage = 0, maxSubAulasPage = 0;
     int labelId = 0;
 
-    //Contem o valor "Classe" e "Aulas" do json       
-    string[] ClasseAula = subAula.JsonReadReturnClasseAula();
-
     public string webApiKey = "AIzaSyB1m5xiuM-tOk0GUHnhrcJ2uVmkJr1ogwE"; // Não é dado sensível 👍
+
+    string classe, aula;
 
     Image image = new Image
     {
@@ -34,19 +33,23 @@ public partial class SubAulasPage : ContentPage
         HeightRequest = 237,
         HorizontalOptions = LayoutOptions.End,
     };
-
-    public SubAulasPage()
+    public SubAulasPage(string classeFromOtherPage, string aulaFromOtherPage)
 	{
 		InitializeComponent();
+
+        classe = classeFromOtherPage;
+        aula = aulaFromOtherPage;        
+
         AddButtonToStack();
+        
     }
     public async void AddButtonToStack()
     {
         //Cria uma lista com duas dimensões, dentro, os styles criados na função ReadJsonAndReturnStyle                                                       
-        styleList = await read_Sub_Aula.ReadJsonAndReturnStyle(ClasseAula[0], ClasseAula[1]);
+        styleList = await read_Sub_Aula.ReadJsonAndReturnStyle(classe, aula);
 
         //Cria uma lista que dentro, tem os textos de cada style na lsita acima
-        listaDosTextos = await read_Sub_Aula.ReadJsonAndReturnTexts(ClasseAula[0], ClasseAula[1]);
+        listaDosTextos = await read_Sub_Aula.ReadJsonAndReturnTexts(classe, aula);
 
         //Desabilita os botões de ir para frente e ir para tras
         IsEnableOrNotButton(false, BtnPassarTras);
@@ -81,13 +84,12 @@ public partial class SubAulasPage : ContentPage
         }
         if(subAulasPage > (styleList.Count - 1))
         {
-            int aulaEmInt = Convert.ToInt32(ClasseAula[1]);
-            int proximaAula = 1 + aulaEmInt;
+            string proximaAula = (1 + Convert.ToInt32(aula)).ToString();
 
-            subAula.WriteJson(proximaAula.ToString());
+            //subAula.WriteJson(proximaAula.ToString());
 
             //Envia para AulasPage
-            Shell.Current.GoToAsync("IdentficarAulaOuExercicio");
+            Navigation.PushAsync(new Pages.IdentificarAulaOuExercicio(classe, proximaAula));
 
         }
         else

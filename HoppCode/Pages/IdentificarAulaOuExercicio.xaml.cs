@@ -4,21 +4,21 @@ namespace HoppCode.Pages;
 
 public partial class IdentificarAulaOuExercicio : ContentPage
 {
-    public IdentificarAulaOuExercicio()
+    public IdentificarAulaOuExercicio(string classe, string aula)
     {
         InitializeComponent();
-        teste();
+        VerificarAulaOuExercicio(classe, aula);
     }
-    public async void teste()
+    public async void VerificarAulaOuExercicio(string classe, string aula)
     {
         IdentificarAulaOuExercicioPage identifyType = new IdentificarAulaOuExercicioPage();
-        string type = await identifyType.JsonReturnType();
+        string type = await identifyType.JsonReturnType(classe, aula);
 
         switch (type)
         {
             case "Aula":
                 //Envia par AulasPage
-                await Navigation.PushAsync(new Pages.SubAulasPage());
+                await Navigation.PushAsync(new Pages.SubAulasPage(classe, aula));
                 break;
 
             case "Exercicio":
@@ -28,12 +28,6 @@ public partial class IdentificarAulaOuExercicio : ContentPage
         }
 
 
-    }
-
-    protected override bool OnBackButtonPressed()
-    {
-        Navigation.PushAsync(new AulasPage());
-        return true;
     }
 
 }

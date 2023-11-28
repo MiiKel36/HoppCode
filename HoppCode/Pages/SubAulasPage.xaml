@@ -19,9 +19,8 @@
             <StackLayout x:Name="StackSubAulas"
                          Orientation="Vertical"
                          Spacing="15"
-                         HorizontalOptions="Center"
                          Padding="5,40,5,0"
-                         WidthRequest="500"
+                         WidthRequest="350"
                          
                          >
                 <!-- Conteúdo dinâmico será adicionado aqui -->

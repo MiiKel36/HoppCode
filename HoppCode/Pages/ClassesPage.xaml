@@ -3,23 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HoppCode.Pages.ClassesPage"
              BackgroundColor="#37247B"
-             Title="">
-    <Shell.BackButtonBehavior>
-        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
-    </Shell.BackButtonBehavior>
+             Title=""
+             NavigationPage.HasBackButton="false">
+    
     
     
     <ScrollView>
         <StackLayout>
-            <StackLayout HeightRequest="50"
-                 BackgroundColor="White">
-        </StackLayout>
-        <StackLayout
+            <StackLayout
         x:Name="stackClasses"
-        Padding="10,0,10,50">
+        Padding="10,0,10,50"
+            Spacing="20">
+            
             <!--> Stack onde vai aparecer os botões das classes, onde irá levar para as aualas <!-->
-
-            <Label x:Name="lbl"/>
         </StackLayout>
         </StackLayout>
     </ScrollView>

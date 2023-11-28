@@ -6,39 +6,20 @@ namespace HoppCode.Classes
     public abstract class JsonModifier
     {
         
-        protected static CreateLocalStorageFolder json_path = new CreateLocalStorageFolder();
-        //Armazena onde fica a pasta dos json
-        protected static string jsonFolderPath = json_path.dirJsonFile;
-
     }
     class JsonClassesPage : JsonModifier
     {
-        public  void JsonReadAndWrite(string num)
+
+        public async Task<string> jsonRead()
         {
             //Cria o objeto e puxa o PATH do json
             CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
-            jsonFolderPath = JSON_PATH.dirJsonFile;
-
-            //Transforma o json em ojeto
-            string jsonFile = File.ReadAllText(jsonFolderPath);
-            dynamic ObjJson = JsonConvert.DeserializeObject(jsonFile);
-
-            //Muda o valor classe do objeto
-            ObjJson.Classe = num;
-
-            //Transforma em json denovo e escreve na pasta do json
-            string ChangedJsonFile = JsonConvert.SerializeObject(ObjJson);
-            File.WriteAllText(jsonFolderPath, ChangedJsonFile);
-        }
-
-        public string jsonRead()
-        {
-            //Cria o objeto e puxa o PATH do json
-            CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
-            jsonFolderPath = JSON_PATH.dirJsonFile;
+            
+            //Caminho do json
+            string JsonAulas = await JSON_PATH.ReturnTheChangePagePath();
 
             //Transforma o json em objeto
-            string jsonFile = File.ReadAllText(jsonFolderPath);
+            string jsonFile = File.ReadAllText(JsonAulas);
             dynamic ObjJson = JsonConvert.DeserializeObject(jsonFile);
 
             //Retorna o valor classe
@@ -91,32 +72,17 @@ namespace HoppCode.Classes
 
     class aulasPage : JsonModifier
     {
-        public  void JsonReadAndWrite(string num)
+
+        public async Task<string> JsonReadReturnClasse()
         {
             //Cria o objeto e puxa o PATH do json
             CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
-            jsonFolderPath = JSON_PATH.dirJsonFile;
-
-            //Transforma o json em ojeto
-            string jsonFile = File.ReadAllText(jsonFolderPath);
-            dynamic ObjJson = JsonConvert.DeserializeObject(jsonFile);
-
-            //Muda o valor classe do objeto
-            ObjJson.Aula = num;
-
-            //Transforma em json denovo e escreve na pasta do json
-            string ChangedJsonFile = JsonConvert.SerializeObject(ObjJson);
-            File.WriteAllText(jsonFolderPath, ChangedJsonFile);
-        }
-
-        public  string JsonReadReturnClasse()
-        {
-            //Cria o objeto e puxa o PATH do json
-            CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
-            jsonFolderPath = JSON_PATH.dirJsonFile;
+            
+            //Caminho do json
+            string JsonAulas = await JSON_PATH.ReturnTheChangePagePath();
 
             //Transforma o json em objeto
-            string jsonFile = File.ReadAllText(jsonFolderPath);
+            string jsonFile = File.ReadAllText(JsonAulas);
             dynamic ObjJson = JsonConvert.DeserializeObject(jsonFile);
 
             //Retorna o valor classe
@@ -168,22 +134,7 @@ namespace HoppCode.Classes
 
     class SubAulaPage : JsonModifier
     {
-        public void WriteJson(string valueToModfy)
-        {
-            //Cria o objeto e puxa o PATH do json
-            CreateLocalStorageFolder Path = new CreateLocalStorageFolder();
-            jsonFolderPath = Path.dirJsonFile;
-
-            //Transforma o json em objeto
-            string jsonFile = File.ReadAllText(jsonFolderPath);
-            dynamic ObjJson = JsonConvert.DeserializeObject(jsonFile);
-
-            ObjJson.Aula = valueToModfy;
-
-            //Transforma em json denovo e escreve na pasta do json
-            string ChangedJsonFile = JsonConvert.SerializeObject(ObjJson);
-            File.WriteAllText(jsonFolderPath, ChangedJsonFile);
-        }
+  
         public async Task<string[]> JsonReturnSubAulasTexto(string classe, string aula)
         {
             //Provisiorio
@@ -198,7 +149,9 @@ namespace HoppCode.Classes
             
             //Quantas subAulas tem no json com os valores de classe e aula
             dynamic subAulasObj = objJson.cSharp.classes[Convert.ToInt32(classe)].aulas[Convert.ToInt32(aula)].subAulas as JArray;
+            
             string[] jsonSubAula =  new string[subAulasObj.Count];
+            
             
             //Coloca todos os textos em um array e o retorna
             for(int i = 0; i < subAulasObj.Count; i++)
@@ -207,14 +160,13 @@ namespace HoppCode.Classes
             return jsonSubAula;
 
         }
-        public string[] JsonReadReturnClasseAula()
+        public async Task<string[]> JsonReadReturnClasseAula()
         {
             //Cria o objeto e puxa o PATH do json
             CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
-            jsonFolderPath = JSON_PATH.dirJsonFile;
 
             //Transforma o json em objeto
-            string jsonFile = File.ReadAllText(jsonFolderPath);
+            string jsonFile = await JSON_PATH.ReturnTheChangePagePath();
             dynamic ObjJson = JsonConvert.DeserializeObject(jsonFile);
 
             //Retorna o valor classe
@@ -235,7 +187,7 @@ namespace HoppCode.Classes
             IdentificarAulaOuExercicioPage identificarAulaOuExercicio = new IdentificarAulaOuExercicioPage();
 
             //Contem o valor "Classe" e "Aulas" do json
-            string[] ClasseAula = identificarAulaOuExercicio.JsonReadReturnClasseAula();
+            string[] ClasseAula = await identificarAulaOuExercicio.JsonReadReturnClasseAula();
 
             //Converte os valores Aula e classe para int
             int classe = Convert.ToInt32(ClasseAula[0]);
@@ -254,14 +206,13 @@ namespace HoppCode.Classes
 
             return exercicioTexto;
         }
-        public string[] JsonReadReturnClasseAula()
+        public async Task<string[]> JsonReadReturnClasseAula()
         {
             //Cria o objeto e puxa o PATH do json
             CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
-            jsonFolderPath = JSON_PATH.dirJsonFile;
 
             //Transforma o json em objeto
-            string jsonFile = File.ReadAllText(jsonFolderPath);
+            string jsonFile = await JSON_PATH.ReturnTheChangePagePath();
             dynamic ObjJson = JsonConvert.DeserializeObject(jsonFile);
 
             //Retorna o valor classe
@@ -270,16 +221,13 @@ namespace HoppCode.Classes
         }
 
         //Depois modificar para se enccaixar com exercicios
-        public async Task<string> JsonReturnType()
+        public async Task<string> JsonReturnType(string classeFromOtherPage, string aulaFromOtherPage)
         {
             //Classe que possui o camiho do json
             CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
 
             //Classe que possui a função qu le o json e retorna a classe e a aula
             IdentificarAulaOuExercicioPage identificarAulaOuExercicio = new IdentificarAulaOuExercicioPage();
-
-            //Cria o objeto e puxa o PATH do json
-            jsonFolderPath = JSON_PATH.dirJsonFile;
 
             //Caminho do json
             string JsonAulas = await JSON_PATH.PushAulaJson();
@@ -288,12 +236,9 @@ namespace HoppCode.Classes
             //string data = File.ReadAllText(JsonAulas);
             dynamic objJson = JsonConvert.DeserializeObject(JsonAulas);
 
-            //Contem o valor "Classe" e "Aulas" do json
-            string[] ClasseAula = identificarAulaOuExercicio.JsonReadReturnClasseAula();
-
             //Converte os valores Aula e classe para int
-            int classe = Convert.ToInt32(ClasseAula[0]);
-            int aula = Convert.ToInt32(ClasseAula[1]);
+            int classe = Convert.ToInt32(classeFromOtherPage);
+            int aula = Convert.ToInt32(aulaFromOtherPage);
 
             //Retorna o tipo do botão clicado dentro do json
             string classsOrAulaLength = objJson.cSharp.classes[classe].aulas[aula].Type;

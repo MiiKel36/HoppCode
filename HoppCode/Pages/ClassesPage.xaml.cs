@@ -42,12 +42,8 @@ public partial class ClassesPage : ContentPage
         return true;
     }
 
-    public void ChangePage(string num)
+    public void ChangePage(string ClassesEscolhida)
     {
-        //Muda o valor classe para a classe no qual clicamos
-        JsonClassesPage jsonModifierAulas = new JsonClassesPage();
-        jsonModifierAulas.JsonReadAndWrite(num);
-
-        Navigation.PushAsync(new AulasPage());
+        Navigation.PushAsync(new AulasPage(ClassesEscolhida));
     }
 }

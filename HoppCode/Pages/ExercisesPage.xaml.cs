@@ -30,15 +30,19 @@ public partial class ExercisesPage : ContentPage
     {
         InitializeComponent();
 
+        FunçãoInicial();
+    }
+
+    private async void FunçãoInicial()
+    {
         //Cria objeto do identificar aula
         IdentificarAulaOuExercicioPage identificarAulaOuExercicio = new IdentificarAulaOuExercicioPage();
 
         //Contem o valor "Classe" e "Aulas" do json
-        string[] ClasseAula = identificarAulaOuExercicio.JsonReadReturnClasseAula();
+        string[] ClasseAula = await identificarAulaOuExercicio.JsonReadReturnClasseAula();
 
         ExercisesClass exercisesClass = new ExercisesClass();
         var readJsonAndReturStyle = exercisesClass.ReadJsonAndReturStyle(ClasseAula[0], ClasseAula[1]);
-
     }
 
     private void ChangePage(object sender, EventArgs e)
@@ -177,7 +181,7 @@ public partial class ExercisesPage : ContentPage
         //Verificação de erros
         if (user.error != "")
         {
-            lblOutput.Text = $"Seu código retornou um erro: {user.error}";
+            lblOutput.Text = $"Seu código retornou um erro: {responseString}";
         }
         else
         {

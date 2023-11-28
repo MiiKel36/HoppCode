@@ -50,6 +50,7 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Raw\JsonFile\aulasJson.json" />
+	  <None Remove="Resources\Raw\JsonFile\changePage.json" />
 	</ItemGroup>
 
 	<ItemGroup>

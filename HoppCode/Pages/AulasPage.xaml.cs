@@ -6,10 +6,11 @@ namespace HoppCode;
 
 public partial class AulasPage : ContentPage
 {
-
-    public AulasPage()
+    string valueClasse;
+    public AulasPage(string valueClasseFromOtherPage)
 	{        
         InitializeComponent();
+        valueClasse = valueClasseFromOtherPage;
         AddButtonsToStack();
 
     }
@@ -18,11 +19,9 @@ public partial class AulasPage : ContentPage
 
         //Pega o valor da classe guardade no json
         aulasPage jsonModifierAulas = new aulasPage();
-        string valueAulas = jsonModifierAulas.JsonReadReturnClasse();
 
         CreateButtonsAulas createButtons = new CreateButtonsAulas();
-        dynamic buttons = await createButtons.CreatingButtonsToPage(valueAulas);
-
+        dynamic buttons = await createButtons.CreatingButtonsToPage(valueClasse);
 
         foreach (Button button in buttons)
         {
@@ -39,14 +38,10 @@ public partial class AulasPage : ContentPage
             stackAulas.Add(button);
         }
     }
-    public void ChangePage(string JsonClasseId)
+    public void ChangePage(string valueAula)
     {
-        //Muda o valor classe para a classe no qual clicamos
-        aulasPage jsonModifierAulas = new aulasPage();
-        jsonModifierAulas.JsonReadAndWrite(JsonClasseId);
-
         //Envia para IdentficarAulaOuExercicio e lá, verifica se é exercício ou aula
-        Navigation.PushAsync(new Pages.IdentificarAulaOuExercicio());
+        Navigation.PushAsync(new Pages.IdentificarAulaOuExercicio(valueClasse, valueAula));
     }
     protected override bool OnBackButtonPressed()
     {

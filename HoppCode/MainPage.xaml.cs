@@ -8,11 +8,6 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
-
-        // funções para verificar e criar pasta de arquivo local
-        CreateLocalStorageFolder createFolder = new CreateLocalStorageFolder();
-        createFolder.CreateStorage();
-
         GetInfoPerfil();
         
     }

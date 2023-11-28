@@ -16,14 +16,6 @@ namespace HoppCode.Classes
         //Nome do usuario
         static string User = Environment.UserName;
 
-
-#if WINDOWS
-        public string dir = $"C:\\Users\\{User}\\HoppCode\\JsonFiles\\";
-        public string dirJsonFile = $"C:\\Users\\{User}\\HoppCode\\JsonFiles\\changePage.json";
-#elif ANDROID
-        public string dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "HoppCode","JsonFile");
-        public string dirJsonFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "HoppCode","JsonFile","changePage.json");
-#endif
         public async Task<string> PushAulaJson()
         {
             using var stream = await FileSystem.OpenAppPackageFileAsync("JsonFile/aulasJson.json");
@@ -31,34 +23,17 @@ namespace HoppCode.Classes
             return reader.ReadToEnd();
         }
 
-        //Diretorio da pasta e do arquivo json versão windows  
-        public void CreateStorage()
+        public async Task<string> ReturnTheChangePagePath()
         {
-                //Se a pasta HoppCode NÂO existe
-                if (!Directory.Exists(dir))
-                {
-                    //Cria o diretorio
-                    Directory.CreateDirectory(dir);
-
-                    //Transforma a classe JsonFile em objeto e deixa seus valores para null
-                    JsonFile file = new JsonFile();
-                    file.Classe = null;
-                    file.Aula = null;
-
-                    //Transforma em json e escreve no path do json
-                    string json = JsonConvert.SerializeObject(file);
-                    File.WriteAllText(dirJsonFile, json);
-                }           
+            using var stream = await FileSystem.OpenAppPackageFileAsync("JsonFile/changePage.json");
+            using var reader = new StreamReader(stream);
+            return reader.ReadToEnd();
         }
-    }
-    public  class JsonFile
-    {
-        //Qual classe foi selecionada na tela principal
-        public string Classe { get; set; }
 
-        //Qual aula foi clicada na tela de aulas
-        public string Aula { get; set; } 
+
+
 
     }
+
 
 }
