@@ -13,9 +13,6 @@ namespace HoppCode.Classes
     public class CreateLocalStorageFolder
     {
 
-        //Nome do usuario
-        static string User = Environment.UserName;
-
         public async Task<string> PushAulaJson()
         {
             using var stream = await FileSystem.OpenAppPackageFileAsync("JsonFile/aulasJson.json");

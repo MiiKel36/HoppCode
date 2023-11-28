@@ -5,7 +5,7 @@
               "nome": "Introdução",
               "aulas": [
                 {
-                  "nomeAulaOuExercicio": "Aula 1 - O que é C# e alguns conceitos básicos ",
+                  "nomeAulaOuExercicio": "O que é C# e alguns conceitos básicos ",
                   "Type":"Aula",
                   "subAulas": [
                     {"texto": "@Para começarmos a aprender a programar em C#, precisamos saber com o que estamos lidando... @ @ o que é esse tal de C#?@ @ C# é uma linguagem de programação orientada a objetos (te explico isso mais para a frente, calma aí!) criada pela Microsoft no ano 2000 como parte da plataforma “.NET”@ @ Essa é uma das linguagens mais populares para o desenvolvimento de aplicativos para Windows! @ @Durante o curso, você vai ver... várias palavras estranhas... @ @ Elas vão servir para descrever tanto sistemas quanto conceitos.@ @Algumas você vai aprendendo ao decorrer do curso, mas existem outras que são bem importantes você já ter em mente. Começando por...@"
@@ -25,10 +25,10 @@
                   ]
                 },
                 {
-                  "nomeAulaOuExercicio": "Aula 2 - Seu primeiro “Olá Mundo” ",
+                  "nomeAulaOuExercicio": "Seu primeiro “Olá Mundo” ",
                   "Type":"Aula",
                   "subAulas": [                                       
-                    {"texto":"@Muitas vezes você vai querer enviar uma mensagem ao console. Seja para garantir que a lógica do código está funcionando da maneira esperada, ou para caçar bugs. @ @ Para exibir um texto no console utilizando o C#, usamos a função Console.WriteLine(); @ @ A sua sintaxe é assim: @ ~Console.WriteLine(\"O seu texto vem aqui!\");~"}
+                    {"texto":"@Muitas vezes você vai querer enviar uma mensagem ao console. Seja para garantir que a lógica do código está funcionando da maneira esperada, ou para caçar bugs.@@Para exibir um texto no console utilizando o C#, usamos a função Console.WriteLine(); @ @ A sua sintaxe é assim: @ ~Console.WriteLine(\\\"O seu texto vem aqui!\\\");~"}
                     ,
                     { "texto":"@A função deve ser escrita exatamente como eu lhe mostrei, exceto pelo que está escrito entre as aspas. @ @ Dentro das aspas ficará o texto que deve ser exibido no console. @ @ No final de uma função, utiliza-se um ponto e vírgula ( ; ) para definir o seu fim. Sem o ponto e vírgula, seu código não irá funcionar. (É desse jeito por questões de organização... só por isso mesmo!)@ "}                    
                   ]

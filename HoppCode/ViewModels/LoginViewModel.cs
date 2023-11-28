@@ -71,7 +71,7 @@ namespace HoppCode.ViewModels
                 Preferences.Set("FreshFirebaseToken", serializedContent);
 
                 // Envia a tela principal para a primeira camada
-                await this._navigation.PushAsync(new MainPage());
+                await this._navigation.PushAsync(new Pages.ClassesPage());
             }
             catch (FirebaseAuthException ex)
             {

@@ -40,8 +40,15 @@ namespace HoppCode.ViewModels
 
 
     //Classe para a pagina ClassesPage
-    public class CreateButtonsClasses : CreateButtons 
+    public class CreateButtonsClasses : CreateButtons
     {
+        internal JsonClassesPage JsonClassesPage
+        {
+            get => default;
+            set
+            {
+            }
+        }
 
         public async Task<dynamic> CreatingButtonsToPage()
         {
@@ -67,7 +74,7 @@ namespace HoppCode.ViewModels
                     HeightRequest = 150,
                     BackgroundColor = Color.FromRgb(99, 50, 155),
                     TextColor = Colors.White,
-                    FontSize = 15,
+                    FontSize = 20,
                     FontAttributes = FontAttributes.Bold,
                     ClassId = i.ToString(),
                     LineBreakMode = LineBreakMode.WordWrap,
@@ -100,6 +107,14 @@ namespace HoppCode.ViewModels
     //Classe para a pagina AulasPage
     public class CreateButtonsAulas : CreateButtons
     {
+        internal aulasPage aulasPage
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public async Task<dynamic> CreatingButtonsToPage(string JsonClasseId)
         {
             aulasPage json = new aulasPage();
@@ -121,18 +136,29 @@ namespace HoppCode.ViewModels
                 Button botao = new Button()
                 {
                     Text = $"{buttonsNames[i]}",
-                    WidthRequest = 200,
-                    HeightRequest = 200,
+                    WidthRequest = 250,
+                    HeightRequest = 100,
+                    BackgroundColor = Color.FromRgb(99, 50, 155),
                     ClassId = i.ToString(), //define o id do botão junto se é aula ou exercicio
                     LineBreakMode = LineBreakMode.WordWrap,
+                    FontSize = 20,
+                    TextColor = Colors.White,
 
                     //Os bõtoes ficam apenas no centro
                     HorizontalOptions = new LayoutOptions(LayoutAlignment.Center, true)
 
                 };
+            botao.Shadow = new Shadow()
+            {
+                Brush = Color.FromRgb(57, 33, 93),
+                Offset = new Point(-20, 20),
+                Opacity = 0.5f,
+                Radius = 1,
 
-                //Adiciona o botão para a list botao
-                botaoList.Add(botao);
+            };
+
+            //Adiciona o botão para a list botao
+            botaoList.Add(botao);
             }
             //Retorna a lista inteira, para o foreach no AulasPage
             return botaoList;

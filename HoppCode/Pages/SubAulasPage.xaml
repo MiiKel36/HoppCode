@@ -3,29 +3,43 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HoppCode.Pages.SubAulasPage"
              x:Name="ContenPage"
-             Title=""
+             NavigationPage.HasNavigationBar="False"
              BackgroundColor="#37247b">
     
-    <Grid >
+    <Grid>
         <!-- Definição das linhas do grid -->
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- ScrollView para rolar o conteúdo -->
         <ScrollView  Grid.Row="0">
-            <!-- Seu conteúdo principal aqui -->
+            <StackLayout>
+                <StackLayout HeightRequest="70" BackgroundColor="#301D72" Padding="10" Margin="0,0,0,35" Orientation="Horizontal">
+                    <Button Text="Voltar" HorizontalOptions="Start" 
+                        BackgroundColor="#291864" Clicked="Button_Clicked_1" 
+                        WidthRequest="80" HeightRequest="50" 
+                        TextColor="White"/>
+                    <Label Text="Aula" FontSize="30" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TranslationX="-30"/>
+                </StackLayout>
+
+                <!-- Seu conteúdo principal aqui -->
             <StackLayout x:Name="StackSubAulas"
                          Orientation="Vertical"
                          Spacing="15"
-                         Padding="5,40,5,0"
-                         WidthRequest="350"
-                         
-                         >
+                         Padding="5,0,5,30"
+                         WidthRequest="350">
                 <!-- Conteúdo dinâmico será adicionado aqui -->
             </StackLayout>
+        </StackLayout>
         </ScrollView>
+        
+        <AbsoluteLayout HorizontalOptions="Center">
+            <VerticalStackLayout x:Name="StackMascote" Padding="0,350,0,0" WidthRequest="350">
+                    <!-- Mascote ficará separado do conteúdo, numa posição fixa, aqui! -->
+            </VerticalStackLayout>
+        </AbsoluteLayout>
 
 
             <!-- StackLayout para os botões de navegação -->

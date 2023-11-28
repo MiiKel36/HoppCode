@@ -1,15 +1,26 @@
 using HoppCode.Classes;
+using HoppCode.Pages;
 using HoppCode.ViewModels;
+using Newtonsoft.Json;
 
 namespace HoppCode.Pages;
 
-public partial class ClassesPage : ContentPage
+public partial class ClassesPage : FlyoutPage
 {
     public ClassesPage()
 	{
 		InitializeComponent();
-
+        GetInfoPerfil();
         AddButtonsToStack();
+    }
+
+    private async void LogoutBtn_Clicked(object sender, EventArgs e)
+    {
+        bool logoutResposta = await App.Current.MainPage.DisplayAlert("CONFIRMAR AÇÃO", "Tem certeza que deseja sair?", "Sim", "Não");
+        if (logoutResposta)
+        {
+            await Navigation.PopToRootAsync();
+        }
     }
 
     public async void AddButtonsToStack()
@@ -34,6 +45,13 @@ public partial class ClassesPage : ContentPage
             //Adiciona no stackLayout os botões com o valor dentro do button
             stackClasses.Add(button);
         }
+    }
+
+    private void GetInfoPerfil()
+    {
+        // Acessa as informações que já coletamos do usuário
+        var infoUsuario = JsonConvert.DeserializeObject<Firebase.Auth.FirebaseAuth>(Preferences.Get("FreshFirebaseToken", ""));
+        EmailSessao.Text += infoUsuario.User.Email;
     }
 
     //Daixa o botão de voltar não funcional

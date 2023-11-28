@@ -26,11 +26,14 @@ public partial class ExercisesPage : ContentPage
             Adicionar objeto que lê o json e volta frames contendo os textos;
      */
     List<string> readLineList = new List<string>();
-    public ExercisesPage()
+    string classe, aula;
+    public ExercisesPage(string classeFromOtherPage, string aulaFromOtherPage)
     {
         InitializeComponent();
-
         FunçãoInicial();
+        classe = classeFromOtherPage;
+        aula = aulaFromOtherPage;
+
     }
 
     private async void FunçãoInicial()
@@ -42,7 +45,7 @@ public partial class ExercisesPage : ContentPage
         string[] ClasseAula = await identificarAulaOuExercicio.JsonReadReturnClasseAula();
 
         ExercisesClass exercisesClass = new ExercisesClass();
-        var readJsonAndReturStyle = exercisesClass.ReadJsonAndReturStyle(ClasseAula[0], ClasseAula[1]);
+        var readJsonAndReturStyle = exercisesClass.ReadJsonAndReturnStyle(ClasseAula[0], ClasseAula[1]);
     }
 
     private void ChangePage(object sender, EventArgs e)
@@ -173,7 +176,7 @@ public partial class ExercisesPage : ContentPage
         
         //Faz o envio para a api
         var content = new FormUrlEncodedContent(values);
-        var response = await client.PostAsync("https://api.codex.jaagrav.in", content);
+        var response = await client.PostAsync("https://codex-api-7q3s.onrender.com/", content);
         var responseString = await response.Content.ReadAsStringAsync();
 
         var user = JsonSerializer.Deserialize<ResponseData>(responseString);
@@ -181,7 +184,7 @@ public partial class ExercisesPage : ContentPage
         //Verificação de erros
         if (user.error != "")
         {
-            lblOutput.Text = $"Seu código retornou um erro: {responseString}";
+            lblOutput.Text = $"Seu código retornou um erro: \n{responseString}";
         }
         else
         {
@@ -244,7 +247,7 @@ public partial class ExercisesPage : ContentPage
         string codigoSemBarraN = codigoSemduasBarras.Replace("\\n", "\n");
         string codigoSemBarraAspas = codigoSemBarraN.Replace("\\\"", "\"");
         string codigoComMenorQue = codigoSemBarraAspas.Replace("\\u003C", "<");
-        string codigoFinal = codigoComMenorQue.Substring(1);
+        string codigoFinal = codigoComMenorQue.Substring(0, codigoComMenorQue.Length - 1);
 
         return codigoFinal;
     }
@@ -270,6 +273,14 @@ public partial class ExercisesPage : ContentPage
     public void TurnIputSectionInvisible(object sender, EventArgs e)
     {
         scrollViewIputSection.IsVisible = false;
+    }
+    private void Button_Clicked_1(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new AulasPage(classe));
+    }
+    protected override bool OnBackButtonPressed()
+    {
+        return true;
     }
 
 

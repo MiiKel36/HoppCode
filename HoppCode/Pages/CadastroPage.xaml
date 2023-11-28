@@ -2,19 +2,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HoppCode.Pages.CadastroPage"
              Title="Página de Cadastro"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#37247B">
 
-    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10">
+    <StackLayout >
+        <StackLayout Orientation="Horizontal" HeightRequest="100" BackgroundColor="#301D72" Padding="10" Margin="0,0,0,20">
+            <Button Text="Voltar" HorizontalOptions="Start" 
+                        BackgroundColor="#291864" Clicked="Button_Clicked" 
+                        WidthRequest="80" HeightRequest="50" 
+                        TextColor="White"/>
+            <Label Text="Que tal criar uma conta?" FontSize="20" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand"/>
+        </StackLayout>
+        <Frame BackgroundColor="#2A1A64" TranslationY="50" WidthRequest="350" HeightRequest="460" BorderColor="Transparent">
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10" >
 
-        <Label Text="Email" VerticalOptions="Center" HorizontalOptions="Center" FontSize="25"/>
-        <Entry x:Name="entryEmail" Placeholder="Email" Text="{Binding Email}" WidthRequest="300"/>
 
-        <Label Text="Senha" VerticalOptions="Center" HorizontalOptions="Center" FontSize="25"/>
-        <Entry x:Name="entrySenha" Placeholder="Senha" Text="{Binding Senha}" IsPassword="True" MaxLength="30" WidthRequest="300"/>
-        
-        <Label Text="Confirmar Senha" VerticalOptions="Center" HorizontalOptions="Center" FontSize="25"/>
-        <Entry x:Name="entryConfirmaSenha" Placeholder="Senha" Text="{Binding ConfirmaSenha}" IsPassword="True" MaxLength="30" WidthRequest="300"/>
+                <Label Text="Email" VerticalOptions="Center" HorizontalOptions="Center" FontSize="25"/>
+                <Entry x:Name="entryEmail" Placeholder="Email" Text="{Binding Email}" WidthRequest="300"/>
 
-        <Button Text="Cadastrar-se" Margin="0,20,0,0" WidthRequest="200" Command="{Binding CadastrarUsuario}"/>
+                <Label Text="Senha" VerticalOptions="Center" HorizontalOptions="Center" FontSize="25"/>
+                <Entry x:Name="entrySenha" Placeholder="Senha" Text="{Binding Senha}" IsPassword="True" MaxLength="30" WidthRequest="300"/>
+
+                <Label Text="Confirmar Senha" VerticalOptions="Center" HorizontalOptions="Center" FontSize="25"/>
+                <Entry x:Name="entryConfirmaSenha" Placeholder="Senha" Text="{Binding ConfirmaSenha}" IsPassword="True" MaxLength="30" WidthRequest="300"/>
+
+                <Button Text="Cadastrar-se" Margin="0,20,0,0" HeightRequest="55" WidthRequest="200" TextColor="White" BackgroundColor="#63329B" Command="{Binding CadastrarUsuario} "/>
+            </StackLayout>
+        </Frame>
     </StackLayout>
 </ContentPage>

@@ -1,24 +1,39 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<FlyoutPage  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HoppCode.Pages.ClassesPage"
-             BackgroundColor="#37247B"
-             Title=""
-             NavigationPage.HasBackButton="false">
-    
-    
-    
-    <ScrollView>
-        <StackLayout>
-            <StackLayout
-        x:Name="stackClasses"
-        Padding="10,0,10,50"
+             x:DataType="FlyoutPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <FlyoutPage.Flyout>
+        <ContentPage Title="Detalhes" BackgroundColor="#37247B">
+            <StackLayout WidthRequest="250" Spacing="100" Padding="0,40,0,0" >
+                <Frame WidthRequest="250" BackgroundColor="#63329B" BorderColor="Transparent">
+                    <Label x:Name="EmailSessao" WidthRequest="200" FontSize="Medium" HorizontalTextAlignment="Center" Text="Conectado com o email "/>
+                </Frame>
+                <Button Text="Logout" FontSize="Medium" BackgroundColor="#63329B" TextColor="White" HorizontalOptions="Center" Clicked="LogoutBtn_Clicked" WidthRequest="150" HeightRequest="90"/>
+            </StackLayout>
+        </ContentPage>
+    </FlyoutPage.Flyout>
+
+    <FlyoutPage.Detail>
+        <ContentPage BackgroundColor="#37247B" NavigationPage.HasNavigationBar="False">
+            <ScrollView>
+                <StackLayout>
+                    <StackLayout HeightRequest="60" BackgroundColor="#301D72" Padding="5" Margin="0,0,0,35">
+                        <Label Text="HoppCode" FontSize="25" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    </StackLayout>
+
+
+                    <StackLayout
+            x:Name="stackClasses"
+            Padding="15,0,15,50"
             Spacing="20">
-            
-            <!--> Stack onde vai aparecer os botões das classes, onde irá levar para as aualas <!-->
-        </StackLayout>
-        </StackLayout>
-    </ScrollView>
-    
-    
-</ContentPage>
+
+                        <!--> Stack onde vai aparecer os botões das classes, onde irá levar para as aualas <!-->
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </ContentPage>
+    </FlyoutPage.Detail>
+</FlyoutPage>

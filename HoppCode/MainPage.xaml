@@ -1,32 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<FlyoutPage  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HoppCode.MainPage">
+             x:Class="HoppCode.MainPage"
+             x:DataType="FlyoutPage">
+ 
+    <FlyoutPage.Flyout>
+        <ContentPage Title="Detalhes" BackgroundColor="#cccccc">
+            <StackLayout Spacing="100">
+                <Label x:Name="EmailSessao" FontSize="Medium" HorizontalTextAlignment="Center" Padding="0,20,0,0" Text="Conectado como "/>
 
-    <ScrollView>
-        <StackLayout
+                <Button Text="Logout" BackgroundColor="Maroon" HorizontalOptions="Center" Clicked="LogoutBtn_Clicked" WidthRequest="150" HeightRequest="90"/>
+            </StackLayout>
+        </ContentPage>
+    </FlyoutPage.Flyout>
+
+    <FlyoutPage.Detail>
+        <ContentPage>
+            <StackLayout
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center"
             HorizontalOptions="Center"
             Orientation="Vertical">
-            <Label Text="Debug page" 
+                <Label Text="Debug page" 
                    HorizontalOptions="Center"
                    FontSize="25"/>
-            
-            <Button Text="ClassesPage" Clicked="Button_Clicked"
+
+                <Button Text="ClassesPage" Clicked="Button_Clicked"
                     WidthRequest="150"
                     HeightRequest="90"/>
-
-            <Button Text="LoginPage" Clicked="Button_Clicked_1"
-                    WidthRequest="150"
-                    HeightRequest="90"/>
-
-            <Label x:Name="EmailSessao" Text="Conectado como "/>
-        </StackLayout>
-
-
-
-    </ScrollView>
-
-</ContentPage>
+            </StackLayout>
+        </ContentPage>
+    </FlyoutPage.Detail>
+</FlyoutPage>

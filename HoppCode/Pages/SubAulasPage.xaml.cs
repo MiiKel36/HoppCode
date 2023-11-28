@@ -1,9 +1,6 @@
 ﻿using HoppCode.Classes;
 using Microsoft.Maui.Controls;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using Firebase.Storage;
-using System.Net;
+using Microsoft.Maui.Controls.Shapes;
 
 namespace HoppCode.Pages;
 
@@ -26,13 +23,14 @@ public partial class SubAulasPage : ContentPage
 
     string classe, aula;
 
-    Image image = new Image
+    Image mascotImage = new Image
     {
         Source = ImageSource.FromFile("mascot.png"),
         WidthRequest = 150,
         HeightRequest = 237,
         HorizontalOptions = LayoutOptions.End,
     };
+
     public SubAulasPage(string classeFromOtherPage, string aulaFromOtherPage)
 	{
 		InitializeComponent();
@@ -62,23 +60,24 @@ public partial class SubAulasPage : ContentPage
         //Adiciona as styles na primeira dimesão da lista
         foreach (Frame frame in styleList[subAulasPage])
         { StackSubAulas.Add(frame); }
-        StackSubAulas.Add(image);
+
+        StackMascote.Add(mascotImage);
     }
 
     //Botão para mudar de pagina para frente
     public void MaisSubAulasPage(object sender, EventArgs e)
     {
-        //Quando passar para frente, o botão de ir para tras sempre será habilitado
+        //Quando passar para frente, o botão de ir para trás sempre será habilitado
         IsEnableOrNotButton(true, BtnPassarTras);
         subAulasPage++;
 
-        //Quando o subAulasPage atingir o numero completo de auas
+        //Quando o subAulasPage atingir o número completo de aulas
         if (subAulasPage == (styleList.Count - 1))
         {
-            //Finaliza a aula e a coloca como completa           
-            BtnPassarFrente.Text = "Passar para proxima aula";
+            //Finaliza a aula e a coloca como completa          
+            BtnPassarFrente.Text = "Avançar";
 
-            BtnPassarFrente.WidthRequest = 250;
+            BtnPassarFrente.WidthRequest = 100;
             BtnPassarFrente.FontSize = 15;
 
         }
@@ -110,19 +109,21 @@ public partial class SubAulasPage : ContentPage
                 BtnPassarSubAula.IsVisible = true;
 
                 StackSubAulas.Children.Clear();
+                StackMascote.Children.Clear();
 
-                //Adiciona as styles na primeira dimesão da lista
+                //Adiciona as styles na primeira dimensão da lista
                 foreach (Frame frame in styleList[subAulasPage])
                 { StackSubAulas.Add(frame); }
-                StackSubAulas.Add(image);
 
-
+                mascotImage.IsVisible = true;
+                StackMascote.Add(mascotImage);
             }
             //Caso não seja a primeira vez na subAula
             else
             {
                 IsEnableOrNotButton(true, BtnPassarFrente);
                 StackSubAulas.Children.Clear();
+                StackMascote.Children.Clear();
 
                 //Adiciona os estilos da pagina do valor subAulasPage
                 foreach (Frame frame in styleList[subAulasPage])
@@ -131,7 +132,8 @@ public partial class SubAulasPage : ContentPage
                     frame.IsVisible = true;
                 }
 
-                StackSubAulas.Add(image);
+                mascotImage.IsVisible = true;
+                StackMascote.Add(mascotImage);
             }
             //Se o numero subAulasPage atingir o limite (quantas paginas de subAulas tem)
         }
@@ -148,8 +150,9 @@ public partial class SubAulasPage : ContentPage
         BtnPassarFrente.FontSize = 30;
 
         if (subAulasPage != 0)
-        {   //Limpa a stack
+        {   //Limpa as stacks
             StackSubAulas.Children.Clear();
+            StackMascote.Children.Clear();
 
             subAulasPage--;
             labelId = 0;
@@ -166,22 +169,64 @@ public partial class SubAulasPage : ContentPage
                 Label label = frame.Content as Label;
                 string frameId = frame.ClassId;
 
+                WebView webView = new WebView()
+                {
+                    Source = "aceeditor2.html",
+
+                };
+                webView.Navigated += (o, s) => {
+                    string textFromLista = listaDosTextos[subAulasPage][labelId - 1];
+                    webView.Eval($"SetTextOnCodeEditor(\"{textFromLista}\");");
+
+                    int numOfLines = textFromLista.Split("\\n").Length - 1;
+                    int sizeOfWemView = (numOfLines * 15) + 30;
+
+                    webView.HeightRequest = sizeOfWemView;
+                    frame.HeightRequest = sizeOfWemView;
+                    //Console.WriteLine(listaDosTextos[10000]);
+                };
+
                 if (frameId.Substring(0, 1) == "C")
                 {
-                    label.FormattedText = returnFormatedText(listaDosTextos[subAulasPage][labelId]);
+                    frame.WidthRequest = 100;
+                    frame.HeightRequest = 100;
+                    frame.Content = webView;
+                    frame.IsVisible = true;
                 }
                 frame.IsVisible = true;
                 labelId++;
 
             }
-            StackSubAulas.Add(image);
+
+            mascotImage.IsVisible = true;
+            StackMascote.Add(mascotImage);
         }
         
+    }
+
+    private async void AnimateMascot()
+    {
+        // Função que anima o pulinho do mascote (e a saída da tela também)
+        double originalTranslationY = mascotImage.TranslationY;
+        if (labelId <= 2)
+        {
+            await mascotImage.TranslateTo(0, originalTranslationY - 50, 200, Easing.CubicOut);
+            await mascotImage.TranslateTo(0, originalTranslationY, 200, Easing.CubicIn);
+        }
+        // Quando tem mais de 3 frames visíveis, manda o mascote pra fora (não dá pra ver nada com ele na frente!)
+        else if (mascotImage.IsVisible)
+        {
+            await mascotImage.TranslateTo(500, originalTranslationY, 400, Easing.CubicOut);
+            mascotImage.IsVisible = false;
+        }
+        else return;
     }
 
     private async void botao_Clicked(object sender, EventArgs e)
     {
         BtnPassarSubAula.Text = "Passar";
+
+        AnimateMascot();
 
         //Enquato as subAulas ainda estiverem aparecendo, os todos os botões estarão inacessiveis
         IsEnableOrNotButton(false, BtnPassarSubAula);
@@ -197,15 +242,30 @@ public partial class SubAulasPage : ContentPage
                 //Para que a verifiação do ClassId com a substrig seja possivel, preciso definir o class id como uma string
                 string frameId = frame.ClassId;
                 if (frameId.Substring(2) == targetId)
-                {
-                    
+                {                  
                     Label label = frame.Content as Label;
+
+                    WebView webView = new WebView()
+                    {
+                        Source = "aceeditor2.html",
+                    };
+                    webView.Navigated += (o, s) => {
+                        string textFromLista = listaDosTextos[subAulasPage][labelId - 1];
+                        webView.Eval($"SetTextOnCodeEditor(\"{textFromLista}\");");
+                        
+                        int numOfLines = textFromLista.Split("\\n").Length - 1;
+                        int sizeOfWemView = (numOfLines * 15) + 30;
+                        
+                        webView.HeightRequest = sizeOfWemView;
+                        frame.HeightRequest = sizeOfWemView;
+                        //Console.WriteLine(listaDosTextos[10000]);
+                    };
 
                     //Caso o balão de texto seja de codigo
                     if (frameId.Substring(0, 1) == "C")
                     {
+                        frame.Content = webView;
                         frame.IsVisible = true;
-                        label.FormattedText = returnFormatedText(listaDosTextos[subAulasPage][labelId]);
                     }
                     //Caso o balão de texto seja um simples balão de texto
                     else if (frameId.Substring(0, 1) == "T")
@@ -222,7 +282,7 @@ public partial class SubAulasPage : ContentPage
                                 currentIndex++;
                                 await Task.Delay(15); // Aguarde 15 milésimos
                                 
-                            }
+                            }                           
                             break; // Sai do loop após encontrar o Frame desejado
                         }
                     }
@@ -242,14 +302,20 @@ public partial class SubAulasPage : ContentPage
             {
                 IsEnableOrNotButton(true, BtnPassarSubAula);
             }
-
-            
-
         }
        
     }
+    private void Button_Clicked_1(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new AulasPage(classe));
+    }
 
-    public FormattedString returnFormatedText(string code)
+    protected override bool OnBackButtonPressed()
+    {
+        return true;
+    }
+
+    public FormattedString ReturnFormattedText(string code)
     {
         FormattedString formattedString = new FormattedString();
         int stringLen = (code.Length - 1);
@@ -309,12 +375,12 @@ public partial class SubAulasPage : ContentPage
 
     }
 
-    public void IsEnableOrNotButton(bool IsOrNot, Button button)
+    public static void IsEnableOrNotButton(bool IsOrNot, Button button)
     {
         button.IsEnabled = IsOrNot;
         button.BackgroundColor = IsOrNot ? Color.FromRgb(74, 51, 189) : Color.FromRgb(54, 34, 150);
-
     }
+
 
 
 }

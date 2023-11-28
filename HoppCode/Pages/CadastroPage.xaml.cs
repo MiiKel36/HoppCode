@@ -9,4 +9,9 @@ public partial class CadastroPage : ContentPage
 		InitializeComponent();
 		BindingContext = new CadastroViewModel(Navigation);
     }
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PopAsync();
+    }
 }

@@ -2,10 +2,22 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HoppCode.AulasPage"
-             Title="">
+             Title=""
+             BackgroundColor="#37247B"
+             NavigationPage.HasNavigationBar="False">
     <ScrollView>
-        <StackLayout x:Name="stackAulas">
-        <!--> Aqui será onde os botões das aualas irão aparecer <!-->
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" HeightRequest="70" BackgroundColor="#301D72" Padding="10" Margin="0,0,0,20">
+                <Button Text="Voltar" HorizontalOptions="Start" 
+                        BackgroundColor="#291864" Clicked="Button_Clicked" 
+                        WidthRequest="80" HeightRequest="50" 
+                        TextColor="White"/>
+                <Label Text="Aulas e Exercícios" FontSize="25" HorizontalOptions="CenterAndExpand" TranslationX="-25" VerticalOptions="CenterAndExpand"/>
+            </StackLayout>    
+                   
+        <StackLayout x:Name="stackAulas" Spacing="20">
+        <!-- Aqui será onde os botões das aulas irão aparecer -->
+        </StackLayout>
         </StackLayout>
     </ScrollView>
 

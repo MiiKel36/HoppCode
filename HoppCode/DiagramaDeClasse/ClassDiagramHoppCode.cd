@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HoppCode.Classes.CreateLocalStorageFolder">
+    <Position X="8.5" Y="1.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\CreateLocalStorageFolder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HoppCode.Classes.JsonModifier" Collapsed="true">
+    <Position X="5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\JsonClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HoppCode.Classes.JsonClassesPage">
+    <Position X="7.5" Y="4.25" Width="2" />
+    <AssociationLine Name="CreateLocalStorageFolder" Type="HoppCode.Classes.CreateLocalStorageFolder">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-0.173" Y="0.208" Height="0.182" Width="1.919" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAgQAAAAAAAAA=</HashCode>
+      <FileName>Classes\JsonClass.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CreateLocalStorageFolder" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="HoppCode.Classes.aulasPage">
+    <Position X="12.25" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAQAAAAAQAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Classes\JsonClass.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CreateLocalStorageFolder" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="HoppCode.Classes.SubAulaPage">
+    <Position X="5" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAgAAAAAgAAAA=</HashCode>
+      <FileName>Classes\JsonClass.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CreateLocalStorageFolder" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="HoppCode.Classes.IdentificarAulaOuExercicioPage">
+    <Position X="9.75" Y="4.25" Width="2.25" />
+    <AssociationLine Name="CreateLocalStorageFolder" Type="HoppCode.Classes.CreateLocalStorageFolder">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.85" Y="0.208" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACIAAgAAAAAAAAAA=</HashCode>
+      <FileName>Classes\JsonClass.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CreateLocalStorageFolder" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="HoppCode.Classes.ReadSubAula">
+    <Position X="4.75" Y="7.25" Width="2.75" />
+    <AssociationLine Name="SubAulaPage" Type="HoppCode.Classes.SubAulaPage">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.11" Y="0.366" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAgAIAACAAAAAAAAAAIAAAAAACAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\ReadSubAula.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SubAulaPage" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="HoppCode.ViewModels.CreateButtons" Collapsed="true">
+    <Position X="8" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\CreateButtons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HoppCode.ViewModels.CreateButtonsClasses">
+    <Position X="8" Y="8.25" Width="2.25" />
+    <AssociationLine Name="JsonClassesPage" Type="HoppCode.Classes.JsonClassesPage" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8" Y="8.875" />
+        <Point X="7.535" Y="8.875" />
+        <Point X="7.535" Y="6.271" />
+        <Point X="8.438" Y="6.271" />
+        <Point X="8.438" Y="5.867" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.289" Y="0.11" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\CreateButtons.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="JsonClassesPage" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="HoppCode.ViewModels.CreateButtonsAulas">
+    <Position X="10.75" Y="8.25" Width="2" />
+    <AssociationLine Name="aulasPage" Type="HoppCode.Classes.aulasPage" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="12.062" Y="8.25" />
+        <Point X="12.062" Y="7.875" />
+        <Point X="13.125" Y="7.875" />
+        <Point X="13.125" Y="5.867" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>ViewModels\CreateButtons.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="aulasPage" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="HoppCode.Classes.ExercisesClass">
+    <Position X="13.25" Y="8.25" Width="2.25" />
+    <AssociationLine Name="IdentificarAulaOuExercicioPage" Type="HoppCode.Classes.IdentificarAulaOuExercicioPage" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="14.438" Y="8.25" />
+        <Point X="14.438" Y="7.625" />
+        <Point X="13.208" Y="7.625" Type="JumpStart" />
+        <Point X="13.042" Y="7.625" Type="JumpEnd" />
+        <Point X="10.5" Y="7.625" />
+        <Point X="10.5" Y="5.867" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.11" Y="0.093" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAACIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\ExercisesClass.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="IdentificarAulaOuExercicioPage" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

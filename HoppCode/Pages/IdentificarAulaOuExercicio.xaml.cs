@@ -23,7 +23,7 @@ public partial class IdentificarAulaOuExercicio : ContentPage
 
             case "Exercicio":
                 //Envia par AulasPage
-                await Navigation.PushAsync(new Pages.ExercisesPage());
+                await Navigation.PushAsync(new Pages.ExercisesPage(classe, aula));
                 break;
         }
 

@@ -9,12 +9,19 @@ namespace HoppCode.Classes
     }
     class JsonClassesPage : JsonModifier
     {
+        public CreateLocalStorageFolder CreateLocalStorageFolder
+        {
+            get => default;
+            set
+            {
+            }
+        }
 
-        public async Task<string> jsonRead()
+        public async Task<string> JsonRead()
         {
             //Cria o objeto e puxa o PATH do json
             CreateLocalStorageFolder JSON_PATH = new CreateLocalStorageFolder();
-            
+
             //Caminho do json
             string JsonAulas = await JSON_PATH.ReturnTheChangePagePath();
 
@@ -72,6 +79,13 @@ namespace HoppCode.Classes
 
     class aulasPage : JsonModifier
     {
+        public CreateLocalStorageFolder CreateLocalStorageFolder
+        {
+            get => default;
+            set
+            {
+            }
+        }
 
         public async Task<string> JsonReadReturnClasse()
         {
@@ -134,7 +148,14 @@ namespace HoppCode.Classes
 
     class SubAulaPage : JsonModifier
     {
-  
+        public CreateLocalStorageFolder CreateLocalStorageFolder
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public async Task<string[]> JsonReturnSubAulasTexto(string classe, string aula)
         {
             //Provisiorio
@@ -178,6 +199,14 @@ namespace HoppCode.Classes
 
     class IdentificarAulaOuExercicioPage : JsonModifier
     {
+        public CreateLocalStorageFolder CreateLocalStorageFolder
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public async Task<string> JsonReturnExercicioTexto()
         {
             //Provisiorio

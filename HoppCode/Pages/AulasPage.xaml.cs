@@ -43,9 +43,12 @@ public partial class AulasPage : ContentPage
         //Envia para IdentficarAulaOuExercicio e lá, verifica se é exercício ou aula
         Navigation.PushAsync(new Pages.IdentificarAulaOuExercicio(valueClasse, valueAula));
     }
-    protected override bool OnBackButtonPressed()
+    private void Button_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new Pages.ClassesPage());
+    }
+    protected override bool OnBackButtonPressed()
+    {
         return true;
     }
 }

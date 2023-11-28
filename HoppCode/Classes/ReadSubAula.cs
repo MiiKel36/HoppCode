@@ -15,6 +15,15 @@ namespace HoppCode.Classes
     {
         //Dá um id para o frame, usado para o codigo conseguir achar o frame no SubAulaPAge.xaml
         int frameId = 0;
+
+        internal SubAulaPage SubAulaPage
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public async Task<dynamic> ReadJsonAndReturnStyle(string classe, string aula)
         {
             //Retorn um array com os textos da subAula no json
@@ -127,11 +136,11 @@ namespace HoppCode.Classes
             {
                 CornerRadius = 10,           // Set corner radius for the frame
                 BorderColor = Color.FromRgb(49, 24, 80),   // Set border color for the frame
-                Padding = new Thickness(20), // Set padding for the frame
                 BackgroundColor = Color.FromRgb(49, 24, 80), // Set background color for the frame
                 ClassId = $"C {id}",
                 IsVisible = false,
                 HorizontalOptions = LayoutOptions.Fill,
+                MinimumHeightRequest = 50,
                 Margin = new Thickness(0),
 
             };

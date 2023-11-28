@@ -49,6 +49,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Raw\aceeditor2.html" />
 	  <None Remove="Resources\Raw\JsonFile\aulasJson.json" />
 	  <None Remove="Resources\Raw\JsonFile\changePage.json" />
 	</ItemGroup>
@@ -65,6 +66,12 @@
 	  <Compile Update="Pages\AulasPage.xaml.cs">
 	    <DependentUpon>AulasPage.xaml</DependentUpon>
 	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiAsset Update="Resources\Raw\aceeditor2.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
 	</ItemGroup>
 
 	<ItemGroup>

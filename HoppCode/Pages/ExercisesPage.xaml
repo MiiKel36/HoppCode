@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HoppCode.Pages.ExercisesPage"
-             Title=""
+             NavigationPage.HasNavigationBar="False"
              Background="#391D72">
 
     <!--Playground/Code part-->
@@ -49,7 +49,13 @@
         </ScrollView>
 
         <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" >
-            
+            <StackLayout HeightRequest="60" BackgroundColor="#301D72" Padding="5" Margin="0,0,0,0" Orientation="Horizontal">
+                <Button Text="Voltar" HorizontalOptions="Start" 
+                        BackgroundColor="#291864" Clicked="Button_Clicked_1" 
+                        WidthRequest="80" HeightRequest="50" 
+                        TextColor="White"/>
+                <Label Text="Exercício" FontSize="25" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TranslationX="-30"/>
+            </StackLayout>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>
@@ -84,8 +90,8 @@
         
         <!--Onde fica o editor do código-->
             <StackLayout Orientation="Vertical" Background="#311850"  x:Name="codePart" IsVisible="true" >
-                <ScrollView Background="#311850" Padding="10" HeightRequest="550">
-                    <WebView x:Name="editorWebView" HeightRequest="300" WidthRequest="400" IsVisible="true" Source="aceeditor.html"/>
+                <ScrollView Background="#311850" >
+                    <WebView x:Name="editorWebView" HeightRequest="520" WidthRequest="400" IsVisible="true" Source="aceeditor.html" Margin="0,0,0,35"/>
                 </ScrollView>
 
 
@@ -118,16 +124,26 @@
                     Grid.Row="0"                                      
                     BackgroundColor="#101010"
                     Padding="10">
-
-                    <Label x:Name="lblOutput" Text=""/>
+                    <Label x:Name="lblOutput"/>
                 </ScrollView>
+
+
+                <Frame WidthRequest="300" HeightRequest="150"  HorizontalOptions="Center" VerticalOptions="Start" Margin="0,25,0,0" BackgroundColor="#4D2996" BorderColor="Transparent" Grid.Row="1">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10">
+                        <Label Text="Parabéns, Você acertou"  FontSize="20" HorizontalOptions="StartAndExpand" VerticalOptions="Start" TextColor="#00BB45" />
+                        <Button Text="Passar" WidthRequest="100" HeightRequest="50" HorizontalOptions="EndAndExpand" VerticalOptions="Start" BackgroundColor="#3E217B" TextColor="White" />
+                    </StackLayout>
+                </Frame>
 
             </Grid>
 
 
             <!--Exercise explanation part-->
             <ScrollView Orientation="Vertical" BackgroundColor="Transparent" IsVisible="false" x:Name="exercisePart" Padding="20">
+                <Frame WidthRequest="350" BackgroundColor="#63329B" BorderColor="Transparent">
+                    <Label Text="Usando o conhecimento adquirido até agora, digite um código que faça a frase “Olá Mundo!” aparecer no console." FontSize="20" />
 
+                </Frame>
             </ScrollView>
         </StackLayout>
 

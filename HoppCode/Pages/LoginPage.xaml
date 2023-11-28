@@ -2,9 +2,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HoppCode.Pages.LoginPage"
              Title="Página de Login"
-             NavigationPage.HasNavigationBar="False">
-            
-    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10">
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#37247B">
+    <StackLayout >
+        <StackLayout Orientation="Horizontal" HeightRequest="100" BackgroundColor="#301D72" Padding="10" Margin="0,0,0,20">
+            <Label Text="Bem vindo de volta! " FontSize="25" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand"/>
+        </StackLayout>
+        <Frame BackgroundColor="#2A1A64" TranslationY="90" WidthRequest="350" HeightRequest="360" BorderColor="Transparent">
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10" >
+        
 
         <Label Text="Email" VerticalOptions="Center" HorizontalOptions="Center" FontSize="25"/>
         <Entry x:Name="entryEmail" Placeholder="Email" Text="{Binding LoginEmail}" WidthRequest="300"/>
@@ -12,13 +18,15 @@
         <Label Text="Senha" VerticalOptions="Center" HorizontalOptions="Center" FontSize="25"/>
         <Entry x:Name="entrySenha" Placeholder="Senha" Text="{Binding LoginSenha}" IsPassword="True" MaxLength="30" WidthRequest="300"/>
 
-        <Button Text="Entrar" Margin="0,20,0,0" WidthRequest="200" Command="{Binding BtnLogin}"/>
+                <Button Text="Entrar" Margin="0,20,0,0" WidthRequest="200" Command="{Binding BtnLogin}" TextColor="White" BackgroundColor="#63329B"/>
 
-        <Label Text="Não tem uma conta? Clique Aqui!" TextColor="Blue" TextDecorations="Underline" VerticalOptions="Center" HorizontalOptions="Center">
+        <Label Text="Não tem uma conta? Clique Aqui!" TextColor="white" TextDecorations="Underline" VerticalOptions="Center" HorizontalOptions="Center">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding HLCadastrar}"/>
             </Label.GestureRecognizers>
         </Label>
         
+    </StackLayout>
+            </Frame>
     </StackLayout>
 </ContentPage>

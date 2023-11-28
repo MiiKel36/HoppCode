@@ -12,7 +12,15 @@ namespace HoppCode.Classes
         //Cria objeto do identificar aula
         IdentificarAulaOuExercicioPage identificarAulaOuExercicio = new IdentificarAulaOuExercicioPage();
 
-        public async Task<Frame> ReadJsonAndReturStyle(string classe, string aula)
+        internal IdentificarAulaOuExercicioPage IdentificarAulaOuExercicioPage
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public async Task<Frame> ReadJsonAndReturnStyle(string classe, string aula)
         {
             string exercicioText = await identificarAulaOuExercicio.JsonReturnExercicioTexto();
 
@@ -31,6 +39,6 @@ namespace HoppCode.Classes
             frame.Content = label;
 
             return frame;
-        }   
+        }
     }
 }
