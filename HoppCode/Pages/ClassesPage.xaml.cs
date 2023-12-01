@@ -1,4 +1,4 @@
-using HoppCode.Classes;
+Ôªøusing HoppCode.Classes;
 using HoppCode.Pages;
 using HoppCode.ViewModels;
 using Newtonsoft.Json;
@@ -7,6 +7,7 @@ namespace HoppCode.Pages;
 
 public partial class ClassesPage : FlyoutPage
 {
+    public string webApiKey = "AIzaSyB1m5xiuM-tOk0GUHnhrcJ2uVmkJr1ogwE"; // N√£o √© dado sens√≠vel üëç
     public ClassesPage()
 	{
 		InitializeComponent();
@@ -16,10 +17,12 @@ public partial class ClassesPage : FlyoutPage
 
     private async void LogoutBtn_Clicked(object sender, EventArgs e)
     {
-        bool logoutResposta = await App.Current.MainPage.DisplayAlert("CONFIRMAR A«√O", "Tem certeza que deseja sair?", "Sim", "N„o");
+        bool logoutResposta = await App.Current.MainPage.DisplayAlert("CONFIRMAR A√á√ÉO", "Tem certeza que deseja sair?", "Sim", "N√£o");
         if (logoutResposta)
         {
-            await Navigation.PopToRootAsync();
+            Preferences.Remove("FreshFirebaseToken", "");
+            Navigation.InsertPageBefore(new LoginPage(), this);
+            await Navigation.PopAsync();
         }
     }
 
@@ -28,7 +31,7 @@ public partial class ClassesPage : FlyoutPage
         //Cria objeto do CreateButtons
         CreateButtonsClasses classButons = new CreateButtonsClasses();
 
-        //A var buttons vira uma list contendo os objetos dos botıes
+        //A var buttons vira uma list contendo os objetos dos bot√µes
         dynamic buttons = await classButons.CreatingButtonsToPage();
 
         foreach (Button button in buttons)
@@ -38,23 +41,23 @@ public partial class ClassesPage : FlyoutPage
                 Button clickedButton = (Button)sender;
                 string ButtonId = clickedButton.ClassId;
 
-                // Executa a funÁ„o
+                // Executa a fun√ß√£o
                 ChangePage(ButtonId);
             };
 
-            //Adiciona no stackLayout os botıes com o valor dentro do button
+            //Adiciona no stackLayout os bot√µes com o valor dentro do button
             stackClasses.Add(button);
         }
     }
 
     private void GetInfoPerfil()
     {
-        // Acessa as informaÁıes que j· coletamos do usu·rio
+        // Acessa as informa√ß√µes que j√° coletamos do usu√°rio
         var infoUsuario = JsonConvert.DeserializeObject<Firebase.Auth.FirebaseAuth>(Preferences.Get("FreshFirebaseToken", ""));
         EmailSessao.Text += infoUsuario.User.Email;
     }
 
-    //Daixa o bot„o de voltar n„o funcional
+    //Daixa o bot√£o de voltar n√£o funcional
     protected override bool OnBackButtonPressed()
     {
         return true;

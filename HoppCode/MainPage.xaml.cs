@@ -13,8 +13,6 @@ public partial class MainPage : FlyoutPage
     {
         InitializeComponent();
         GetInfoPerfil();
-
-        
     }
 
     private async void Button_Clicked(object sender, EventArgs e)
