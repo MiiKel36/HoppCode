@@ -7,7 +7,6 @@ namespace HoppCode.Pages;
 
 public partial class ClassesPage : FlyoutPage
 {
-    public string webApiKey = "AIzaSyB1m5xiuM-tOk0GUHnhrcJ2uVmkJr1ogwE"; // Não é dado sensível 👍
     public ClassesPage()
 	{
 		InitializeComponent();
