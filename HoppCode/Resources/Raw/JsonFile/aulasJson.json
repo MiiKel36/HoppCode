@@ -70,7 +70,7 @@
                 "texto": "@Existem vários tipos de variáveis, sendo as mais utilizadas:@~INT - armazena números inteiros; \\ndouble - armazena números reais; \\nstring - armazena texto; \\nchar - armazena uma única letra; \\nbool(BOOLEAN) - armazena dois valores: True ou False (Verdadeiro ou Falso).\\n\\n~"
               },
               {
-                "texto": "@A sintaxe para criar uma variável em C# é a seguinte:@~<Tipo> <Nome> = <valor da variável>~@Exemplo:@~int numeroInteiro = 10; \\n double numeroReal = 5.50; \\n string texto = “Isto é um texto”; \\n//lembre-se, todo texto deve ser armazenado dentro de duas aspas duplas. \\n char letra = “O”; \\n bool verdadeiroOuFalso = false;\\n~"
+                "texto": "@A sintaxe para criar uma variável em C# é a seguinte:@~<Tipo> <Nome> = <valor da variável>~@Exemplo:@~int numeroInteiro = 10; \\ndouble numeroReal = 5.50; \\nstring texto = “Isto é um texto”; \\n//lembre-se, todo texto deve ser armazenado dentro de duas aspas duplas. \\nchar letra = “O”; \\nbool verdadeiroOuFalso = false;\\n~"
               }
             ]
 
@@ -105,7 +105,7 @@
             "Type": "Aula",
             "subAulas": [
               {
-                "texto": "@Na última aula, você rodou o seu primeiro programa.@@uma função que envia a frase “Olá Mundo!” para o console.@@Você sabia que é possível mostrar o valor guardado numa variável desse mesmo jeito?@@Para fazer isso, siga o exemplo!@~string A = \\\"Esse texto está guardado na variável A!\\\"; \\n Console.WriteLine(A);\\n~@Quando executado, o console irá mostrar a frase “Esse texto está guardado na variável A!”.@@Diferente de um texto convencional, uma variável não precisa ser colocada entre aspas!@"
+                "texto": "@Na última aula, você rodou o seu primeiro programa.@@uma função que envia a frase “Olá Mundo!” para o console.@@Você sabia que é possível mostrar o valor guardado numa variável desse mesmo jeito?@@Para fazer isso, siga o exemplo!@~string A = \\\"Esse texto está guardado na variável A!\\\"; \\nConsole.WriteLine(A);\\n~@Quando executado, o console irá mostrar a frase “Esse texto está guardado na variável A!”.@@Diferente de um texto convencional, uma variável não precisa ser colocada entre aspas!@"
               },
               {
                 "texto": "@Agora vamos falar mais um pouco sobre Variáveis.@@Mesmo depois de definido o valor de uma variável, ele pode ser mudado ao decorrer do código.@@Veja a seguir:@"
@@ -148,7 +148,7 @@
                 "texto": "@Para fazer um comentário de mais de uma linha, coloque uma barra-asterisco (/*) e depois a feche com um asterisco-barra (*/).@@Você pode comentar tudo com as barras duplas, não é necessariamente errado.@@No entanto... Não é muito eficiente.@"
               },
               {
-                "texto": "@Veja:@~// -------\\n// jeito\\n// 'errado'\\n// -------~~/* -------\\n   jeito\\n   'certo'\\n ------- */~@Começaremos a usá-las para fornecer mais detalhes nos códigos de exemplo daqui em diante, então fique esperto!@"
+                "texto": "@Veja:@~// -------\\n// jeito\\n// 'errado'\\n// -------~~/* -------\\n  jeito\\n  'certo'\\n------- */~@Começaremos a usá-las para fornecer mais detalhes nos códigos de exemplo daqui em diante, então fique esperto!@"
               }
             ]
 
@@ -158,22 +158,22 @@
             "Type": "Aula",
             "subAulas": [
               {
-                "texto": "@Dentro do C#, podemos fazer a junção de strings utilizando-se do operador '+'. Podemos juntar um texto de uma variável dentro de um Console.WriteLine(); para se fazer um texto maior. Por exemplo:@~string nome = \\\"João\\\"; \\n Console.WriteLine('Meu nome é ' + nome); // 'Meu nome é João'\\n~"
+                "texto": "@Dentro do C#, podemos fazer a junção de strings utilizando-se do operador '+'. Podemos juntar um texto de uma variável dentro de um Console.WriteLine(); para se fazer um texto maior. Por exemplo:@~string nome = \\\"João\\\"; \\nConsole.WriteLine('Meu nome é ' + nome); // 'Meu nome é João'\\n~"
               },
               {
                 "texto": "@Isso também é possível entre duas strings diferentes!@~string texto = \\\"Meu nome é \\\"; \\nstring nome = \\\"João\\\";\\nConsole.WriteLine(texto + nome); //' Meu nome é João'~@Mas cuidado: quando fazemos esse mesmo processo com números (int, double, entre outros), eles se somam!@"
               },
               {
-                "texto": "~int numero1 = 5; \\nint numero2 = 10; \\nConsole.WriteLine(numero1 + numero2); // 15\\n~@Caso prefira, a concatenação pode ser feita com variáveis também:@~string juncao = texto + nome;\\n Console.WriteLine(juncao); // 'Meu nome é João'~@Enfim, ainda existe outro jeito de juntar variáveis em um texto…@"
+                "texto": "~int numero1 = 5; \\nint numero2 = 10; \\nConsole.WriteLine(numero1 + numero2); // 15\\n~@Caso prefira, a concatenação pode ser feita com variáveis também:@~string juncao = texto + nome;\\nConsole.WriteLine(juncao); // 'Meu nome é João'~@Enfim, ainda existe outro jeito de juntar variáveis em um texto…@"
               },
               {
                 "texto": "@Podemos utilizar as chaves {} em uma string através de interpolação.@@Interpolação seria uma forma especial de string, onde podemos utilizar caracteres especiais para colocar variáveis dentro do texto.@@Para criar uma interpolação, basta digitar um cifrão ($) antes das aspas.@~string texto = 'isto é uma';\\nstring exemplo = $\\\"{texto} interpolação\\\" \\nConsole.WriteLine(exemplo); \\n//retorna \\\"isto é uma interpolação\\\"\\n~"
               },
               {
-                "texto": "@Podemos juntar strings e variáveis numéricas utilizando da interpolação.@@Veja o exemplo abaixo:@~string nome = 'João';\\nint idade = 13;~@Temos uma variável que guarda o nome “João” e outra chamada idade, que contém o número 13. Usando da interpolação, vamos enviar um texto no console com essas variáveis:@~Console.WriteLine($\\\"Meu nome é {nome} e eu tenho {idade} anos\\\");\\n //retorna 'Meu nome é João e eu tenho 13 anos'~"
+                "texto": "@Podemos juntar strings e variáveis numéricas utilizando da interpolação.@@Veja o exemplo abaixo:@~string nome = 'João';\\nint idade = 13;~@Temos uma variável que guarda o nome “João” e outra chamada idade, que contém o número 13. Usando da interpolação, vamos enviar um texto no console com essas variáveis:@~Console.WriteLine($\\\"Meu nome é {nome} e eu tenho {idade} anos\\\");\\n//retorna 'Meu nome é João e eu tenho 13 anos'~"
               },
               {
-                "texto": "@Ou então, que tal fazer uma variável do tipo string que guarda outras duas strings em si mesma?@~string pais = 'Brasil';\\n string cidade = 'São Paulo';\\n string texto = $'Eu moro no {pais}, na cidade de {cidade}';\\n Console.WriteLine(texto);// retorna 'Eu moro no Brasil, na cidade de São Paulo'~"
+                "texto": "@Ou então, que tal fazer uma variável do tipo string que guarda outras duas strings em si mesma?@~string pais = 'Brasil';\\nstring cidade = 'São Paulo';\\nstring texto = $'Eu moro no {pais}, na cidade de {cidade}';\\nConsole.WriteLine(texto);// retorna 'Eu moro no Brasil, na cidade de São Paulo'~"
               }
             ]
 
@@ -191,16 +191,16 @@
             "Type": "Aula",
             "subAulas": [
               {
-                "texto": "@Dentro do C#, podemos atribuir variáveis com os valores de outras.@~int a = 34;\\n int b = a;\\n\\n Console.WriteLine(b); // retorna o número 34~@Até aí tudo bem, não é?@@Porém, quando tentamos atribuir o valor de uma variável de tipo diferente, recebemos um erro:@"
+                "texto": "@Dentro do C#, podemos atribuir variáveis com os valores de outras.@~int a = 34;\\nint b = a;\\n\\nConsole.WriteLine(b); // retorna o número 34~@Até aí tudo bem, não é?@@Porém, quando tentamos atribuir o valor de uma variável de tipo diferente, recebemos um erro:@"
               },
               {
-                "texto": "~double a = 1.64\\n int b = a; // retorna o erro 'Cannot implicitly convert type 'long'~ to 'int'. An explicit conversion exists (are you missing a cast?)'~@Para resolver esse problema, utilizamos do grupo de funções Convert.To. Aqui está uma tabela com todas as conversões possíveis:@~ToBolean  // Converte para um valor Bollean\\nToChar  //Converte para um Character \\nToDouble //Converte para double \\nToInt16 //Converte para int de 16-bit \\nToInt32 //Converte para int de 32 bit \\nToInt64 //Converte para int de 64 bit \\nToString //Converte para string~"
+                "texto": "~double a = 1.64\\nint b = a; // retorna o erro 'Cannot implicitly convert type 'long'~ to 'int'. An explicit conversion exists (are you missing a cast?)'~@Para resolver esse problema, utilizamos do grupo de funções Convert.To. Aqui está uma tabela com todas as conversões possíveis:@~ToBolean  // Converte para um valor Bollean\\nToChar  //Converte para um Character \\nToDouble //Converte para double \\nToInt16 //Converte para int de 16-bit \\nToInt32 //Converte para int de 32 bit \\nToInt64 //Converte para int de 64 bit \\nToString //Converte para string~"
               },
               {
                 "texto": "@E aqui um exemplo dessas funções colocadas em prática!@~int i = 10; \\ndouble d = 5.25; \\nbool b = true; \\nConsole.WriteLine(Convert.ToString(i)); \\n// converte int para string, retornando “10” como texto neste caso\\nConsole.WriteLine(Convert.ToDouble(i)); \\n// converte int para double, retornando 10 como double neste caso\\nConsole.WriteLine(Convert.ToInt32(d)); \\n// converte double para int, retornando apenas 5 neste caso\\nConsole.WriteLine(Convert.ToString(b)); \\n// converte bool para string, retornando a palavra “True” neste caso\\n~@No lugar de Convert.To, podemos optar pela função .Parse().@"
               },
               {
-                "texto": "@É importante ter em mente, no entanto, que esta é uma função apenas utilizada para a conversão de strings. @@Caso tente utilizá-la para uma variável diferente de string, o código irá dar erro.@@Aqui está alguns dos comandos da coleção .Parse():@~int.Parse()// Converte uma string em um valor inteiro.\\ndouble.Parse() //Converte uma string em um valor de ponto flutuante de precisão dupla. \\nbool.Parse() //Converte uma string em um valor booleano. \\nDateTime.Parse() //Converte uma string em um valor de data e hora. \\n ~~string numeroInt = “13”;\\nstring numeroDouble = “19.54”;\\nstring boolean = “False”;\\nstring data = “6/17/2021 8:10:09 AM”;\\n\\nConsole.WriteLine(int32.Parse(numeroInt)); // transforma a string em int, retornando 13 neste caso\\nConsole.WriteLine(double.Parse(numeroDouble));// transforma a string em double, retornando 19.54 neste caso\\nConsole.WriteLine(bool.Parse(boolean)); // transforma a string em Boolean, retornando False neste caso\\nConsole.WriteLine(DateTime.Parse(data)); // transforma a string em formato de data e hora, retornando 6/17/2021 8:10:09 AM neste caso\\n~"
+                "texto": "@É importante ter em mente, no entanto, que esta é uma função apenas utilizada para a conversão de strings. @@Caso tente utilizá-la para uma variável diferente de string, o código irá dar erro.@@Aqui está alguns dos comandos da coleção .Parse():@~int.Parse()// Converte uma string em um valor inteiro.\\ndouble.Parse() //Converte uma string em um valor de ponto flutuante de precisão dupla. \\nbool.Parse() //Converte uma string em um valor booleano. \\nDateTime.Parse() //Converte uma string em um valor de data e hora. \\n~~string numeroInt = “13”;\\nstring numeroDouble = “19.54”;\\nstring boolean = “False”;\\nstring data = “6/17/2021 8:10:09 AM”;\\n\\nConsole.WriteLine(int32.Parse(numeroInt)); // transforma a string em int, retornando 13 neste caso\\nConsole.WriteLine(double.Parse(numeroDouble));// transforma a string em double, retornando 19.54 neste caso\\nConsole.WriteLine(bool.Parse(boolean)); // transforma a string em Boolean, retornando False neste caso\\nConsole.WriteLine(DateTime.Parse(data)); // transforma a string em formato de data e hora, retornando 6/17/2021 8:10:09 AM neste caso\\n~"
               }
 
 
@@ -229,13 +229,13 @@
                 "texto": "@Todo bom programa interage com o seu usuário, não é?@@Por isso existe a função Console.ReadLine();@"
               },
               {
-                "texto": "@No C#, podemos pegar um valor digitado diretamente no console. Para salvarmos o valor digitado, é preciso atribuir o Console.ReadLine(); a uma variável. Veja o exemplo a seguir.@~Console.WriteLine(‘Qual o seu animal de estimação?’);\\n\\n string animal = Console.ReadLine();\\n\\n Console.WriteLine($’então você tem um {animal} de estimação? Legal!’);~"
+                "texto": "@No C#, podemos pegar um valor digitado diretamente no console. Para salvarmos o valor digitado, é preciso atribuir o Console.ReadLine(); a uma variável. Veja o exemplo a seguir.@~Console.WriteLine(‘Qual o seu animal de estimação?’);\\n\\nstring animal = Console.ReadLine();\\n\\nConsole.WriteLine($’então você tem um {animal} de estimação? Legal!’);~"
               },
               {
                 "texto": "@Números com Console.ReadLine();@@A função Console.ReadLine(); requer que o tipo da variável seja uma string, caso contrário código irá dar erro.@~int var = Console.ReadLine(); // error: Cannot implicitly convert type 'string' to 'int'\\n~@Por sorte, a solução é simples! Podemos usar das funções que já vimos nas aulas anteriores.@"
               },
               {
-                "texto": "@Isso mesmo, Convert.ToInt32(); ou, se preferir, int.Parse();@~string numero = Console.ReadLine(); // ‘17’\\n\\n Console.WriteLine(int.Parse(numero)); // 17\\n\\n Console.WriteLine(Convert.ToInt32(numero)); // 17\\n~"
+                "texto": "@Isso mesmo, Convert.ToInt32(); ou, se preferir, int.Parse();@~string numero = Console.ReadLine(); // ‘17’\\n\\nConsole.WriteLine(int.Parse(numero)); // 17\\n\\nConsole.WriteLine(Convert.ToInt32(numero)); // 17\\n~"
               }
             ]
 
@@ -260,7 +260,7 @@
                 "texto": "@Uma única letra maiúscula pode quebrar um sistema inteiro se não for tratada!@@A melhor maneira de contornar esses problemas é deixando todos os caracteres ou no estado maiúsculo ou no estado minúsculo.@"
               },
               {
-                "texto": "@No C#, temos duas funções que fazem exatamente isso.@~string texto = 'EsTe TEXto eStá cHeIO dE lETras mAIUsCUlas E MINUscuLas';\\n \\nConsole.WriteLine(texto.ToUpper()); // resultado: ESTE TEXTO ESTÁ CHEIO DE LETRAS MAIUSCULAS E MINUSCULAS\\n \\nConsole.WriteLine(texto.ToLower()); // resultado: este texto está cheio de letras maiusculas e minusculas\\n~"
+                "texto": "@No C#, temos duas funções que fazem exatamente isso.@~string texto = 'EsTe TEXto eStá cHeIO dE lETras mAIUsCUlas E MINUscuLas';\\n\\nConsole.WriteLine(texto.ToUpper()); // resultado: ESTE TEXTO ESTÁ CHEIO DE LETRAS MAIUSCULAS E MINUSCULAS\\n\\nConsole.WriteLine(texto.ToLower()); // resultado: este texto está cheio de letras maiusculas e minusculas\\n~"
               },
               {
                 "texto": "@Caracteres de escape:@@“Caracteres de escape” são junções de caracteres que possuem certas funções dentro de uma string@@Aqui vai uma lista de caracteres e suas funções:@~string caracteresDeEscape = 'Linha 1 Linha 2 Linha 3';\\n\\nConsole.WriteLine(caracteresDeEscape);\\n\\n/* retorna: \\n“Linha 1 \\nLinha 2\\nLinha 3”\\n*/~"
@@ -272,26 +272,26 @@
                 "texto": "@... Você já deve imaginar o que acontece se misturarmos dois pares de aspas duplas, não é?@~string texto = “essa string tem “uma parte” com aspas duplas dentro dela mesma!” // ERRO!\\n~"
               },
               {
-                "texto": "@Por sorte, a resolução é simples: podemos usar uma barra inversa logo antes do caractere especial!@@Isso irá impedir que aconteça problemas como este visto acima.@@Na tabela abaixo, o lado esquerdo é como a string estará escrita no código, e o lado direito é o valor demonstrado quando consultado.@~\\'texto\\' --> 'texto' \\n\\n \\”texto\\” --> ”texto” \\n\\n \\\\texto\\\\ --> \\texto\\~"
+                "texto": "@Por sorte, a resolução é simples: podemos usar uma barra inversa logo antes do caractere especial!@@Isso irá impedir que aconteça problemas como este visto acima.@@Na tabela abaixo, o lado esquerdo é como a string estará escrita no código, e o lado direito é o valor demonstrado quando consultado.@~\\'texto\\' --> 'texto' \\n\\n\\”texto\\” --> ”texto” \\n\\n\\\\texto\\\\ --> \\texto\\~"
               },
               {
-                "texto": "@Mais um exemplo:@~Console.WriteLine(\\\"Estes são os caracteres \\\\n \\\" - aspas \n \\\" – aspas duplas \n \\ - barra\\\"); /*\\nretorna:\\n“Estes são os caracteres\\n\" – aspas\\n ' - aspas duplas\\n\\ - barra”\\n*/~"
+                "texto": "@Mais um exemplo:@~Console.WriteLine(\\\"Estes são os caracteres \\\\n\\\" - aspas\n\\\" – aspas duplas\n\\ - barra\\\"); /*\\nretorna:\\n“Estes são os caracteres\\n\" – aspas\\n' - aspas duplas\\n\\ - barra”\\n*/~"
               }
             ]
           },
           {
             "nomeAulaOuExercicio": "Exercício 2 ",
             "Type": "Exercicio",
-            "Texto": "Dentro do código existe uma string onde seus caracteres estão completamente desordenados, algumas em maiúsculo, outros em minúsculo.\\n Usando do que você aprendeu, transforme  todos as caracteres da string em minúsculo.",
+            "Texto": "Dentro do código existe uma string onde seus caracteres estão completamente desordenados, algumas em maiúsculo, outros em minúsculo.\\nUsando do que você aprendeu, transforme  todos as caracteres da string em minúsculo.",
             "Output": "porfavor arrume esta string",
             "Setup": "string arrumeEstaString = \"PoRFAvOr ArRUme eStA StrING\";"
           },
           {
             "nomeAulaOuExercicio": "Exercício 3",
             "Type": "Exercicio",
-            "Texto": "Essa string está horrível! Organize-a: \\n string lista = ‘— Minhas comidas favoritas – 5. ‘Pastel’; 4. ‘Lasanha’; 3. ‘Hambúrguer’; 2. ‘Coxinha’; 1. ‘Pizza’!!! ‘;\\n Console.WriteLine(lista);",
-            "Output": "”Pastel”;\n4. ”Lasanha”;\n 3. ”Hambúrguer”;\n2. ”Coxinha”;\n1. ”Pizza”!!!”;",
-            "Setup": "string lista = “— Minhas comidas favoritas – 5. “Pastel”; 4. “Lasanha”; 3. “Hambúrguer”; 2. “Coxinha”; 1. “Pizza”!!! ”; Console.WriteLine(lista);\\n /*Resultado esperado: “— Minhas comidas favoritas –\\n5. ”Pastel”;\\n4. ”Lasanha”;\\n 3. ”Hambúrguer”;\\n2. ”Coxinha”;\\n1. ”Pizza”!!!”;*/"
+            "Texto": "Essa string está horrível! Organize-a: \\nstring lista = ‘— Minhas comidas favoritas – 5. ‘Pastel’; 4. ‘Lasanha’; 3. ‘Hambúrguer’; 2. ‘Coxinha’; 1. ‘Pizza’!!! ‘;\\nConsole.WriteLine(lista);",
+            "Output": "”Pastel”;\n4. ”Lasanha”;\n3. ”Hambúrguer”;\n2. ”Coxinha”;\n1. ”Pizza”!!!”;",
+            "Setup": "string lista = “— Minhas comidas favoritas – 5. “Pastel”; 4. “Lasanha”; 3. “Hambúrguer”; 2. “Coxinha”; 1. “Pizza”!!! ”; Console.WriteLine(lista);\\n/*Resultado esperado: “— Minhas comidas favoritas –\\n5. ”Pastel”;\\n4. ”Lasanha”;\\n3. ”Hambúrguer”;\\n2. ”Coxinha”;\\n1. ”Pizza”!!!”;*/"
           }
         ]
       },
@@ -304,16 +304,16 @@
             "Type": "Aula",
             "subAulas": [
               {
-                "texto": "@Operadores Aritméticos:@@Uma peça crucial da programação é a matemática.@@Fazê-las é muito simples (assim como na vida real!)@@Basta usar os Operadores Aritméticos. Cada um deles serve para uma operação diferente:@~+ Adição\\n - Subtração\\n * Multiplicação\\n / Divisão\\n % Resto de divisão~"
+                "texto": "@Operadores Aritméticos:@@Uma peça crucial da programação é a matemática.@@Fazê-las é muito simples (assim como na vida real!)@@Basta usar os Operadores Aritméticos. Cada um deles serve para uma operação diferente:@~+ Adição\\n- Subtração\\n* Multiplicação\\n/ Divisão\\n% Resto de divisão~"
               },
               {
-                "texto": "@Aqui vai um exemplo:@~double a = 5;\\n double b = 10;\\n double c = 15;\\n\\n Console.WriteLine(a+b); // 15 – 5+10\\n\\n Console.WriteLine(c-a); // 10 - 15-5\\n\\n Console.WriteLine(b*c); // 150 - 10x15\\n\\n Console.WriteLine(a/b); // 0.5 - 5/10\\n\\n Console.WriteLine(b%c); // 10 - resto de 10/15~"
+                "texto": "@Aqui vai um exemplo:@~double a = 5;\\ndouble b = 10;\\ndouble c = 15;\\n\\nConsole.WriteLine(a+b); // 15 – 5+10\\n\\nConsole.WriteLine(c-a); // 10 - 15-5\\n\\nConsole.WriteLine(b*c); // 150 - 10x15\\n\\nConsole.WriteLine(a/b); // 0.5 - 5/10\\n\\nConsole.WriteLine(b%c); // 10 - resto de 10/15~"
               },
               {
                 "texto": "@Operadores de atribuição:@@Os Operadores de atribuição funcionam de maneira parecida com os Operadores Aritméticos.@@Eles utilizam os mesmos símbolos! Com a adição de um igual ( = ) na frente, Os Operadores de atribuição são utilizados para adicionar o valor de uma conta para uma variável já definida de forma simples.@"
               },
               {
-                "texto": "@Operadores:@~+=\\n -=\\n *=\\n /=~@Exemplos:@~double a = 10;\\n a += 3; // a = a +3\\n Console.WriteLine(a);// 13\\n \\n double b = 10;\\n b -= 3; // b = b - 3\\n Console.WriteLine(b);// 7\\n \\n double c = 10;\\n c *= 3; // c = c * 3\\n Console.WriteLine(c);// 30\\n \\n double d = 10;\\n d /= 3; // d = d / 3\\n Console.WriteLine(d);// 3.333...~"
+                "texto": "@Operadores:@~+=\\n-=\\n*=\\n/=~@Exemplos:@~double a = 10;\\na += 3; // a = a +3\\nConsole.WriteLine(a);// 13\\n\\ndouble b = 10;\\nb -= 3; // b = b - 3\\nConsole.WriteLine(b);// 7\\n\\ndouble c = 10;\\nc *= 3; // c = c * 3\\nConsole.WriteLine(c);// 30\\n\\ndouble d = 10;\\nd /= 3; // d = d / 3\\nConsole.WriteLine(d);// 3.333...~"
               },
               {
                 "texto": "@Talvez você se pergunte: “para que utilizar Operadores de atribuição se podemos apenas fazer contas simples como “a = a + 1”?@@Bem... Você não é obrigado.@@Mas usá-los deixa o código muito mais limpo!@"
@@ -329,7 +329,7 @@
             "Type": "Exercicio",
             "Texto": "Usando os operadores, resolva as contas matemáticas e mostre o resultado no console.",
             "Output": "10\n5\n117\n5.5",
-            "Setup": "Console.WriteLine(“Quanto é 5 mais 5?”);\\nint resp1 = 0; // Preencha no formato <numero> <operador> <numero>!\\nConsole.WriteLine(“R: ” + resp1);\\n\\nConsole.WriteLine(“Quanto é 22 menos 17?”);\\nint resp2 = 0;\\n  Console.WriteLine(“R: ” + resp2);\\n\\nConsole.WriteLine(“Quanto é 13 vezes 9?”);\\nint resp3 = 0;\\nConsole.WriteLine(“R: ” + resp3);\\n\\nConsole.WriteLine(“Quanto é 11 dividido por 2?”);\\ndouble resp4 = 0;\\nConsole.WriteLine(“R: ” + resp4);"
+            "Setup": "Console.WriteLine(“Quanto é 5 mais 5?”);\\nint resp1 = 0; // Preencha no formato <numero> <operador> <numero>!\\nConsole.WriteLine(“R: ” + resp1);\\n\\nConsole.WriteLine(“Quanto é 22 menos 17?”);\\nint resp2 = 0;\\n Console.WriteLine(“R: ” + resp2);\\n\\nConsole.WriteLine(“Quanto é 13 vezes 9?”);\\nint resp3 = 0;\\nConsole.WriteLine(“R: ” + resp3);\\n\\nConsole.WriteLine(“Quanto é 11 dividido por 2?”);\\ndouble resp4 = 0;\\nConsole.WriteLine(“R: ” + resp4);"
           },
 
           {
@@ -337,7 +337,7 @@
             "Type": "Exercicio",
             "Texto": "Usando os operadores de atribuição, atribua números para chegar no resultado esperado.",
             "Output": "3\n2\n33\n2\n0",
-            "Setup": "int a = 2; // Precisa SOMAR e resultar 3\\nint b = 7; // Precisa SUBTRAIR e resultar 2\\n int c = 11; // Precisa MULTIPLICAR e resultar 33\\n int d = 4; // Precisa DIVIDIR e resultar 2\\nint e = 25; // Precisa DIVIDIR e RESTAR 0\\nConsole.WriteLine(a + “\\n” + b + “\\n” + c + “\\n” + d + “\\n” + e);"
+            "Setup": "int a = 2; // Precisa SOMAR e resultar 3\\nint b = 7; // Precisa SUBTRAIR e resultar 2\\nint c = 11; // Precisa MULTIPLICAR e resultar 33\\nint d = 4; // Precisa DIVIDIR e resultar 2\\nint e = 25; // Precisa DIVIDIR e RESTAR 0\\nConsole.WriteLine(a + “\\n” + b + “\\n” + c + “\\n” + d + “\\n” + e);"
           },
 
           {
@@ -345,19 +345,19 @@
             "Type": "Aula",
             "subAulas": [
               {
-                "texto": "@Math.Max() - Math.Min():@@O “Math” no C# é uma classe de funções que permite o uso de inúmeras funções matemáticas!@@Dentre elas, temos Math.Max() e Math.Min(). Essas funções retornam o valor máximo/mínimo dentre os valores que forem comparados.@~double joaoIdade = 9;\\n double mariaIdade = 10; // Podemos atribuir o valor de uma função Math a uma variável!\\n double MaxIdade = Math.Max(joaoIdade, mariaIdade); // Retorna o maior valor\\n double MinIdade = Math.Min(joaoIdade, mariaIdade); // Retorna o menor valor\\n\\n Console.WriteLine($'Dentre João e Maria a maior idade é {MaxIdade}'); // 12 \\n\\n Console.WriteLine($'Dentre João e Maria a menor idade é {MinIdade}'); // 5~"
+                "texto": "@Math.Max() - Math.Min():@@O “Math” no C# é uma classe de funções que permite o uso de inúmeras funções matemáticas!@@Dentre elas, temos Math.Max() e Math.Min(). Essas funções retornam o valor máximo/mínimo dentre os valores que forem comparados.@~double joaoIdade = 9;\\ndouble mariaIdade = 10; // Podemos atribuir o valor de uma função Math a uma variável!\\ndouble MaxIdade = Math.Max(joaoIdade, mariaIdade); // Retorna o maior valor\\ndouble MinIdade = Math.Min(joaoIdade, mariaIdade); // Retorna o menor valor\\n\\nConsole.WriteLine($'Dentre João e Maria a maior idade é {MaxIdade}'); // 12 \\n\\nConsole.WriteLine($'Dentre João e Maria a menor idade é {MinIdade}'); // 5~"
               },
               {
-                "texto": "@Math.Sqrt():@@Além de ações simples como retornar o maior valor em uma lista, o Math também pode fazer contas matemáticas mais complexas (ou talvez nem tão complexas assim), como raiz quadrada.@@Utilizando-se da função Math.Sqrt(numero); podemos fazer uma conta de raiz quadrada de forma fácil e rápida.@~double numero = 612;\\n double raizQuadrada = Math.Sqrt(numero); // Raiz quadrada de 612\\n\\n Console.WriteLine(raizQuadrada); // 24.73863...~"
+                "texto": "@Math.Sqrt():@@Além de ações simples como retornar o maior valor em uma lista, o Math também pode fazer contas matemáticas mais complexas (ou talvez nem tão complexas assim), como raiz quadrada.@@Utilizando-se da função Math.Sqrt(numero); podemos fazer uma conta de raiz quadrada de forma fácil e rápida.@~double numero = 612;\\ndouble raizQuadrada = Math.Sqrt(numero); // Raiz quadrada de 612\\n\\nConsole.WriteLine(raizQuadrada); // 24.73863...~"
               },
               {
-                "texto": "@Math.Pow():@@Não só de raiz quadrada vai as funções matemáticas do Math.@@Existe também a potenciação, elevar um valor a outro.@@Isso é possível com a função Math.Pow(valor1, valor2). Nesta função o valor1 que vem primeiro é elevado ao valor2 que vem depois da vírgula.@~double numero1 = 5;\\n double numero2 = 1;\\n double poteciacao = Math.Pow(numero1, numero2); // 5^1 = 5\\n\\n Console.WriteLine(poteciacao); // 5\\n\\n numero2 = 3;\\n poteciacao = Math.Pow(numero1, numero2); // 5^3 = 5*5*5 = 125\\n\\n Console.WriteLine(poteciacao); // 125~"
+                "texto": "@Math.Pow():@@Não só de raiz quadrada vai as funções matemáticas do Math.@@Existe também a potenciação, elevar um valor a outro.@@Isso é possível com a função Math.Pow(valor1, valor2). Nesta função o valor1 que vem primeiro é elevado ao valor2 que vem depois da vírgula.@~double numero1 = 5;\\ndouble numero2 = 1;\\ndouble poteciacao = Math.Pow(numero1, numero2); // 5^1 = 5\\n\\nConsole.WriteLine(poteciacao); // 5\\n\\nnumero2 = 3;\\npoteciacao = Math.Pow(numero1, numero2); // 5^3 = 5*5*5 = 125\\n\\nConsole.WriteLine(poteciacao); // 125~"
               },
               {
-                "texto": "@Math.Round():@@A função Math.Round(numero) já é bem clara para quem entende inglês. (falando nisso, é muito importante você saber um pouco dela!)@@Ela arredonda um número decimal para o número mais próximo, seguindo as regras da matemática padrão.@~double numero = 3.14;\\n double roundNumero = Math.Round(numero);\\n\\n Console.WriteLine(roundNumero); // 3\\n\\n double numero2 = 3.65;\\n double roundNumero2 = Math.Round(numero2);\\n\\n Console.WriteLine(roundNumero2); // 4~"
+                "texto": "@Math.Round():@@A função Math.Round(numero) já é bem clara para quem entende inglês. (falando nisso, é muito importante você saber um pouco dela!)@@Ela arredonda um número decimal para o número mais próximo, seguindo as regras da matemática padrão.@~double numero = 3.14;\\ndouble roundNumero = Math.Round(numero);\\n\\nConsole.WriteLine(roundNumero); // 3\\n\\ndouble numero2 = 3.65;\\ndouble roundNumero2 = Math.Round(numero2);\\n\\nConsole.WriteLine(roundNumero2); // 4~"
               },
               {
-                "texto": "@Em caso de “empate”, ou seja, que o número decimal termina com 5 (ex. 1.5), Math.Round terá como preferência números pares:@~double numero1 = 2.5;\\n double numero2 = 3.5;\\n\\n Console.WriteLine( Math.Round(numero1) ); // 2\\n\\n Console.WriteLine( Math.Round(numero2) ); // 4~@A classe Math possui muito mais funções além dessas.@@As que eu lhe mostrei são as mais comuns e versáteis.@@Caso queira conhecer as outras funções, sinta-se livre para pesquisar. É criando curiosidade que se aprende!@"
+                "texto": "@Em caso de “empate”, ou seja, que o número decimal termina com 5 (ex. 1.5), Math.Round terá como preferência números pares:@~double numero1 = 2.5;\\ndouble numero2 = 3.5;\\n\\nConsole.WriteLine( Math.Round(numero1) ); // 2\\n\\nConsole.WriteLine( Math.Round(numero2) ); // 4~@A classe Math possui muito mais funções além dessas.@@As que eu lhe mostrei são as mais comuns e versáteis.@@Caso queira conhecer as outras funções, sinta-se livre para pesquisar. É criando curiosidade que se aprende!@"
               }
             ]
           },
@@ -416,16 +416,16 @@
                 "texto": "@Aqui esta um exemplo:@~int idadeJoao = 20;\\nint idadePedro = 15;\\nint idadeJulia = 18;\\n// João é maior que 18 anos, então, o código vai rodar\\n\\nif (idadeJoao >= 18) {\\n// O código vai rodar\\nConsole.WriteLine('João é maior de 18 anos.');\\n}\\n// Pedro é menor que 18 anos, então, o código não vai rodar\\n\\nif (idadePedro >= 18) {\\n// O código não vai rodar\\nConsole.WriteLine('Pedro é maior de 18 anos.');\\n}\\n// Julia é maior que 18 anos, então, o código vai rodar\\n\\nif (idadeJulia >= 18) {\\n// O código vai rodar\\nConsole.WriteLine('Julia é maior de 18 anos.');\\n}\\n\\n/*\\nResultado:\\nJoão é maior de 18 anos\\nJulia é maior de 18 anos\\n*/~"
               },
               {
-                "texto": "@ELSE:@@Quando a condição de um IF retorna False, o código entre as chaves não roda e o código continua como se não existisse nada entre as chaves.@~int numero = 9;\\n\\nConsole.WriteLine('Texto...');\\n // A condição retorna false\\n\\nif (numero >= 10) {\\nConsole.WriteLine('Número é maior que 10'); // O código não vai rodar\\n}\\n\\n// O código continua\\nConsole.WriteLine('Texto...');\\n\\n/*\\nResultado:\\nTexto...\\nTexto...\\n*/~@Podemos utilizar da palavra ELSE no final de uma estrutura IF para executar um código diferente caso a condição retorne False.@"
+                "texto": "@ELSE:@@Quando a condição de um IF retorna False, o código entre as chaves não roda e o código continua como se não existisse nada entre as chaves.@~int numero = 9;\\n\\nConsole.WriteLine('Texto...');\\n// A condição retorna false\\n\\nif (numero >= 10) {\\nConsole.WriteLine('Número é maior que 10'); // O código não vai rodar\\n}\\n\\n// O código continua\\nConsole.WriteLine('Texto...');\\n\\n/*\\nResultado:\\nTexto...\\nTexto...\\n*/~@Podemos utilizar da palavra ELSE no final de uma estrutura IF para executar um código diferente caso a condição retorne False.@"
               },
               {
-                "texto": "~int idadeJoao = 20;\\nint idadePedro = 15;\\n\\n\\nif (idadeJoao >= 18)\\n{\\n// Se João for maior ou igual a 18 anos, o código escreve 'João é maior de 18 anos'\\nConsole.WriteLine('João é maior de 18 anos');\\n} else {\\n// Se não, o código escreve 'João não é maior de 18 anos'\\nConsole.WriteLine('João não é maior de 18 anos');\\n}\\n\\nif (idadePedro >= 18)\\n {\\n// Se Pedro for maior ou igual a 18 anos, o código escreve 'Pedro é maior de 18 anos'\\nConsole.WriteLine('Pedro é maior de 18 anos');\\n} else {\\n// Se não, o código escreve 'Pedro não é maior de 18 anos'\\nConsole.WriteLine('Pedro não é maior de 18 anos');\\n}\\n\\n/*\\nResultado:\\nJoão é maior de 18 anos\\nPedro não é maior de 18 anos\\n */~"
+                "texto": "~int idadeJoao = 20;\\nint idadePedro = 15;\\n\\n\\nif (idadeJoao >= 18)\\n{\\n// Se João for maior ou igual a 18 anos, o código escreve 'João é maior de 18 anos'\\nConsole.WriteLine('João é maior de 18 anos');\\n} else {\\n// Se não, o código escreve 'João não é maior de 18 anos'\\nConsole.WriteLine('João não é maior de 18 anos');\\n}\\n\\nif (idadePedro >= 18)\\n{\\n// Se Pedro for maior ou igual a 18 anos, o código escreve 'Pedro é maior de 18 anos'\\nConsole.WriteLine('Pedro é maior de 18 anos');\\n} else {\\n// Se não, o código escreve 'Pedro não é maior de 18 anos'\\nConsole.WriteLine('Pedro não é maior de 18 anos');\\n}\\n\\n/*\\nResultado:\\nJoão é maior de 18 anos\\nPedro não é maior de 18 anos\\n*/~"
               },
               {
                 "texto": "@ELSE IF:@@O ELSE IF funciona de maneira parecida com o ELSE, basicamente como se fosse uma junção dos dois.@@Assim que a condição do primeiro IF retorna Falso, vamos até o ELSE IF, onde podemos verificar outra condição.@@Com isso, é possível fazer quantas verificações você quiser! Tudo depende da necessidade do seu programa. (só tome cuidado para não usar demais, isso pode afetar a velocidade e a qualidade do código. Existem métodos melhores, pode confiar!)@@Sintaxe:@~If (condição) {\\n// código\\n} else if (condição) {\\n// código\\n} else if (condição) {\\n// código\\n} else {\\n// código\\n}~"
               },
               {
-                "texto": "@Aqui esta um exemplo:@~int idade = 20;\\n\\nif (idade < 18) // Retorna False -- 20 é menor que 18? - Falso\\n{\\nConsole.WriteLine('Menor de idade');\\n}\\nelse if (idade >= 18 && idade < 65) // Retorna True - 20 é maior ou igual a que 18 e 20 é menor que 65? Verdadeiro\\n{\\n  Console.WriteLine('Adulto');\\n}\\nelse // Já que a condição anterior retornou True, o código não chega até aqui\\n{\\nConsole.WriteLine('Idoso');\\n}~"
+                "texto": "@Aqui esta um exemplo:@~int idade = 20;\\n\\nif (idade < 18) // Retorna False -- 20 é menor que 18? - Falso\\n{\\nConsole.WriteLine('Menor de idade');\\n}\\nelse if (idade >= 18 && idade < 65) // Retorna True - 20 é maior ou igual a que 18 e 20 é menor que 65? Verdadeiro\\n{\\n Console.WriteLine('Adulto');\\n}\\nelse // Já que a condição anterior retornou True, o código não chega até aqui\\n{\\nConsole.WriteLine('Idoso');\\n}~"
               }
             ]
           },
@@ -434,7 +434,7 @@
             "Type": "Exercicio",
             "Texto": "Altere os operadores de comparação para conseguir os resultados esperados.",
             "Output": "false\ntrue\ntrue\nfalse\nfalse\nfalse",
-            "Setup": "int a = 11;\\n int b = 7;\\nint c = 9;\\n int d = 7;\\nbool true = True;\\n bool false = False;\\n Console.WriteLine(a > b);\\n Console.WriteLine(a <= c);\\n Console.WriteLine(b != a);\\n Console.WriteLine(c >= b); // DEVE RETORNAR FALSO\\n Console.WriteLine(c == d); // DEVE RETORNAR FALSO\\n Console.WriteLine(!true == false); // DEVE RETORNAR FALSO\\n"
+            "Setup": "int a = 11;\\nint b = 7;\\nint c = 9;\\nint d = 7;\\nbool true = True;\\nbool false = False;\\nConsole.WriteLine(a > b);\\nConsole.WriteLine(a <= c);\\nConsole.WriteLine(b != a);\\nConsole.WriteLine(c >= b); // DEVE RETORNAR FALSO\\nConsole.WriteLine(c == d); // DEVE RETORNAR FALSO\\nConsole.WriteLine(!true == false); // DEVE RETORNAR FALSO\\n"
           },
           {
             "nomeAulaOuExercicio": "Exercício 2",
@@ -457,10 +457,10 @@
                 "texto": "@A maneira em que a sintaxe do Switch Case é feita facilita a leitura do código, assim deixando-o mais “limpo”.@@Como ambos os verificadores funcionam de maneira parecida, o uso vem mais de um gosto pessoal e a situação presente.@@Exemplo de comparação de if else com switch case: Programa que envia no console qual o dia da semana baseado numa variável pré-definida.@"
               },
               {
-                "texto": "@COM IF ELSE@~int diaDaSemana = 5;\\n\\nif (diaDaSemana == 1) {\\nConsole.WriteLine('Hoje é segunda-feira...');\\n}\\nelse if (diaDaSemana == 2) {\\n    Console.WriteLine('Hoje é terça-feira');\\n}\\nelse if (diaDaSemana == 3) {\\n    Console.WriteLine('Hoje é quarta-feira');\\n}\\nelse if (diaDaSemana == 4){\\n    Console.WriteLine('Hoje é quinta-feira');\\n}\\nelse if (diaDaSemana == 5) {\\n    Console.WriteLine('Hoje é sexta-feira!!');\\n}\\nelse if (diaDaSemana == 6) {\\n    Console.WriteLine('Hoje é sábado!!!');\\n}\\nelse if (diaDaSemana == 7) {\\n Console.WriteLine('Hoje é domingo!!!');\\n}\\n// Resultado: Hoje é sexta-feira!!\\n\\~@COM SWITCH CASE@~switch (diaDaSemana)\\n{\\n    case 1:\\n        Console.WriteLine('Hoje é segunda-feira...');\\n        break;\\n    case 2:\\n        Console.WriteLine('Hoje é terça-feira');\\n        break;\\n    case 3:\\n        Console.WriteLine('Hoje é quarta-feira');\\n        break;\\n    case 4:\\n        Console.WriteLine('Hoje é quinta-feira');\\n        break;\\n~"
+                "texto": "@COM IF ELSE@~int diaDaSemana = 5;\\n\\nif (diaDaSemana == 1) {\\nConsole.WriteLine('Hoje é segunda-feira...');\\n}\\nelse if (diaDaSemana == 2) {\\n   Console.WriteLine('Hoje é terça-feira');\\n}\\nelse if (diaDaSemana == 3) {\\n   Console.WriteLine('Hoje é quarta-feira');\\n}\\nelse if (diaDaSemana == 4){\\n   Console.WriteLine('Hoje é quinta-feira');\\n}\\nelse if (diaDaSemana == 5) {\\n   Console.WriteLine('Hoje é sexta-feira!!');\\n}\\nelse if (diaDaSemana == 6) {\\n   Console.WriteLine('Hoje é sábado!!!');\\n}\\nelse if (diaDaSemana == 7) {\\nConsole.WriteLine('Hoje é domingo!!!');\\n}\\n// Resultado: Hoje é sexta-feira!!\\n\\~@COM SWITCH CASE@~switch (diaDaSemana)\\n{\\n   case 1:\\n       Console.WriteLine('Hoje é segunda-feira...');\\n       break;\\n   case 2:\\n       Console.WriteLine('Hoje é terça-feira');\\n       break;\\n   case 3:\\n       Console.WriteLine('Hoje é quarta-feira');\\n       break;\\n   case 4:\\n       Console.WriteLine('Hoje é quinta-feira');\\n       break;\\n~"
               },
               {
-                "texto": "@case 5:\\n        Console.WriteLine('Hoje é sexta-feira!!');\\n        break;\\n    case 6:\\n        Console.WriteLine('Hoje é sábado!!!');\\n        break;\\n    case 7:\\n        Console.WriteLine('Hoje é domingo!!!');\\n        break;\\n}\\n// Resultado: Hoje é sexta-feira!!~@Pode ver que com o uso do Switch Case é mais fácil a leitura e a compreensão do código, mesmo os dois funcionando da mesma maneira!@"
+                "texto": "@case 5:\\n       Console.WriteLine('Hoje é sexta-feira!!');\\n       break;\\n   case 6:\\n       Console.WriteLine('Hoje é sábado!!!');\\n       break;\\n   case 7:\\n       Console.WriteLine('Hoje é domingo!!!');\\n       break;\\n}\\n// Resultado: Hoje é sexta-feira!!~@Pode ver que com o uso do Switch Case é mais fácil a leitura e a compreensão do código, mesmo os dois funcionando da mesma maneira!@"
               }
             ]
           },
@@ -495,16 +495,16 @@
                 "texto": "@While:@@O laço de repetição while executa um bloco de código por meio de uma condição.@Enquanto a condição retorna True, o bloco de código continuará rodando.@Sintaxe:@~While(condição) {\\n// código\\n}~"
               },
               {
-                "texto": "@Exemplo: Loop simples@~int numero = 0;\\n\\nwhile(numero < 5) {\\n    numero++;\\n    Console.WriteLine($'O código foi repetido {numero} vezes');\\n}\\n\\nConsole.WriteLine($'O loop acabou');\\n\\n/*Resultado:\\n  O código foi repetido 1 vezes\\n  O código foi repetido 2 vezes\\n  O código foi repetido 3 vezes\\n  O código foi repetido 4 vezes\\n  O código foi repetido 5 vezes\\n  O loop acabou*/~"
+                "texto": "@Exemplo: Loop simples@~int numero = 0;\\n\\nwhile(numero < 5) {\\n   numero++;\\n   Console.WriteLine($'O código foi repetido {numero} vezes');\\n}\\n\\nConsole.WriteLine($'O loop acabou');\\n\\n/*Resultado:\\n O código foi repetido 1 vezes\\n O código foi repetido 2 vezes\\n O código foi repetido 3 vezes\\n O código foi repetido 4 vezes\\n O código foi repetido 5 vezes\\n O loop acabou*/~"
               },
               {
                 "texto": "@Prestou atenção no que estava acontecendo dentro do While?@@Pois bem, aquilo junto da variável “numero” é um operador de Incremento. (já vimos isso antes, hein!)@@Quando estamos utilizando Loops, é muito comum aproveitarmos destes operadores, já que eles nos ajudam a acompanhar facilmente a contagem das repetições;@"
               },
               {
-                "texto": "@Do While:@@Quando a condição de um While retorna False, o bloco de código entre as chaves não roda. Veja no exemplo:@@Exemplo: código que nunca roda@~bool condicao = false;\\n\\nwhile (condicao) // a variável tem o valor de falso, então o código não vai ser executado\\n{\\n    Console.WriteLine('Este texto nunca será exibido');\\n}\\nConsole.WriteLine('Loop concluído');~"
+                "texto": "@Do While:@@Quando a condição de um While retorna False, o bloco de código entre as chaves não roda. Veja no exemplo:@@Exemplo: código que nunca roda@~bool condicao = false;\\n\\nwhile (condicao) // a variável tem o valor de falso, então o código não vai ser executado\\n{\\n   Console.WriteLine('Este texto nunca será exibido');\\n}\\nConsole.WriteLine('Loop concluído');~"
               },
               {
-                "texto": "@Porém, quando utilizamos o Do While, o código entre as chaves executa antes que verificação da condição.@@Ou seja, mesmo que a condição retornar False, o código ainda sim vai rodar, pelo menos uma vez@@Sintaxe:@~do {\\n    // código será executado\\n} while (condicao); // depois que o código é executado, verifica a condição~@Quando a condição é verificada, o código nas chaves já foi executado.@@Assim como o While, se a condição retornar True, o código vai se repetir até retornar False@@Quando retorna False, o loop para e o código continua.@"
+                "texto": "@Porém, quando utilizamos o Do While, o código entre as chaves executa antes que verificação da condição.@@Ou seja, mesmo que a condição retornar False, o código ainda sim vai rodar, pelo menos uma vez@@Sintaxe:@~do {\\n   // código será executado\\n} while (condicao); // depois que o código é executado, verifica a condição~@Quando a condição é verificada, o código nas chaves já foi executado.@@Assim como o While, se a condição retornar True, o código vai se repetir até retornar False@@Quando retorna False, o loop para e o código continua.@"
               },
               {
                 "texto": "@Exemplo:~bool condicao = false;\\n\\ndo {\\nConsole.WriteLine('Este texto irá aparecer apenas uma vez');\\n} while (condicao);\\n\\nConsole.WriteLine('Loop concluído');\\n\\n/*\\nResultado:\\nEste texto irá aparecer apenas uma vez\\nLoop concluído\\n*/~"
@@ -516,21 +516,21 @@
                 "texto": "@O campo de condição do for funciona como uma condição normal.@@Enquanto a condição neste campo retornar True, o bloco de código entre as chaves continuará repetindo.@@O campo de interação do laço for é onde fazemos a interação com a variável do campo de inicialização.@@Aqui, podemos utilizar os operadores de incremento/decremento para fazer a modificação da variável@"
               },
               {
-                "texto": "@não se limitando a apenas estes operadores, é claro.@@Exemplo:@~for (int i = 0; i <= 5; i++) {\\nConsole.WriteLine(i);\\n}\\n\\n/* Resultado:\\n   0\\n   1\\n   2\\n   3\\n   4\\n 5*/~@Dica: Em muitos laços de repetição, vemos o uso do nome “i” para a variável de inicialização@@Esta padronização existe para tornar mais fácil a leitura do código para outros programadores.@@Em códigos que tenham loops dentro de loops, podemos ver o uso de letras como ‘j’, ‘k’ e entre outros, seguindo essa mesma ideia.@"
+                "texto": "@não se limitando a apenas estes operadores, é claro.@@Exemplo:@~for (int i = 0; i <= 5; i++) {\\nConsole.WriteLine(i);\\n}\\n\\n/* Resultado:\\n  0\\n  1\\n  2\\n  3\\n  4\\n5*/~@Dica: Em muitos laços de repetição, vemos o uso do nome “i” para a variável de inicialização@@Esta padronização existe para tornar mais fácil a leitura do código para outros programadores.@@Em códigos que tenham loops dentro de loops, podemos ver o uso de letras como ‘j’, ‘k’ e entre outros, seguindo essa mesma ideia.@"
               },
               {
                 "texto": "@Loops Encadeados:@@Os loops encadeados acontecem quando fazemos laços dentro de laços. Veja só:@@Exemplo:@"
               },
               {
-                "texto": "@~for(int i = 1; i <= 3 ;i++){\\n  Console.WriteLine($'Repetição número {i} do primeiro laço');\\nfor (int j = 1; j <= 3; j++){\\n Console.WriteLine($'---- Repetição número {j} do segundo laço');\\n  }\\n}\\n\\n/* Retorna:\\nRepetição número 1 do primeiro laço\\n---- Repetição número 1 do primeiro laço\\n---- Repetição número 2 do primeiro laço\\n---- Repetição número 3 do primeiro laço\\nRepetição número 2 do primeiro laço\\n---- Repetição número 1 do primeiro laço\\n---- Repetição número 2 do primeiro laço\\n---- Repetição número 3 do primeiro laço\\nRepetição número 3 do primeiro laço\\n---- Repetição número 1 do primeiro laço\\n---- Repetição número 2 do primeiro laço\\n---- Repetição número 3 do primeiro laço\\n*/~"
+                "texto": "@~for(int i = 1; i <= 3 ;i++){\\n Console.WriteLine($'Repetição número {i} do primeiro laço');\\nfor (int j = 1; j <= 3; j++){\\nConsole.WriteLine($'---- Repetição número {j} do segundo laço');\\n }\\n}\\n\\n/* Retorna:\\nRepetição número 1 do primeiro laço\\n---- Repetição número 1 do primeiro laço\\n---- Repetição número 2 do primeiro laço\\n---- Repetição número 3 do primeiro laço\\nRepetição número 2 do primeiro laço\\n---- Repetição número 1 do primeiro laço\\n---- Repetição número 2 do primeiro laço\\n---- Repetição número 3 do primeiro laço\\nRepetição número 3 do primeiro laço\\n---- Repetição número 1 do primeiro laço\\n---- Repetição número 2 do primeiro laço\\n---- Repetição número 3 do primeiro laço\\n*/~"
               }
             ]
           },
           {
             "nomeAulaOuExercicio": "Exercício 1",
             "Type": "Exercicio",
-            "Texto": "Escreva um sistema de tabuada utilizando de laço de repetição que você aprendeu nas aulas anteriores, para que o exercício possa ser concluído siga este padrão de tabuada no seu Console.WriteLine(); : \n n + “ x “ + i + “ = “ + resultado, faça a tabuada do 5 para poder prosseguir",
-            "Output": "0 = 5 x 0\n 5 = 5 x 1\n 10 = 5 x 2\n 15 = 5 x 3\n 20 = 5 x 4\n 25 = 5 x 5\n 30 = 5 x 6\n 35 = 5 x 7\n 40 = 5 x 8\n 45 = 5 x 9\n 50 = 5 x 10",
+            "Texto": "Escreva um sistema de tabuada utilizando de laço de repetição que você aprendeu nas aulas anteriores, para que o exercício possa ser concluído siga este padrão de tabuada no seu Console.WriteLine(); :\nn + “ x “ + i + “ = “ + resultado, faça a tabuada do 5 para poder prosseguir",
+            "Output": "0 = 5 x 0\n5 = 5 x 1\n10 = 5 x 2\n15 = 5 x 3\n20 = 5 x 4\n25 = 5 x 5\n30 = 5 x 6\n35 = 5 x 7\n40 = 5 x 8\n45 = 5 x 9\n50 = 5 x 10",
             "Setup": "int n = 5;//Variavel que vai ser utilizada para as contas"
           },
           {
@@ -568,7 +568,7 @@
                 "texto": "@Num caso onde queira imprimir tudo, a forma recomendada é utilizar um laço de repetição para passar por todos os valores do array.@@Dica: não se esqueça de usar a propriedade .Length ! Esse comando, quando utilizado com strings, retorna o tamanho da variável (a quantidade de caracteres). Porém, quando é usado com arrays, ele retorna a quantidade de valores na “lista”.@@Guarde essa informação numa variável do tipo int e utilize-a como condição no seu laço de repetição, assim você garante que o laço não vai ultrapassar a quantidade de valores da array e causar um erro!@"
               },
               {
-                "texto": "@Exemplo:@~string[] nomes = { 'Miguel', 'Gabriel', 'Vitor', 'Matheus', 'Luis' };// array de nomes aleatórios\\n\\nint tamanhoArray = nomes.Length;// tamanho do array nomes, ou seja, a variável tem o valor de 5\\n\\nfor (int i = 0; i < tamanhoArray; i++) {\\n(Console.WriteLine(nomes[i]); // imprime o nome com index na variavel i\\n}\\n/*\\n Retorna:\\nMiguel\\nGabriel\\nVitor\\nMatheus\\nLuis\\n*/~"
+                "texto": "@Exemplo:@~string[] nomes = { 'Miguel', 'Gabriel', 'Vitor', 'Matheus', 'Luis' };// array de nomes aleatórios\\n\\nint tamanhoArray = nomes.Length;// tamanho do array nomes, ou seja, a variável tem o valor de 5\\n\\nfor (int i = 0; i < tamanhoArray; i++) {\\n(Console.WriteLine(nomes[i]); // imprime o nome com index na variavel i\\n}\\n/*\\nRetorna:\\nMiguel\\nGabriel\\nVitor\\nMatheus\\nLuis\\n*/~"
               },
               {
                 "texto": "@Strings funcionam como Arrays:@@Sabia que podemos usar indexes em strings?@@Sim, as strings funcionam como um array de caracteres!@@Utilizando-se da mesma sintaxe do array para imprimir um certo valor, podemos utilizar dos colchetes para imprimir um caractere específico. Olha só:@@Exemplo:@~string texto = 'hello world';\\nConsole.WriteLine(texto[1]) ; // Retorna: “e”~"
@@ -589,10 +589,10 @@
                 "texto": "@Veja o exemplo para ver como se criar um array multidimensional!@@Sintaxe:@~<tipo da variavel>[,] (para transformar o array em multidimensional, você precisa da vírgula) <nome> = { {valores}, {valores} }~@Exemplo:@~int[,] varNum = { { 1, 2, 3 }, { 4, 5, 6 } };// array varNum com duas dimensões~@Para imprimirmos o valor de um array multidimensional, precisamos escolher o index da dimensão.@@Pois é! Quando o array é multidimensional, as dimensões dentro dela possuem seu próprio index.@"
               },
               {
-                "texto": "@Exemplo:@~/* index das dimensões:\\n                             0            1      */\\nint[,] varNum = { { 1, 2, 3 }, { 4, 5, 6 } };\\n\\nConsole.WriteLine(varNum[0, 0]); // Retorna: 1\\nConsole.WriteLine(varNum[0, 1]); // Retorna: 2\\n\\nConsole.WriteLine(varNum[1, 0]); // Retorna: 4\\nConsole.WriteLine(varNum[1, 1]); // Retorna: 5\\n\\n\\nMais um exemplo:\\n/* index das dimensões:\\n                          0            1      */\\nint[,] varNum = { { 1, 2, 3 }, { 4, 5, 6 } };\\n\\nfor (int i = 0; i <= 1; i++)\\n {\\n     for (int j = 0; j <= 2; j++)\\n    {\\n        Console.WriteLine(varNum[i, j]);\\n   }\\n }\\n\\n/* Retorna:\\n 1\\n 2\\n 3\\n 4\\n 5\\n 6\\n/*~@@Index array:@~string[] varArray = { 'palavra0', 'palavra1', 'palavra2', 'palavra3' };\\nConsole.WriteLine(Array.IndexOf(varArray, 'palavra2')); // Retorna: 2@Agora, o Array.IndexOf pode ser utilizado para outros tipos de array, como, por exemplo, int:@~int[] varNum = {12,65,22,13,4};\\nConsole.WriteLine(Array.IndexOf(varNum, 22)); // Retorna: 2~"
+                "texto": "@Exemplo:@~/* index das dimensões:\\n                             0            1      */\\nint[,] varNum = { { 1, 2, 3 }, { 4, 5, 6 } };\\n\\nConsole.WriteLine(varNum[0, 0]); // Retorna: 1\\nConsole.WriteLine(varNum[0, 1]); // Retorna: 2\\n\\nConsole.WriteLine(varNum[1, 0]); // Retorna: 4\\nConsole.WriteLine(varNum[1, 1]); // Retorna: 5\\n\\n\\nMais um exemplo:\\n/* index das dimensões:\\n                          0            1      */\\nint[,] varNum = { { 1, 2, 3 }, { 4, 5, 6 } };\\n\\nfor (int i = 0; i <= 1; i++)\\n{\\n     for (int j = 0; j <= 2; j++)\\n    {\\n        Console.WriteLine(varNum[i, j]);\\n   }\\n}\\n\\n/* Retorna:\\n1\\n2\\n3\\n4\\n5\\n6\\n/*~@@Index array:@~string[] varArray = { 'palavra0', 'palavra1', 'palavra2', 'palavra3' };\\nConsole.WriteLine(Array.IndexOf(varArray, 'palavra2')); // Retorna: 2@Agora, o Array.IndexOf pode ser utilizado para outros tipos de array, como, por exemplo, int:@~int[] varNum = {12,65,22,13,4};\\nConsole.WriteLine(Array.IndexOf(varNum, 22)); // Retorna: 2~"
               },
               {
-                "texto": "@Arrays multidimensional:@@No C# e em várias outras linguagens de programação, existem arrays com mais de uma dimensão.@@Mas, como assim mais de uma dimensão?@@Dizer assim parece complicado, mas não é tanto! Olha só...@@As dimensões de um array seria onde os valores estão armazenados, ou seja, as chaves “{}”.@@Um array multidimensional seria quando possuímos mais de uma dimensão (basicamente chaves dentro de chaves!), funcionando consequentemente como uma tabela ou matriz.@@Veja o exemplo para ver como se criar um array multidimensional!@@Sintaxe:@~<tipo da variavel>[,] (para transformar o array em multidimensional, você precisa da vírgula) <nome> = { {valores}, {valores} }~@Exemplo:@~int[,] varNum = { { 1, 2, 3 }, { 4, 5, 6 } };\\n// array varNum com duas dimensões~@Para imprimirmos o valor de um array multidimensional, precisamos escolher o index da dimensão.@@Pois é! Quando o array é multidimensional, as dimensões dentro dela possuem seu próprio index.@@Exemplo:@~/* index das dimensões:\\n                           0            1      */\\nint[,] varNum = { { 1, 2, 3 }, { 4, 5, 6 } };\\n\\nConsole.WriteLine(varNum[0, 0]); // Retorna: 1\\nConsole.WriteLine(varNum[0, 1]); // Retorna: 2\\n\\nConsole.WriteLine(varNum[1, 0]); // Retorna: 4\\nConsole.WriteLine(varNum[1, 1]); // Retorna: 5~@Mais um exemplo@~/* index das dimensões:\\n                           0            1      */\\n int[,] varNum = { { 1, 2, 3 }, { 4, 5, 6 } };\\n\\nfor (int i = 0; i <= 1; i++)\\n{\\nfor (int j = 0; j <= 2; j++)\\n {\\n      Console.WriteLine(varNum[i, j]);\\n  }\\n}\\n\\n/* Retorna:\\n1\\n2\\n3\\n4\\n5\\n6\\n/*~"
+                "texto": "@Arrays multidimensional:@@No C# e em várias outras linguagens de programação, existem arrays com mais de uma dimensão.@@Mas, como assim mais de uma dimensão?@@Dizer assim parece complicado, mas não é tanto! Olha só...@@As dimensões de um array seria onde os valores estão armazenados, ou seja, as chaves “{}”.@@Um array multidimensional seria quando possuímos mais de uma dimensão (basicamente chaves dentro de chaves!), funcionando consequentemente como uma tabela ou matriz.@@Veja o exemplo para ver como se criar um array multidimensional!@@Sintaxe:@~<tipo da variavel>[,] (para transformar o array em multidimensional, você precisa da vírgula) <nome> = { {valores}, {valores} }~@Exemplo:@~int[,] varNum = { { 1, 2, 3 }, { 4, 5, 6 } };\\n// array varNum com duas dimensões~@Para imprimirmos o valor de um array multidimensional, precisamos escolher o index da dimensão.@@Pois é! Quando o array é multidimensional, as dimensões dentro dela possuem seu próprio index.@@Exemplo:@~/* index das dimensões:\\n                           0            1      */\\nint[,] varNum = { { 1, 2, 3 }, { 4, 5, 6 } };\\n\\nConsole.WriteLine(varNum[0, 0]); // Retorna: 1\\nConsole.WriteLine(varNum[0, 1]); // Retorna: 2\\n\\nConsole.WriteLine(varNum[1, 0]); // Retorna: 4\\nConsole.WriteLine(varNum[1, 1]); // Retorna: 5~@Mais um exemplo:@~/* index das dimensões:\\n                           0            1      */\\nint[,] varNum = { { 1, 2, 3 }, { 4, 5, 6 } };\\n\\nfor (int i = 0; i <= 1; i++)\\n{\\nfor (int j = 0; j <= 2; j++)\\n{\\n      Console.WriteLine(varNum[i, j]);\\n }\\n}\\n\\n/* Retorna:\\n1\\n2\\n3\\n4\\n5\\n6\\n/*~"
               }
 
             ]
@@ -603,7 +603,7 @@
             "Type": "Exercicio",
             "Texto": "Crie arrays de acordo com as especificações:",
             "Output": "coxinha\nmacaco\ncomputador",
-            "Setup": "// Array chamado “comidas”, contendo as seguintes comidas, em ordem: macarrão, sopa, coxinha, pão de queijo, tapioca.\\n // Array chamado “animais”, contendo os seguintes animais, em ordem: gato, cavalo, cachorro, vaca, macaco, flamingo. \\n // Array chamado “objetos”, contendo obrigatoriamente 5 elementos, sendo eles, em ordem: porta, mesa, caderno, cadeira, computador. \\n //Para passar desse exercício você, usando do Console.WriteLine(), deve colocar no console os seguintes elementos de cada array\\n // comidas:coxinha\\n Console.WriteLine();\\n // animais: macaco\\n Console.WriteLine();\\n // objetos: computador\\n Console.WriteLine();\\n"
+            "Setup": "// Array chamado “comidas”, contendo as seguintes comidas, em ordem: macarrão, sopa, coxinha, pão de queijo, tapioca.\\n// Array chamado “animais”, contendo os seguintes animais, em ordem: gato, cavalo, cachorro, vaca, macaco, flamingo. \\n// Array chamado “objetos”, contendo obrigatoriamente 5 elementos, sendo eles, em ordem: porta, mesa, caderno, cadeira, computador. \\n//Para passar desse exercício você, usando do Console.WriteLine(), deve colocar no console os seguintes elementos de cada array\\n// comidas:coxinha\\nConsole.WriteLine();\\n// animais: macaco\\nConsole.WriteLine();\\n// objetos: computador\\nConsole.WriteLine();\\n"
           },
 
           {
