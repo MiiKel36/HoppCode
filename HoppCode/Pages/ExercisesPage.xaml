@@ -8,27 +8,32 @@
     <!--Playground/Code part-->
     <AbsoluteLayout >
        
-            <ScrollView ZIndex="1" WidthRequest="300" HeightRequest="200" 
-                    TranslationX="530"
-                    TranslationY="250"
+            <ScrollView ZIndex="1" WidthRequest="300" HeightRequest="250"
+                     
+                    TranslationX="50"
+                    TranslationY="300"
                     x:Name="scrollViewIputSection"
                     IsVisible="false"
                     >
             <Frame  
-               BackgroundColor="Red"  
+               BackgroundColor="#63329B"  
                CornerRadius="10"
                Margin="0,0,10,0">
 
 
-            <StackLayout Spacing="10" Padding="0,0,0,0">
+            <StackLayout Spacing="10" Padding="0,10,0,0">
                 <StackLayout Orientation="Horizontal">
 
                     <Label Text="Coloque seus valores do Console.ReadLine() aqui. Siga a ordem que aparece no seu código" 
                             TranslationY="-10"  FontSize="16" WidthRequest="200"/>
                     
                     <Button Text="X" HorizontalOptions="End" 
-                            WidthRequest="20" HeightRequest="20" 
-                            TranslationY="-30" TranslationX="25"
+                            WidthRequest="30" HeightRequest="30" 
+                            TranslationY="-39" TranslationX="20"
+                            FontSize="17"
+                            BackgroundColor="#492C74"
+                            TextColor="White"
+                            Padding="0"
                             Clicked="TurnIputSectionInvisible"/>
                      
                 </StackLayout>
@@ -69,14 +74,14 @@
                     HeightRequest="80" 
                     Clicked="ChangePage" x:Name ="btnExercisePart" ClassId="exercisePart" 
                     CornerRadius="0" 
-                    Background="#301D72" 
+                    Background="#492EA8" 
                     TextColor="White"/>
 
                 <Button Text="Código"    
                     FontSize="16" Grid.Column="1" 
                     Clicked="ChangePage" x:Name ="btnCodePart" ClassId="codePart"   
                     CornerRadius="0" 
-                    Background="#492EA8" 
+                    Background="#301D72" 
                     TextColor="White"/>
 
                 <Button Text="Saida"     
@@ -89,7 +94,7 @@
             </Grid>
         
         <!--Onde fica o editor do código-->
-            <StackLayout Orientation="Vertical" Background="#311850"  x:Name="codePart" IsVisible="true" >
+            <StackLayout Orientation="Vertical" Background="#311850"  x:Name="codePart" IsVisible="false" >
                 <ScrollView Background="#311850" >
                     <WebView x:Name="editorWebView" HeightRequest="520" WidthRequest="400" IsVisible="true" Source="aceeditor.html" Margin="0,0,0,35"/>
                 </ScrollView>
@@ -98,7 +103,7 @@
                 <!--Botão de execução de código-->
                 <StackLayout Orientation="Horizontal" >
                     <Button Text="Run" 
-                        Background="#63329B" 
+                        BackgroundColor="#63329B" 
                         HorizontalOptions="EndAndExpand" 
                         WidthRequest="120" HeightRequest="50" 
                         Clicked="RunCode" x:Name="btnRun" 
@@ -128,10 +133,10 @@
                 </ScrollView>
 
 
-                <Frame WidthRequest="300" HeightRequest="150"  HorizontalOptions="Center" VerticalOptions="Start" Margin="0,25,0,0" BackgroundColor="#4D2996" BorderColor="Transparent" Grid.Row="1">
+                <Frame x:Name="frameDeVerificacao" IsVisible="false" WidthRequest="300" HeightRequest="150"  HorizontalOptions="Center" VerticalOptions="Start" Margin="0,25,0,0" BackgroundColor="#4D2996" BorderColor="Transparent" Grid.Row="1">
                     <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10">
-                        <Label Text="Parabéns, Você acertou"  FontSize="20" HorizontalOptions="StartAndExpand" VerticalOptions="Start" TextColor="#00BB45" />
-                        <Button Text="Passar" WidthRequest="100" HeightRequest="50" HorizontalOptions="EndAndExpand" VerticalOptions="Start" BackgroundColor="#3E217B" TextColor="White" />
+                        <Label x:Name="lblDeVerificacao" Text="Parabéns, Você acertou"  FontSize="20" HorizontalOptions="StartAndExpand" VerticalOptions="Start" />
+                        <Button x:Name="btnPassarPraProxima" Text="Passar" WidthRequest="100" HeightRequest="50" HorizontalOptions="EndAndExpand" VerticalOptions="Start" BackgroundColor="#3E217B" TextColor="White" Clicked="NextPage"/>
                     </StackLayout>
                 </Frame>
 
@@ -139,9 +144,9 @@
 
 
             <!--Exercise explanation part-->
-            <ScrollView Orientation="Vertical" BackgroundColor="Transparent" IsVisible="false" x:Name="exercisePart" Padding="20">
+            <ScrollView Orientation="Vertical" BackgroundColor="Transparent" IsVisible="true" x:Name="exercisePart" Padding="20">
                 <Frame WidthRequest="350" BackgroundColor="#63329B" BorderColor="Transparent">
-                    <Label Text="Usando o conhecimento adquirido até agora, digite um código que faça a frase “Olá Mundo!” aparecer no console." FontSize="20" />
+                    <Label x:Name="lblExercicioTxt" FontSize="20" />
 
                 </Frame>
             </ScrollView>

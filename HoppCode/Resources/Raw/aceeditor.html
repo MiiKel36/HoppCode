@@ -32,12 +32,21 @@ public class Exercicio
 }
 </pre>
 
-<script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-<script>
-    var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/one_dark");
-    editor.session.setMode("ace/mode/csharp");
-</script>
+    <script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/one_dark");
+        editor.session.setMode("ace/mode/csharp");
+        editor.session.setUseWrapMode(true);
+        editor.session.wrap("free");
+    </script>
+
+    <script>
+
+        function SetTextOnCodeEditor(textToCode) {
+            editor.setValue(textToCode);
+        }
+    </script>
 
 </body>
 </html>

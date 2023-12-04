@@ -1,6 +1,7 @@
 using HoppCode.Classes;
 
 namespace HoppCode.Pages;
+
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System;
@@ -10,29 +11,28 @@ using System.Threading.Tasks;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls.Shapes;
+using Newtonsoft.Json;
+using Microsoft.Maui.Platform;
 
 public partial class ExercisesPage : ContentPage
 {
-    /*
-        LIST TO DO:
 
-            Modfy the json{
-                Adicionar parte de exercicios, dentro dos exercicios será uma string, 
-                caso tenha mais de uma frase, era separado por "@"
-            };
-            
-            Adicionar WebView para editor de texto;
-            Adicionar Api para compilar código;
-            Adicionar objeto que lê o json e volta frames contendo os textos;
-     */
     List<string> readLineList = new List<string>();
     string classe, aula;
+
+    string exercicioOutput, exercicioSetup;
     public ExercisesPage(string classeFromOtherPage, string aulaFromOtherPage)
     {
         InitializeComponent();
         FunçãoInicial();
+
         classe = classeFromOtherPage;
         aula = aulaFromOtherPage;
+
+        PuxaColocaTextoExercicio();
+        PuxaOutputExercicio();
+
 
     }
 
@@ -46,6 +46,31 @@ public partial class ExercisesPage : ContentPage
 
         ExercisesClass exercisesClass = new ExercisesClass();
         var readJsonAndReturStyle = exercisesClass.ReadJsonAndReturnStyle(ClasseAula[0], ClasseAula[1]);
+
+        editorWebView.Navigated += async (o, s) => {
+
+            string setupJsonCode = await PuxaSetupExercicio();
+            if(setupJsonCode == "null")
+            {
+                setupJsonCode = "//Escreva seu código aqui";
+            }
+
+            string rootCode = @"\nusing System;\npublic class Exercicio\n{\n    public static void Main(string[] args)\n    {\n        "+ setupJsonCode + "\\n\\n    }\\n\\n}";
+
+            editorWebView.Eval($"SetTextOnCodeEditor(\"{rootCode}\");");
+        };
+    }
+
+    public async Task<string> PuxaSetupExercicio()
+    {
+        CreateLocalStorageFolder createFolder = new CreateLocalStorageFolder();
+        string jsonOfAulas = await createFolder.PushAulaJson();
+
+        dynamic objJson = JsonConvert.DeserializeObject(jsonOfAulas);
+
+        string textoExercicio = objJson.cSharp.classes[Convert.ToInt32(classe)].aulas[Convert.ToInt32(aula)].Setup;
+
+        return textoExercicio;
     }
 
     private void ChangePage(object sender, EventArgs e)
@@ -93,6 +118,10 @@ public partial class ExercisesPage : ContentPage
      */
     private async void RunCode(object sender, EventArgs e)
     {
+        //desativa o botão de rodar código
+        btnRun.BackgroundColor = Color.FromRgb(58, 36, 112);
+        btnRun.IsEnabled = false;
+
         //Código do webview
         string editorCode = await editorWebView.EvaluateJavaScriptAsync(@"editor.getValue();");
         string code = returnCode(editorCode);
@@ -105,17 +134,18 @@ public partial class ExercisesPage : ContentPage
         //Adiciona os entry com base em quantos Console.ReadLine() tem no código
         if(numOfReadLines > 0)
         {
-            List<Entry> entrys = ReturnEntryIput(numOfReadLines);
+            List<Border> entrys = ReturnEntryIput(numOfReadLines);
 
-            foreach (Entry entry in entrys)
+            foreach (Border entry in entrys)
             {
                 stackInputs.Add(entry);
             }
 
-            TurnIputSectionVisible();
+            scrollViewIputSection.IsVisible = true;
         }
         else 
         {
+            lblOutput.Text = $"-- O código esta sendo executado --";
             ExecuteCode();
         }
     }
@@ -124,7 +154,7 @@ public partial class ExercisesPage : ContentPage
     {
         string editorCode = await editorWebView.EvaluateJavaScriptAsync(@"editor.getValue();");
         string code = returnCode(editorCode);
-
+        
         SendCodeToApi(code, "");
     }
     //Executa o codigo caso tenha Console.ReadLine()
@@ -161,6 +191,7 @@ public partial class ExercisesPage : ContentPage
         SendCodeToApi(code, codeInput);
         
         readLineList.Clear();
+        scrollViewIputSection.IsVisible = false;
 
     }
 
@@ -179,30 +210,72 @@ public partial class ExercisesPage : ContentPage
         var response = await client.PostAsync("https://codex-api-7q3s.onrender.com/", content);
         var responseString = await response.Content.ReadAsStringAsync();
 
-        var user = JsonSerializer.Deserialize<ResponseData>(responseString);
-        
+        var user = JsonConvert.DeserializeObject<ResponseData>(responseString);
+        string respostaUsuario = user.output;
+        string respostaCortadaUsuario = "";
         //Verificação de erros
+
         if (user.error != "")
         {
-            lblOutput.Text = $"Seu código retornou um erro: \n{responseString}";
+            lblOutput.Text = $"Seu código retornou um erro: \n{user.error}";
+        }
+        else 
+        {
+            lblOutput.Text = respostaUsuario;
+            if(respostaUsuario != "")
+            {
+                respostaCortadaUsuario = respostaUsuario.Substring(0, respostaUsuario.Length - 1);
+            }           
+        }
+        
+        //Realiza a verificação se a resposta no json e a do usuário esta certo
+        string respostaCerta = returnAnswerWithInput();
+        //string respostaUsuario = user.output;
+        
+        if (respostaCerta == respostaCortadaUsuario || respostaCerta == "null")
+        {
+            frameDeVerificacao.IsVisible = true;
+            lblDeVerificacao.Text = "Parabéns, Você acertou";
+            lblDeVerificacao.TextColor = Color.FromRgb(0, 187, 69);
+            btnPassarPraProxima.IsVisible = true;
         }
         else
         {
-            lblOutput.Text = user.output;
+            frameDeVerificacao.IsVisible = true;
+            lblDeVerificacao.Text = "Hmm, infelizmente sua resposta não esta correta";
+            lblDeVerificacao.TextColor = Color.FromRgb(248, 49, 49);
+            btnPassarPraProxima.IsVisible = false;
         }
+
+        
+
+        btnRun.BackgroundColor = Color.FromRgb(99, 50, 155); 
+        btnRun.IsEnabled = true;
     }
-    public List<Entry> ReturnEntryIput(int numOfReadLines)
-    {   List<Entry> entryList = new List<Entry>();
+    public List<Border> ReturnEntryIput(int numOfReadLines)
+    {   List<Border> entryList = new List<Border>();
      
         for (int i = 1; i <= numOfReadLines; i++)
         {
+            Border border = new Border
+            {
+                BackgroundColor = Color.FromRgb(49, 24, 80),
+                StrokeShape = new RoundRectangle
+                {
+                    CornerRadius = new CornerRadius(10, 10, 10, 10)
+                },
+            };
+
             Entry entry = new Entry()
             {
-                BackgroundColor = Colors.Blue,
+                BackgroundColor = Color.FromRgb(49, 24, 80),
+                
                 ClassId = $"entry-{i}",
                 
             };
-            entryList.Add(entry);
+
+            border.Content = entry;
+            entryList.Add(border);
         }
 
         return entryList;
@@ -226,10 +299,11 @@ public partial class ExercisesPage : ContentPage
         return quantidade;
     }
     //Tratação de string para evitar erros
-    static string returnCode(string editorCode)
+    public string returnCode(string editorCode)
     {
+        
         string codigoSemduasBarras = "";
-        for (int i = 0; i < editorCode.Length - 1; i++)
+        for (int i = 0; i < editorCode.Length; i++)
         {
             try
             {
@@ -247,14 +321,14 @@ public partial class ExercisesPage : ContentPage
         string codigoSemBarraN = codigoSemduasBarras.Replace("\\n", "\n");
         string codigoSemBarraAspas = codigoSemBarraN.Replace("\\\"", "\"");
         string codigoComMenorQue = codigoSemBarraAspas.Replace("\\u003C", "<");
-        string codigoFinal = codigoComMenorQue.Substring(0, codigoComMenorQue.Length - 1);
-
+        string codigoFinal = codigoComMenorQue;        
+        
         return codigoFinal;
     }
     //Teste para usar o readLine
-    private string returnAnswerWithOutput()
+    private string returnAnswerWithInput()
     {
-        string outputJson = "{readLineArray[0]} kkk mais um olha {readLineArray[1]}";
+        string outputJson = exercicioOutput;
         // Use alguma lógica para encontrar e substituir os marcadores de posição pelos valores do array.
         for (int i = 0; i < readLineList.Count; i++)
         {
@@ -263,15 +337,41 @@ public partial class ExercisesPage : ContentPage
         }
         return outputJson;
     }
-
-    //Usado quando se clica em rodar o códio
-    public void TurnIputSectionVisible()
+    public async void PuxaOutputExercicio()
     {
-        scrollViewIputSection.IsVisible = true;
+        CreateLocalStorageFolder createFolder = new CreateLocalStorageFolder();
+        string jsonOfAulas = await createFolder.PushAulaJson();
+
+        dynamic objJson = JsonConvert.DeserializeObject(jsonOfAulas);
+
+        string textoExercicio = objJson.cSharp.classes[Convert.ToInt32(classe)].aulas[Convert.ToInt32(aula)].Output;
+
+        exercicioOutput = textoExercicio;
     }
-    //Usado quando se clica no X do IputSection
+    public async void PuxaColocaTextoExercicio()
+    {
+        CreateLocalStorageFolder createFolder = new CreateLocalStorageFolder();
+        string jsonOfAulas = await createFolder.PushAulaJson();
+
+        dynamic objJson = JsonConvert.DeserializeObject(jsonOfAulas);
+
+        string textoExercicio = objJson.cSharp.classes[Convert.ToInt32(classe)].aulas[Convert.ToInt32(aula)].Texto;
+        lblExercicioTxt.Text = textoExercicio;
+    }
+
+    public void NextPage(object sender, EventArgs e)
+    {
+        string proximaAula = (1 + Convert.ToInt32(aula)).ToString();
+
+        //subAula.WriteJson(proximaAula.ToString());
+
+        //Envia para AulasPage
+        Navigation.PushAsync(new Pages.IdentificarAulaOuExercicio(classe, proximaAula));
+    }
     public void TurnIputSectionInvisible(object sender, EventArgs e)
     {
+        btnRun.BackgroundColor = Color.FromRgb(99, 50, 155);
+        btnRun.IsEnabled = true;
         scrollViewIputSection.IsVisible = false;
     }
     private void Button_Clicked_1(object sender, EventArgs e)

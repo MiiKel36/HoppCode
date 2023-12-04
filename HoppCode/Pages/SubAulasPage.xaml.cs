@@ -31,6 +31,13 @@ public partial class SubAulasPage : ContentPage
         HorizontalOptions = LayoutOptions.End,
     };
 
+    WebView webViewParNumLinhas = new WebView()
+    {
+        Source = "aceeditor2.html",
+        MinimumHeightRequest = 100,
+        IsVisible = false,
+    };
+
     public SubAulasPage(string classeFromOtherPage, string aulaFromOtherPage)
 	{
 		InitializeComponent();
@@ -61,6 +68,7 @@ public partial class SubAulasPage : ContentPage
         foreach (Frame frame in styleList[subAulasPage])
         { StackSubAulas.Add(frame); }
 
+        StackSubAulas.Add(webViewParNumLinhas);
         StackMascote.Add(mascotImage);
     }
 
@@ -172,24 +180,28 @@ public partial class SubAulasPage : ContentPage
                 WebView webView = new WebView()
                 {
                     Source = "aceeditor2.html",
-
+                    MinimumHeightRequest = 100,
                 };
-                webView.Navigated += (o, s) => {
+                webView.Navigated += async (o, s) => {
+
                     string textFromLista = listaDosTextos[subAulasPage][labelId - 1];
+
                     webView.Eval($"SetTextOnCodeEditor(\"{textFromLista}\");");
 
-                    int numOfLines = textFromLista.Split("\\n").Length - 1;
+                    string strNumOfLines = await webView.EvaluateJavaScriptAsync("editor.session.getLength();");
+
+                    int numOfLines = Convert.ToInt32(strNumOfLines);
                     int sizeOfWemView = (numOfLines * 15) + 30;
 
                     webView.HeightRequest = sizeOfWemView;
                     frame.HeightRequest = sizeOfWemView;
+
                     //Console.WriteLine(listaDosTextos[10000]);
                 };
 
                 if (frameId.Substring(0, 1) == "C")
                 {
-                    frame.WidthRequest = 100;
-                    frame.HeightRequest = 100;
+                    frame.MinimumHeightRequest = 100;
                     frame.Content = webView;
                     frame.IsVisible = true;
                 }
@@ -208,7 +220,7 @@ public partial class SubAulasPage : ContentPage
     {
         // Função que anima o pulinho do mascote (e a saída da tela também)
         double originalTranslationY = mascotImage.TranslationY;
-        if (labelId <= 2)
+        if (labelId < 2)
         {
             await mascotImage.TranslateTo(0, originalTranslationY - 50, 200, Easing.CubicOut);
             await mascotImage.TranslateTo(0, originalTranslationY, 200, Easing.CubicIn);
@@ -248,22 +260,30 @@ public partial class SubAulasPage : ContentPage
                     WebView webView = new WebView()
                     {
                         Source = "aceeditor2.html",
+                        MinimumHeightRequest = 100,
                     };
-                    webView.Navigated += (o, s) => {
+                    webView.Navigated += async (o, s) => {
+                        
                         string textFromLista = listaDosTextos[subAulasPage][labelId - 1];
+
                         webView.Eval($"SetTextOnCodeEditor(\"{textFromLista}\");");
-                        
-                        int numOfLines = textFromLista.Split("\\n").Length - 1;
+                       
+                        string strNumOfLines = await webView.EvaluateJavaScriptAsync("editor.session.getLength();");
+
+                        int numOfLines = Convert.ToInt32(strNumOfLines);
                         int sizeOfWemView = (numOfLines * 15) + 30;
-                        
+
                         webView.HeightRequest = sizeOfWemView;
                         frame.HeightRequest = sizeOfWemView;
+                        
+
                         //Console.WriteLine(listaDosTextos[10000]);
                     };
 
                     //Caso o balão de texto seja de codigo
                     if (frameId.Substring(0, 1) == "C")
                     {
+                        frame.MinimumHeightRequest = 100;
                         frame.Content = webView;
                         frame.IsVisible = true;
                     }
@@ -313,66 +333,6 @@ public partial class SubAulasPage : ContentPage
     protected override bool OnBackButtonPressed()
     {
         return true;
-    }
-
-    public FormattedString ReturnFormattedText(string code)
-    {
-        FormattedString formattedString = new FormattedString();
-        int stringLen = (code.Length - 1);
-      
-        for (int j = 0; j <= stringLen; j++)
-        {
-            try
-            {
-                if (code.Substring(j, 2) == "if")
-                {
-                    formattedString.Spans.Add(new Span { Text = "if ", TextColor = Colors.Purple });
-                    j += 1;
-                }
-                else if (code.Substring(j, 7) == "Console")
-                {
-                    formattedString.Spans.Add(new Span { Text = "Console ", TextColor = Colors.Green });
-                    j += 6;
-                }
-                else if (code.Substring(j, 9) == "WriteLine")
-                {
-                    formattedString.Spans.Add(new Span { Text = "WriteLine ", TextColor = Colors.Yellow });
-                    j += 8;
-                }
-                else if (code.Substring(j, 1) == "\"")
-                {
-                    string stringToAdd = null;
-                    int num = (j + 1);
-
-                    stringToAdd += "\"";
-                    while (code[num] != '\"')
-                    {
-                        stringToAdd += code[num];
-                        num++;
-                    }
-                    stringToAdd += "\"";
-                    formattedString.Spans.Add(new Span { Text = stringToAdd, TextColor = Colors.Orange });
-                    j = num;
-                }
-                else
-                {
-                    formattedString.Spans.Add(new Span { Text = code[j].ToString(), TextColor = Colors.White });
-                }
-            }
-
-
-            catch (System.IndexOutOfRangeException)
-            {
-                formattedString.Spans.Add(new Span { Text = code[j].ToString(), TextColor = Colors.White });
-            }
-            catch (System.ArgumentOutOfRangeException)
-            {
-                formattedString.Spans.Add(new Span { Text = code[j].ToString(), TextColor = Colors.White });
-            }
-        }
-
-        return formattedString;
-
     }
 
     public static void IsEnableOrNotButton(bool IsOrNot, Button button)
