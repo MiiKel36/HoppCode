@@ -370,56 +370,53 @@
         "nome": "Condicionais",
         "aulas": [
           {
+            "nomeAulaOuExercicio": "Operadores de Comparação",
+            "Type": "Aula",
+            "subAulas": [
+              {
+                "texto": "@Os Operadores de Comparação são utilizados para fazer a comparação entre dois valores, retornando Verdadeiro (True) ou Falso (False), dependendo da comparação feita.@@No C#, possuímos 4 tipos de Operadores de Comparação, sendo eles:@~== | Igual a\\n>   | Maior que\\n<   | Menor que\\n>= | Maior ou igual que\\n<= | Menor ou igual que\\n!=  | Diferente de~@Para usarmos os operadores, utilizamos a seguinte sintaxe: <Primeira variável>, seguido do <operador> e, por último, a <Segunda variável>@Vamos ver cada um com calma...@"
+              },
+              {
+                "texto": "@O \"igual a\" (=) verifica se a primeira variável é igual a segunda e, se verdadeiro, retorna True. Caso contrário, retorna False.@@Exemplo:@~int a = 10;\\nint b = 10;\\nint c = 15;\\n\\nConsole.WriteLine(a == b); // Retorna True -- 10 é igual a 10? - Verdadeiro\\n\\nConsole.WriteLine(a == c); // Retorna False -- 10 é igual a 15? – Falso~"
+              },
+              {
+                "texto": "@O \"Maior/Menor que\" (>/<) verifica se a primeira variável é maior ou menor que a segunda e, se verdadeiro, retorna True. Se não, retorna False.@@Exemplo:@~int a = 5;\\nint b = 10;\\n\\nConsole.WriteLine(a > b); // Retorna False -- 5 é maior que 10? - Falso\\n\\nConsole.WriteLine(a < b); // Retorna True -- 10 é maior que 5? - Verdadeiro~"
+              },
+              {
+                "texto": "@O \"Maior/Menor que ou Igual a\" (>=/<=) funciona justamente como uma junção do \"Maior/Menor que\" e o \"igual a\"!@@Se a primeira variável for maior/menor que a segunda ou é igual a segunda, retorna True, se não, retorna False. Veja:@~int a = 5;\\nint b = 15;\\nint c = 15;\\n\\nConsole.WriteLine(a <= b); // Retorna True -- 5 é menor ou igual a 15? - Verdadeiro\\n\\nConsole.WriteLine(b >= c); // Retorna True -- 15 é maior ou igual a 15? – Verdadeiro\\n\\nConsole.WriteLine(a >= b); // Retorna False -– 5 é maior ou igual a 15? - Falso~"
+              },
+              {
+                "texto": "@O \"Diferente de\" (!=) verifica se a primeira variável é diferente da segunda. Se sim, retorna True, se não, retorna False.@@Exemplo:@~int a = 10;\\nint b = 10;\\nint c = 15;\\n\\nConsole.WriteLine(a != b); // Retorna False -- 10 é diferente de 10? - Falso\\n\\nConsole.WriteLine(a != c); // Retorna True -- 10 é diferente de 15? - Verdadeiro~"
+              },
+              {
+                "texto": "@Os operadores Lógicos funcionam como um complemento para os Operadores de Comparação, podendo fazer duas ou mais comparações de uma vez!@@Existem 3 Operadores Lógicos fundamentais:@~&& | E\\n|| | Ou\\n! | Contrário~@Vamos analisar cada um deles!@"
+              },
+              {
+                "texto": "@\"E\" (&&) verifica se duas ou mais condições são todas Verdadeiras. Se não forem, retorna False.@@Exemplo:@~int idadeMaria = 14;\\nint idadePaula = 14;\\nint idadeJonas = 12;\\n\\nConsole.WriteLine(idadeMaria == idadePaula); // Retorna True -- 14 é igual a 14? - Verdadeiro\\n\\nConsole.WriteLine(idadeMaria == idadePaula && idadeMaria == idadeJonas); // Retorna False -- 14 é igual a 14 *E* 14 é igual a 12? - Falso~"
+              },
+              {
+                "texto": "@\"Ou\" ( || ) verifica se uma condição é verdadeira. Se não é, verifica se a outra condição é verdadeira.@@Contanto que uma das duas seja verdadeira, a verificação retornará True. Se nenhuma é verdadeira, retorna False.@~string JoaoSobrenome = 'marques';\\nstring pedroSobrenome = 'pereira';\\nstring PaulaSobrenome = 'marques';\\n\\nConsole.WriteLine(JoaoSobrenome == pedroSobrenome ); // Retorna False -- marques *É IGUAL A* pereira? - Falso\\n\\nConsole.WriteLine(JoaoSobrenome == pedroSobrenome || JoaoSobrenome == PaulaSobrenome); // Retorna True -- marques *É IGUAL A* pereira *OU* marques *É IGUAL A* marques? - Verdadeiro~"
+              },
+              {
+                "texto": "@O \"Contrário\" ( ! ) pega uma variável do tipo bool e inverte seu valor. Se for True vira False, e se for False vira True. (cuidado para não se confundir!)@~bool verdadeiro = true;\\n\\nConsole.WriteLine(verdadeiro == true); // Retorna True -- verdadeiro *É IGUAL A* verdadeiro? - Verdadeiro\\n\\nConsole.WriteLine(!verdadeiro == true); // Retorna False -- falso *É IGUAL A* verdadeiro? - Falso~"
+              }
+            ]
+          },
+          {
             "nomeAulaOuExercicio": "IF e ELSE",
             "Type": "Aula",
             "subAulas": [
               {
-                "texto": "@Operadores de Comparação:@@Os operadores de comparação são utilizados para fazer a comparação entre dois valores, retornando o valor de Verdadeiro (True) ou Falso (False), dependendo da comparação feita.@@No C#, possuímos 4 tipos de Operadores de Comparação, sendo eles:@"
+                "texto": "@É a marca registrada do mundo da Ciência da Computação!@@O IF serve na programação para a tomada de decisões baseada em condições.@@Se uma condição retornar Verdadeiro, um pedaço do código será rodado.@@Mas, se for Falso, o código não irá rodar – meio que como se \"não existisse\". A sintaxe é assim:@~If (Condição)\\n{ // código que será rodado };~"
               },
               {
-                "texto": "@== | Igual a\\n>   | Maior que\\n<   | Menor que\\n>= | Maior ou igual que\\n<= | Menor ou igual que\\n!=  | Diferente de@@Para usarmos os Operadores, utilizamos da seguinte sintaxe:@~<Primeira variável>  <operador>  <Segunda variável>~@O \\\"igual a\\\" (=) verifica se a primeira variável é igual a segunda e, se verdadeiro, retorna True. Caso contrário, retorna False.@"
+                "texto": "@Vamos aplicar num exemplo prático:@@Preste atenção, é bastante coisa!@~int idadeJoao = 20;\\nint idadePedro = 15;\\nint idadeJulia = 18;\\n// João é maior que 18 anos, então, o código vai rodar\\n\\nif (idadeJoao >= 18) {\\n// O código vai rodar\\nConsole.WriteLine('João é maior de 18 anos.');\\n}\\n// Pedro é menor que 18 anos, então, o código não vai rodar\\n\\nif (idadePedro >= 18) {\\n// O código não vai rodar\\nConsole.WriteLine('Pedro é maior de 18 anos.');\\n}\\n// Julia é maior que 18 anos, então, o código vai rodar\\n\\nif (idadeJulia >= 18) {\\n// O código vai rodar\\nConsole.WriteLine('Julia é maior de 18 anos.');\\n}\\n\\n/*\\nResultado:\\nJoão é maior de 18 anos\\nJulia é maior de 18 anos\\n*/~"
               },
               {
-                "texto": "@Exemplo,Igual a:@~int a = 10;\\nint b = 10;\\nint c = 15;\\n\\nConsole.WriteLine(a == b); // Retorna True -- 10 é igual a 10? - Verdadeiro\\n\\nConsole.WriteLine(a == c); // Retorna False -- 10 é igual a 15? – Falso~@O \\\"Maior/Menor que\\\" (>/<) verifica se a primeira variável é maior ou menor que a segunda retorna True ou, em caso contrário, retorna False.\\nExemplo,Maior/Menor que:@"
+                "texto": "@Sabemos que quando a condição de um IF retorna False, o código entre as chaves é ignorado.@@O código continua como se não tivesse nada ali.@~int numero = 9;\\n\\nConsole.WriteLine('Texto...');\\n// A condição retorna false\\n\\nif (numero >= 10) {\\nConsole.WriteLine('Número é maior que 10'); // O código não vai rodar\\n}\\n\\n// O código continua\\nConsole.WriteLine('Texto...');\\n\\n/*\\nResultado:\\nTexto...\\nTexto...\\n*/~@Podemos utilizar da palavra ELSE no final de uma estrutura IF para executar um código diferente caso a condição retorne False.@~int idadeJoao = 20;\\nint idadePedro = 15;\\n\\n\\nif (idadeJoao >= 18)\\n{\\n// Se João for maior ou igual a 18 anos, o código escreve 'João é maior de 18 anos'\\nConsole.WriteLine('João é maior de 18 anos');\\n} else {\\n// Se não, o código escreve 'João não é maior de 18 anos'\\nConsole.WriteLine('João não é maior de 18 anos');\\n}\\n\\nif (idadePedro >= 18)\\n{\\n// Se Pedro for maior ou igual a 18 anos, o código escreve 'Pedro é maior de 18 anos'\\nConsole.WriteLine('Pedro é maior de 18 anos');\\n} else {\\n// Se não, o código escreve 'Pedro não é maior de 18 anos'\\nConsole.WriteLine('Pedro não é maior de 18 anos');\\n}\\n\\n/*\\nResultado:\\nJoão é maior de 18 anos\\nPedro não é maior de 18 anos\\n*/~"
               },
               {
-                "texto": "~int a = 5;\\nint b = 10;\\n\\nConsole.WriteLine(a > b); // Retorna False -- 5 é maior que 10? - Falso\\n\\nConsole.WriteLine(a < b); // Retorna True -- 10 é maior que 5? - Verdadeiro~@O \\\"Maior/Menor que ou Igual a\\\" (>=/<=) funciona justamente como uma junção do \\\"Maior/Menor que\\\" e \\\"igual a\\\"!@"
-              },
-              {
-                "texto": "@Se a primeira variável for maior/menor que a segunda ou é igual a segunda, retorna True, se não, retorna False.@@Exemplo,Maior/Menor ou Igual a:@~int a = 5;\\nint b = 15;\\nint c = 15;\\n\\nConsole.WriteLine(a <= b); // Retorna True -- 5 é menor ou igual a 15? - Verdadeiro\\n\\nConsole.WriteLine(b >= c); // Retorna True -- 15 é maior ou igual a 15? – Verdadeiro\\n\\nConsole.WriteLine(a >= b); // Retorna False -– 5 é maior ou igual a 15? - Falso~"
-              },
-              {
-                "texto": "@O \\\"Diferente de\\\" (!=) verifica se a primeira variável for diferente da segunda. Se sim, retorna True, se não, retorna False.@@Exemplo, Diferente de:@~int a = 10;\\nint b = 10;\\nint c = 15;\\n\\nConsole.WriteLine(a != b); // Retorna False -- 10 é diferente de 10? - Falso\\n\\nConsole.WriteLine(a != c); // Retorna True -- 10 é diferente de 15? - Verdadeiro~"
-              },
-              {
-                "texto": "@Operadores Lógicos:@@Os operadores Lógicos funcionam como um complemento para os Operadores de Comparação, podendo fazer duas ou mais comparações de uma vez!@@Existem 3 Operadores Lógicos fundamentais:@@&& | E\\n||   | Ou\\n!      | Contrário@@\\\"E\\\" (&&) verifica se duas ou mais condições são todas Verdadeiras. Se não forem, retorna False.@"
-              },
-              {
-                "texto": "~int idadeMaria = 14;\\nint idadePaula = 14;\\nint idadeJonas = 12;\\n\\nConsole.WriteLine(idadeMaria == idadePaula); // Retorna True -- 14 é igual a 14? - Verdadeiro\\n\\nConsole.WriteLine(idadeMaria == idadePaula && idadeMaria == idadeJonas); // Retorna False -- 14 é igual a 14 *E* 14 é igual a 12? - Falso~@\\\"Ou\\\" ( || ) verifica se uma condição seja verdadeira. Se não é, verifica se a outra condição é verdadeira.@"
-              },
-              {
-                "texto": "@Contanto que uma das duas seja verdadeira, a verificação retornará True. Se nenhuma é verdadeira, retorna False.@~string JoaoSobrenome = 'marques';\\nstring pedroSobrenome = 'pereira';\\nstring PaulaSobrenome = 'marques';\\n\\nConsole.WriteLine(JoaoSobrenome == pedroSobrenome ); // Retorna False -- marques *É IGUAL A* pereira? - Falso\\n\\nConsole.WriteLine(JoaoSobrenome == pedroSobrenome || JoaoSobrenome == PaulaSobrenome); // Retorna True -- marques *É IGUAL A* pereira *OU* marques *É IGUAL A* marques? - Verdadeiro~"
-              },
-              {
-                "texto": "@O \\\"Contrário\\\" ( ! ) pega uma variável bool e inverte seu valor. Se for True vira False, e se for  False vira True. (cuidado para não ficar confuso!)@~bool verdadeiro = true;\\n\\nConsole.WriteLine(verdadeiro == true); // Retorna True -- verdadeiro *É IGUAL A* verdadeiro? - Verdadeiro\\n\\nConsole.WriteLine(!verdadeiro == true); // Retorna False -- falso *É IGUAL A* verdadeiro? - Falso~"
-              },
-              {
-                "texto": "@IF:@@O IF serve na programação para a tomada de decisões baseada em condições.@@Se uma condição retornar Verdadeiro, um pedaço do código irá ser rodado.@@Mas, se for Falso, o código não irá rodar – meio que como se \\\"não existisse\\\".@@Sintaxe:@~If (Condição) {\\n// código que será rodado\\n}~"
-              },
-              {
-                "texto": "@Aqui esta um exemplo:@~int idadeJoao = 20;\\nint idadePedro = 15;\\nint idadeJulia = 18;\\n// João é maior que 18 anos, então, o código vai rodar\\n\\nif (idadeJoao >= 18) {\\n// O código vai rodar\\nConsole.WriteLine('João é maior de 18 anos.');\\n}\\n// Pedro é menor que 18 anos, então, o código não vai rodar\\n\\nif (idadePedro >= 18) {\\n// O código não vai rodar\\nConsole.WriteLine('Pedro é maior de 18 anos.');\\n}\\n// Julia é maior que 18 anos, então, o código vai rodar\\n\\nif (idadeJulia >= 18) {\\n// O código vai rodar\\nConsole.WriteLine('Julia é maior de 18 anos.');\\n}\\n\\n/*\\nResultado:\\nJoão é maior de 18 anos\\nJulia é maior de 18 anos\\n*/~"
-              },
-              {
-                "texto": "@ELSE:@@Quando a condição de um IF retorna False, o código entre as chaves não roda e o código continua como se não existisse nada entre as chaves.@~int numero = 9;\\n\\nConsole.WriteLine('Texto...');\\n// A condição retorna false\\n\\nif (numero >= 10) {\\nConsole.WriteLine('Número é maior que 10'); // O código não vai rodar\\n}\\n\\n// O código continua\\nConsole.WriteLine('Texto...');\\n\\n/*\\nResultado:\\nTexto...\\nTexto...\\n*/~@Podemos utilizar da palavra ELSE no final de uma estrutura IF para executar um código diferente caso a condição retorne False.@"
-              },
-              {
-                "texto": "~int idadeJoao = 20;\\nint idadePedro = 15;\\n\\n\\nif (idadeJoao >= 18)\\n{\\n// Se João for maior ou igual a 18 anos, o código escreve 'João é maior de 18 anos'\\nConsole.WriteLine('João é maior de 18 anos');\\n} else {\\n// Se não, o código escreve 'João não é maior de 18 anos'\\nConsole.WriteLine('João não é maior de 18 anos');\\n}\\n\\nif (idadePedro >= 18)\\n{\\n// Se Pedro for maior ou igual a 18 anos, o código escreve 'Pedro é maior de 18 anos'\\nConsole.WriteLine('Pedro é maior de 18 anos');\\n} else {\\n// Se não, o código escreve 'Pedro não é maior de 18 anos'\\nConsole.WriteLine('Pedro não é maior de 18 anos');\\n}\\n\\n/*\\nResultado:\\nJoão é maior de 18 anos\\nPedro não é maior de 18 anos\\n*/~"
-              },
-              {
-                "texto": "@ELSE IF:@@O ELSE IF funciona de maneira parecida com o ELSE, basicamente como se fosse uma junção dos dois.@@Assim que a condição do primeiro IF retorna Falso, vamos até o ELSE IF, onde podemos verificar outra condição.@@Com isso, é possível fazer quantas verificações você quiser! Tudo depende da necessidade do seu programa. (só tome cuidado para não usar demais, isso pode afetar a velocidade e a qualidade do código. Existem métodos melhores, pode confiar!)@@Sintaxe:@~If (condição) {\\n// código\\n} else if (condição) {\\n// código\\n} else if (condição) {\\n// código\\n} else {\\n// código\\n}~"
-              },
-              {
-                "texto": "@Aqui esta um exemplo:@~int idade = 20;\\n\\nif (idade < 18) // Retorna False -- 20 é menor que 18? - Falso\\n{\\nConsole.WriteLine('Menor de idade');\\n}\\nelse if (idade >= 18 && idade < 65) // Retorna True - 20 é maior ou igual a que 18 e 20 é menor que 65? Verdadeiro\\n{\\n Console.WriteLine('Adulto');\\n}\\nelse // Já que a condição anterior retornou True, o código não chega até aqui\\n{\\nConsole.WriteLine('Idoso');\\n}~"
+                "texto": "@O ELSE IF funciona de maneira parecida com o ELSE, só que mais específica.@@Assim que a condição do primeiro IF retorna Falso, vamos até o ELSE IF, onde podemos verificar uma outra condição.@@Com isso, é possível fazer quantas verificações você quiser! Tudo depende da necessidade do seu programa. (só tome cuidado para não usar demais, isso pode afetar a velocidade e a qualidade do código. Existem métodos melhores, pode confiar!)@@Quanto a sintaxe,@~If (condição) {\\n// código\\n} else if (condição) {\\n// código\\n} else if (condição) {\\n// código\\n} else {\\n// código\\n}~@Exemplificando...@~int idade = 20;\\n\\nif (idade < 18) // Retorna False -- 20 é menor que 18? - Falso\\n{\\nConsole.WriteLine('Menor de idade');\\n}\\nelse if (idade >= 18 && idade < 65) // Retorna True - 20 é maior ou igual a que 18 e 20 é menor que 65? Verdadeiro\\n{\\n Console.WriteLine('Adulto');\\n}\\nelse // Já que a condição anterior retornou True, o código não chega até aqui\\n{\\nConsole.WriteLine('Idoso');\\n}~"
               }
             ]
           },
@@ -427,50 +424,44 @@
             "nomeAulaOuExercicio": "Exercício 1",
             "Type": "Exercicio",
             "Texto": "Altere os operadores de comparação para conseguir os resultados esperados.",
-            "Output": "false\ntrue\ntrue\nfalse\nfalse\nfalse",
-            "Setup": "int a = 11;\\nint b = 7;\\nint c = 9;\\nint d = 7;\\nbool true = True;\\nbool false = False;\\nConsole.WriteLine(a > b);\\nConsole.WriteLine(a <= c);\\nConsole.WriteLine(b != a);\\nConsole.WriteLine(c >= b); // DEVE RETORNAR FALSO\\nConsole.WriteLine(c == d); // DEVE RETORNAR FALSO\\nConsole.WriteLine(!true == false); // DEVE RETORNAR FALSO\\n"
+            "Output": "False\nTrue\nTrue\nFalse\nFalse\nFalse",
+            "Setup": "int a = 11;\\nint b = 7;\\nint c = 9;\\nint d = 7;\\nbool verdadeiro = true;\\nbool falso = false;\\n\\n\\n// Altere os operadores abaixo!\\n\\n// DEVE RETORNAR FALSO\\nConsole.WriteLine(a > b);\\n\\n// DEVE RETORNAR VERDADEIRO\\nConsole.WriteLine(a <= c);\\n\\n// DEVE RETORNAR VERDADEIRO\\nConsole.WriteLine(b >= a);\\n\\n// DEVE RETORNAR FALSO\\nConsole.WriteLine(c >= b);\\n\\n// DEVE RETORNAR FALSO\\nConsole.WriteLine(b == d);\\n\\n// DEVE RETORNAR FALSO\\nConsole.WriteLine(!verdadeiro == falso);"
           },
           {
             "nomeAulaOuExercicio": "Exercício 2",
             "Type": "Exercicio",
-            "Texto": "•\tUtilizado do if else verifique se a variável int (que representa uma quantidade de bolachas) presente no código é maior que 10. Caso seja escreva com um Consle.WriteLine(); \\\"Sim o numero de bolachas é maior que 10\\\" Exatamente como está escrito. Ps:Para avançar este exercício a condição do if precisa retornar true",
-            "Output": "Sim o numero de bolachas é maior que 10",
-            "Setup": "int bolachas = 0; // O numero de bolachas é voce quem decide"
+            "Texto": "Utilizando-se do IF ELSE, verifique se a variável do tipo int presente no código (que representa uma quantidade de bolachas) é maior que 10. Caso seja, escreva com um Console.WriteLine();\n\"Sim, o número de bolachas é maior que 10.\"\nExatamente como está escrito.\n\nP.S.: Para avançar este exercício, a condição do IF PRECISA retornar True.",
+            "Output": "Sim, o número de bolachas é maior que 10.",
+            "Setup": "int bolachas = 0; // O número de bolachas é você quem decide, experimente antes de continuar!"
           },
           {
             "nomeAulaOuExercicio": "Switch Case",
             "Type": "Aula",
             "subAulas": [
               {
-                "texto": "@Já falamos de IF e ELSE, agora, vamos falar sobre o Switch Case.@@Ele funciona similarmente ao IF ELSE, porém com uma sintaxe diferente. (e feito para situações diferentes!)@@No Switch Case, verificamos o valor de uma variável e a comparamos com seus possíveis casos.@@Quando o valor da variável bate com um desses casos, o código do caso respectivo é rodado.@"
+                "texto": "@Já falamos de IF e ELSE, agora, vamos falar sobre o Switch Case.@@Ele funciona similarmente ao IF ELSE, porém com uma sintaxe diferente. (e feito para situações diferentes!)@@No Switch Case, verificamos o valor de uma variável e a comparamos com seus possíveis casos.@@Quando o valor da variável bate com um desses casos, o código do caso respectivo é rodado.@~switch (variavel) {\\ncase \\\"valor1\\\":\\n// código aqui...\\n\\nbreak; // fim do caso (obrigatório!)\\ncase \\\"valor2\\\":\\n// código aqui...\\n\\nbreak; // fim do caso (obrigatório!)\\n}~"
               },
               {
-                "texto": "@Sintaxe:@~switch (variavel) {\\ncase \\\"valor1\\\":\\n// código aqui...\\n\\nbreak; // fim do caso (obrigatório!)\\ncase \\\"valor2\\\":\\n// código aqui...\\n\\nbreak; // fim do caso (obrigatório!)\\n}~@Você agora deve ter uma pergunta na cabeça...@@Se o Switch Case é igual ao IF ELSE, somente com uma sintaxe diferente, por que usá-lo?@@Bem, se usa o Switch Case mais por uma questão de leitura!@"
+                "texto": "@Você agora deve ter uma pergunta na cabeça...@@Se o Switch Case é igual ao IF ELSE, somente com uma sintaxe diferente, por que usá-lo?@@Bem, se usa o Switch Case mais por uma questão de leitura!@@A maneira em que a sintaxe do Switch Case é feita facilita a leitura do código, assim deixando-o mais \"limpo\".@@Como ambos os verificadores funcionam de maneira parecida, o uso vem mais de um gosto pessoal e a situação presente.@"
               },
               {
-                "texto": "@A maneira em que a sintaxe do Switch Case é feita facilita a leitura do código, assim deixando-o mais \\\"limpo\\\".@@Como ambos os verificadores funcionam de maneira parecida, o uso vem mais de um gosto pessoal e a situação presente.@@Exemplo de comparação de if else com switch case: Programa que envia no console qual o dia da semana baseado numa variável pré-definida.@"
-              },
-              {
-                "texto": "@COM IF ELSE@~int diaDaSemana = 5;\\n\\nif (diaDaSemana == 1) {\\nConsole.WriteLine('Hoje é segunda-feira...');\\n}\\nelse if (diaDaSemana == 2) {\\n   Console.WriteLine('Hoje é terça-feira');\\n}\\nelse if (diaDaSemana == 3) {\\n   Console.WriteLine('Hoje é quarta-feira');\\n}\\nelse if (diaDaSemana == 4){\\n   Console.WriteLine('Hoje é quinta-feira');\\n}\\nelse if (diaDaSemana == 5) {\\n   Console.WriteLine('Hoje é sexta-feira!!');\\n}\\nelse if (diaDaSemana == 6) {\\n   Console.WriteLine('Hoje é sábado!!!');\\n}\\nelse if (diaDaSemana == 7) {\\nConsole.WriteLine('Hoje é domingo!!!');\\n}\\n// Resultado: Hoje é sexta-feira!!\\n\\~@COM SWITCH CASE@~switch (diaDaSemana)\\n{\\n   case 1:\\n       Console.WriteLine('Hoje é segunda-feira...');\\n       break;\\n   case 2:\\n       Console.WriteLine('Hoje é terça-feira');\\n       break;\\n   case 3:\\n       Console.WriteLine('Hoje é quarta-feira');\\n       break;\\n   case 4:\\n       Console.WriteLine('Hoje é quinta-feira');\\n       break;\\n~"
-              },
-              {
-                "texto": "@case 5:\\n       Console.WriteLine('Hoje é sexta-feira!!');\\n       break;\\n   case 6:\\n       Console.WriteLine('Hoje é sábado!!!');\\n       break;\\n   case 7:\\n       Console.WriteLine('Hoje é domingo!!!');\\n       break;\\n}\\n// Resultado: Hoje é sexta-feira!!~@Pode ver que com o uso do Switch Case é mais fácil a leitura e a compreensão do código, mesmo os dois funcionando da mesma maneira!@"
+                "texto": "@Imagine um programa que envia ao console qual o dia da semana baseada numa variável pré-definida.@@Com IF ELSE, isso ficaria assim:@~int diaDaSemana = 5;\\n\\nif (diaDaSemana == 1) {\\nConsole.WriteLine(\\\"Hoje é segunda-feira...\\\");\\n}\\nelse if (diaDaSemana == 2) {\\nConsole.WriteLine(\\\"Hoje é terça-feira\\\");\\n}\\nelse if (diaDaSemana == 3) {\\nConsole.WriteLine(\\\"Hoje é quarta-feira\\\");\\n}\\nelse if (diaDaSemana == 4){\\nConsole.WriteLine(\\\"Hoje é quinta-feira\\\");\\n}\\nelse if (diaDaSemana == 5) {\\nConsole.WriteLine(\\\"Hoje é sexta-feira!!\\\");\\n}\\nelse if (diaDaSemana == 6) {\\nConsole.WriteLine(\\\"Hoje é sábado!!!\\\");\\n}\\nelse if (diaDaSemana == 7) {\\nConsole.WriteLine(\\\"Hoje é domingo!!!\\\");\\n}~@Com Switch Case, isso ficaria assim:@~switch (diaDaSemana)\\n{\\ncase 1:\\nConsole.WriteLine(\\\"Hoje é segunda-feira...\\\");\\nbreak;\\ncase 2:\\nConsole.WriteLine(\\\"Hoje é terça-feira\\\");\\nbreak;\\ncase 3:\\nConsole.WriteLine(\\\"Hoje é quarta-feira\\\");\\nbreak;\\ncase 4:\\nConsole.WriteLine(\\\"Hoje é quinta-feira\\\");\\nbreak;\\ncase 5:\\nConsole.WriteLine(\\\"Hoje é sexta-feira!!\\\");\\nbreak;\\ncase 6:\\nConsole.WriteLine(\\\"Hoje é sábado!!!\\\");\\nbreak;\\ncase 7:\\nConsole.WriteLine(\\\"Hoje é domingo!!!\\\");\\nbreak;\\n}~@Pode ver que com o uso do Switch Case é mais fácil a leitura e a compreensão do código, mesmo os dois funcionando da mesma maneira!@"
               }
             ]
           },
           {
             "nomeAulaOuExercicio": "Exercício 3",
             "Type": "Exercicio",
-            "Texto": "Utilizando o Switch Case, crie um código que verifica uma variável e retorna um resultado no console dentre vários casos.",
+            "Texto": "Altere o sistema de switch case presente no código, onde é reconhecido em suas condicionais Pastel, Coxinha e Hamburguer. Quando identificado, retorne com um Console.WriteLine(); o seu valor, sinta-se livre para colocar o valor que quiser.",
             "Output": "null",
-            "Setup": "null"
+            "Setup": "string lanche = \\\"Pastel\\\";\\n\\nswitch (lanche)\\n{\\ncase \\\"Pastel\\\":\\n\\nbreak;\\n\\ncase \\\"Coxinha\\\":\\n\\nbreak;\\n\\ncase \\\"Hamburguer\\\":\\n\\nbreak;\\n};"
           },
           {
             "nomeAulaOuExercicio": "Exercício 4",
             "Type": "Exercicio",
-            "Texto": "Altere o sistema de switch case presente no código,  onde  ele reconhece em suas condicionais Pastel, Coxinha e Hamburguer, quando identificado, retorna com um Console.WriteLine(); o seu valor, sinta-se livre para colocar o valor que você quiser",
+            "Texto": "EXERCÍCIO LIVRE!!\n\nUtilizando o Switch Case, crie um código que verifica uma variável e retorna um resultado no console dentre vários casos.",
             "Output": "null",
-            "Setup": "switch (lanche) \\n{\\n\\n}"
+            "Setup": "null"
           }
         ]
       },
