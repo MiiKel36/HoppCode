@@ -406,14 +406,14 @@
             ]
           },
           {
-            "nomeAulaOuExercicio": "Exercício 4",
+            "nomeAulaOuExercicio": "Exercício 1",
             "Type": "Exercicio",
             "Texto": "Altere os operadores de comparação para conseguir os resultados esperados.",
             "Output": "False\nTrue\nTrue\nFalse\nFalse\nFalse",
             "Setup": "int a = 11;\\nint b = 7;\\nint c = 9;\\nint d = 7;\\nbool verdadeiro = true;\\nbool falso = false;\\n\\n\\n// Altere os operadores abaixo!\\n\\n// DEVE RETORNAR FALSO\\nConsole.WriteLine(a > b);\\n\\n// DEVE RETORNAR VERDADEIRO\\nConsole.WriteLine(a <= c);\\n\\n// DEVE RETORNAR VERDADEIRO\\nConsole.WriteLine(b >= a);\\n\\n// DEVE RETORNAR FALSO\\nConsole.WriteLine(c >= b);\\n\\n// DEVE RETORNAR FALSO\\nConsole.WriteLine(b == d);\\n\\n// DEVE RETORNAR FALSO\\nConsole.WriteLine(!verdadeiro == falso);"
           },
           {
-            "nomeAulaOuExercicio": "Exercício 5",
+            "nomeAulaOuExercicio": "Exercício 2",
             "Type": "Exercicio",
             "Texto": "Utilizando-se do IF ELSE, verifique se a variável do tipo int presente no código (que representa uma quantidade de bolachas) é maior que 10. Caso seja, escreva com um Console.WriteLine();\n\"Sim, o número de bolachas é maior que 10.\"\nExatamente como está escrito.\n\nP.S.: Para avançar este exercício, a condição do IF PRECISA retornar True.",
             "Output": "Sim, o número de bolachas é maior que 10.",
@@ -435,14 +435,14 @@
             ]
           },
           {
-            "nomeAulaOuExercicio": "Exercício 6",
+            "nomeAulaOuExercicio": "Exercício 3",
             "Type": "Exercicio",
             "Texto": "Altere o sistema de switch case presente no código, onde é reconhecido em suas condicionais Pastel, Coxinha e Hamburguer. Quando identificado, retorne com um Console.WriteLine(); o seu valor, sinta-se livre para colocar o valor que quiser.",
             "Output": "null",
             "Setup": "string lanche = \\\"Pastel\\\";\\n\\nswitch (lanche)\\n{\\ncase \\\"Pastel\\\":\\n\\nbreak;\\n\\ncase \\\"Coxinha\\\":\\n\\nbreak;\\n\\ncase \\\"Hamburguer\\\":\\n\\nbreak;\\n};"
           },
           {
-            "nomeAulaOuExercicio": "Exercício 7",
+            "nomeAulaOuExercicio": "Exercício 4",
             "Type": "Exercicio",
             "Texto": "EXERCÍCIO LIVRE!!\n\nUtilizando o Switch Case, crie um código que verifica uma variável e retorna um resultado no console dentre vários casos.",
             "Output": "null",
