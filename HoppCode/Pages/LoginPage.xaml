@@ -6,7 +6,7 @@
              BackgroundColor="#37247B">
     <StackLayout >
         <StackLayout Orientation="Horizontal" HeightRequest="100" BackgroundColor="#301D72" Padding="10" Margin="0,0,0,20">
-            <Label Text="Bem vindo de volta! " FontSize="25" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand"/>
+            <Label Text="Bem-vindo(a) de volta! " FontSize="25" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand"/>
         </StackLayout>
         <Frame BackgroundColor="#2A1A64" TranslationY="90" WidthRequest="350" HeightRequest="360" BorderColor="Transparent">
             <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10" >

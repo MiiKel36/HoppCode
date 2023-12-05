@@ -55,7 +55,7 @@ public partial class ExercisesPage : ContentPage
                 setupJsonCode = "//Escreva seu código aqui";
             }
 
-            string rootCode = @"\nusing System;\npublic class Exercicio\n{\n    public static void Main(string[] args)\n    {\n        "+ setupJsonCode + "\\n\\n    }\\n\\n}";
+            string rootCode = @"using System;\npublic class Exercicio\n{\npublic static void Main(string[] args)\n{\n"+ setupJsonCode + "\\n\\n}\\n}";
 
             editorWebView.Eval($"SetTextOnCodeEditor(\"{rootCode}\");");
         };
@@ -145,7 +145,7 @@ public partial class ExercisesPage : ContentPage
         }
         else 
         {
-            lblOutput.Text = $"-- O código esta sendo executado --";
+            lblOutput.Text = $"-- O código está sendo executado... --";
             ExecuteCode();
         }
     }
@@ -176,7 +176,7 @@ public partial class ExercisesPage : ContentPage
 
             if (entradaDesejada != null)
             {
-                lblOutput.Text = $"-- O código esta sendo executado --";
+                lblOutput.Text = $"-- O código está sendo executado... --";
                 // Obtém o texto do Entry
                 string textoDoEntry = entradaDesejada.Text;
 
@@ -217,7 +217,7 @@ public partial class ExercisesPage : ContentPage
 
         if (user.error != "")
         {
-            lblOutput.Text = $"Seu código retornou um erro: \n{user.error}";
+            lblOutput.Text = $"SEU CÓDIGO RETORNOU UM ERRO: \n{user.error}";
         }
         else 
         {
@@ -235,14 +235,14 @@ public partial class ExercisesPage : ContentPage
         if (respostaCerta == respostaCortadaUsuario || respostaCerta == "null")
         {
             frameDeVerificacao.IsVisible = true;
-            lblDeVerificacao.Text = "Parabéns, Você acertou";
+            lblDeVerificacao.Text = "Parabéns, Você conseguiu!";
             lblDeVerificacao.TextColor = Color.FromRgb(0, 187, 69);
             btnPassarPraProxima.IsVisible = true;
         }
         else
         {
             frameDeVerificacao.IsVisible = true;
-            lblDeVerificacao.Text = "Hmm, infelizmente sua resposta não esta correta";
+            lblDeVerificacao.Text = "Hmm, sua resposta não está correta...";
             lblDeVerificacao.TextColor = Color.FromRgb(248, 49, 49);
             btnPassarPraProxima.IsVisible = false;
         }
