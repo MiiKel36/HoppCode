@@ -53,11 +53,12 @@
             <Button Text="" 
                     x:Name="BtnPassarTras"
                     HorizontalOptions="StartAndExpand" 
+                    Padding="0,0,0,0"
                     Clicked="MenosSubAulasPage"
                     WidthRequest="50" 
                     HeightRequest="50"
                     FontSize="30"
-                    CornerRadius="30"
+                    CornerRadius="50"
                     TextColor="White"/>
 
             <!-- Botão "Começar" -->
@@ -72,11 +73,12 @@
             <Button Text="" 
                     x:Name="BtnPassarFrente"
                     HorizontalOptions="EndAndExpand"
+                    Padding="0,0,0,0"
                     Clicked="MaisSubAulasPage"
                     WidthRequest="50" 
                     HeightRequest="50"
                     FontSize="30"
-                    CornerRadius="30"
+                    CornerRadius="50"
                     TextColor="White"/>
         </StackLayout>
     </Grid>

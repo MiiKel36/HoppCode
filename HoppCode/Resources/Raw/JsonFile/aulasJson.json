@@ -36,7 +36,7 @@
 
           },
           {
-            "nomeAulaOuExercicio": "Seu primeiro \\\"Olá Mundo\\\"",
+            "nomeAulaOuExercicio": "Seu primeiro \"Olá Mundo\"",
             "Type": "Aula",
             "subAulas": [
               { "texto": "@Muitas vezes você vai querer enviar uma mensagem ao console. Seja para garantir que a lógica do código está funcionando da maneira esperada, ou para caçar bugs.@@Para exibir um texto no console utilizando o C#, usamos a função Console.WriteLine();@@A sua sintaxe é assim:@~Console.WriteLine(\\\"O seu texto vem aqui!\\\");~" },
