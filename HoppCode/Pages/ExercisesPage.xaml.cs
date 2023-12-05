@@ -55,7 +55,7 @@ public partial class ExercisesPage : ContentPage
                 setupJsonCode = "// Escreva seu código aqui!";
             }
 
-            string rootCode = @"using System;\npublic class Exercicio\n{\npublic static void Main(string[] args)\n{\n" + setupJsonCode + "\\n\\n}\\n\\n}";
+            string rootCode = @"using System;\npublic class Exercicio\n{\npublic static void Main(string[] args)\n{\n" + setupJsonCode + "\\n\\n}\\n}";
 
             editorWebView.Eval($"SetTextOnCodeEditor(\"{rootCode}\");");
         };
