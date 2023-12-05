@@ -25,7 +25,7 @@ public partial class ExercisesPage : ContentPage
     public ExercisesPage(string classeFromOtherPage, string aulaFromOtherPage)
     {
         InitializeComponent();
-        FunçãoInicial();
+        FunÃ§Ã£oInicial();
 
         classe = classeFromOtherPage;
         aula = aulaFromOtherPage;
@@ -36,7 +36,7 @@ public partial class ExercisesPage : ContentPage
 
     }
 
-    private async void FunçãoInicial()
+    private async void FunÃ§Ã£oInicial()
     {
         //Cria objeto do identificar aula
         IdentificarAulaOuExercicioPage identificarAulaOuExercicio = new IdentificarAulaOuExercicioPage();
@@ -50,12 +50,12 @@ public partial class ExercisesPage : ContentPage
         editorWebView.Navigated += async (o, s) => {
 
             string setupJsonCode = await PuxaSetupExercicio();
-            if(setupJsonCode == "null")
+            if (setupJsonCode == "null")
             {
-                setupJsonCode = "//Escreva seu código aqui";
+                setupJsonCode = "// Escreva seu cÃ³digo aqui!";
             }
 
-            string rootCode = @"using System;\npublic class Exercicio\n{\npublic static void Main(string[] args)\n{\n"+ setupJsonCode + "\\n\\n}\\n}";
+            string rootCode = @"using System;\npublic class Exercicio\n{\npublic static void Main(string[] args)\n{\n" + setupJsonCode + "\\n\\n}\\n\\n}";
 
             editorWebView.Eval($"SetTextOnCodeEditor(\"{rootCode}\");");
         };
@@ -109,30 +109,30 @@ public partial class ExercisesPage : ContentPage
         }
     }
 
-    
+
     private static readonly HttpClient client = new HttpClient();
     /*
      Organizar pensamento:
-        -criar uma função que retorna um Entry onde o class id Representa o numero no laço de repetição
+        -criar uma funÃ§Ã£o que retorna um Entry onde o class id Representa o numero no laÃ§o de repetiÃ§Ã£o
         -para pegar os valores dentro dos entry,
      */
     private async void RunCode(object sender, EventArgs e)
     {
-        //desativa o botão de rodar código
+        //desativa o botÃ£o de rodar cÃ³digo
         btnRun.BackgroundColor = Color.FromRgb(58, 36, 112);
         btnRun.IsEnabled = false;
 
-        //Código do webview
+        //CÃ³digo do webview
         string editorCode = await editorWebView.EvaluateJavaScriptAsync(@"editor.getValue();");
         string code = returnCode(editorCode);
 
         stackInputs.Clear();
-        
+
         //Rtorna quantas Console.ReadLine() tem
         int numOfReadLines = verificarQuantasReadLineTem(code);
 
-        //Adiciona os entry com base em quantos Console.ReadLine() tem no código
-        if(numOfReadLines > 0)
+        //Adiciona os entry com base em quantos Console.ReadLine() tem no cÃ³digo
+        if (numOfReadLines > 0)
         {
             List<Border> entrys = ReturnEntryIput(numOfReadLines);
 
@@ -143,13 +143,13 @@ public partial class ExercisesPage : ContentPage
 
             scrollViewIputSection.IsVisible = true;
         }
-        else 
+        else
         {
-            
+
             ExecuteCode();
         }
     }
-    //Executa o código sem Console.ReadLine()
+    //Executa o cÃ³digo sem Console.ReadLine()
     public async void ExecuteCode()
     {
         string editorCode = await editorWebView.EvaluateJavaScriptAsync(@"editor.getValue();");
@@ -165,12 +165,12 @@ public partial class ExercisesPage : ContentPage
         string editorCode = await editorWebView.EvaluateJavaScriptAsync(@"editor.getValue();");
         string code = returnCode(editorCode);
         int numOfReadLines = verificarQuantasReadLineTem(code);
-                      
+
         for (int i = 1; i <= numOfReadLines; i++)
         {
             var stackLayout = this.FindByName<StackLayout>("stackInputs");
 
-            // Substitua "entradaDesejada" pelo ClassId da entrada que você está procurando
+            // Substitua "entradaDesejada" pelo ClassId da entrada que vocÃª estÃ¡ procurando
             string classIdDesejado = $"entry-{i}";
 
             // Procura a entrada no StackLayout pelo ClassId
@@ -179,35 +179,34 @@ public partial class ExercisesPage : ContentPage
 
             if (entradaDesejada != null)
             {
-                lblOutput.Text = $"-- O código esta sendo executado --";
-                // Obtém o texto do Entry
+                // ObtÃ©m o texto do Entry
                 string textoDoEntry = entradaDesejada.Text;
 
                 //Adiciona texto para a list de inputs
                 bool verificadorUltimoEntry = (numOfReadLines == i);
                 readLineList.Add(verificadorUltimoEntry ? textoDoEntry : textoDoEntry + "\n");
-                
+
             }
 
         }
         string codeInput = string.Join("", readLineList);
         SendCodeToApi(code, codeInput);
-        
+
         scrollViewIputSection.IsVisible = false;
 
     }
 
     public async void SendCodeToApi(string code, string input)
     {
-        lblOutput.Text = $"-- O código esta sendo executado --";
-        //Criao uma variavel contendo os valores que serão enviados para a api
+        lblOutput.Text = $"-- O cÃ³digo estÃ¡ sendo executado... --";
+        //Criao uma variavel contendo os valores que serÃ£o enviados para a api
         var values = new Dictionary<string, string>
       {
         { "code", code},
         { "language",  "cs"},
         { "input", input}
       };
-        
+
         //Faz o envio para a api
         var content = new FormUrlEncodedContent(values);
         var response = await client.PostAsync("https://codex-api-7q3s.onrender.com/", content);
@@ -216,48 +215,49 @@ public partial class ExercisesPage : ContentPage
         var user = JsonConvert.DeserializeObject<ResponseData>(responseString);
         string respostaUsuario = user.output;
         string respostaCortadaUsuario = "";
-        //Verificação de erros
+        //VerificaÃ§Ã£o de erros
 
         if (user.error != "")
         {
-            lblOutput.Text = $"SEU CÓDIGO RETORNOU UM ERRO: \n{user.error}";
+            lblOutput.Text = $"SEU CÃ“DIGO RETORNOU UM ERRO: \n{user.error}";
         }
-        else 
+        else
         {
             lblOutput.Text = respostaUsuario;
-            if(respostaUsuario != "")
+            if (respostaUsuario != "")
             {
                 respostaCortadaUsuario = respostaUsuario.Substring(0, respostaUsuario.Length - 1);
-            }           
+            }
         }
-        
-        //Realiza a verificação se a resposta no json e a do usuário esta certo
+
+        //Realiza a verificaÃ§Ã£o se a resposta no json e a do usuÃ¡rio esta certo
         string respostaCerta = await returnAnswerWithInput();
         //string respostaUsuario = user.output;
 
         if (respostaCerta == respostaCortadaUsuario || respostaCerta == "null")
         {
             frameDeVerificacao.IsVisible = true;
-            lblDeVerificacao.Text = "Parabéns, Você conseguiu!";
+            lblDeVerificacao.Text = "ParabÃ©ns, VocÃª conseguiu!";
             lblDeVerificacao.TextColor = Color.FromRgb(0, 187, 69);
             btnPassarPraProxima.IsVisible = true;
         }
         else
         {
             frameDeVerificacao.IsVisible = true;
-            lblDeVerificacao.Text = "Hmm, sua resposta não está correta...";
+            lblDeVerificacao.Text = "Hmm, sua resposta nÃ£o estÃ¡ correta...";
             lblDeVerificacao.TextColor = Color.FromRgb(248, 49, 49);
             btnPassarPraProxima.IsVisible = false;
         }
 
-        
 
-        btnRun.BackgroundColor = Color.FromRgb(99, 50, 155); 
+
+        btnRun.BackgroundColor = Color.FromRgb(99, 50, 155);
         btnRun.IsEnabled = true;
     }
     public List<Border> ReturnEntryIput(int numOfReadLines)
-    {   List<Border> entryList = new List<Border>();
-     
+    {
+        List<Border> entryList = new List<Border>();
+
         for (int i = 1; i <= numOfReadLines; i++)
         {
             Border border = new Border
@@ -274,9 +274,9 @@ public partial class ExercisesPage : ContentPage
             Entry entry = new Entry()
             {
                 BackgroundColor = Color.FromRgb(49, 24, 80),
-                
+
                 ClassId = $"entry-{i}",
-                
+
             };
 
             border.Content = entry;
@@ -285,28 +285,29 @@ public partial class ExercisesPage : ContentPage
 
         return entryList;
     }
-    public int verificarQuantasReadLineTem(string code) 
+    public int verificarQuantasReadLineTem(string code)
     {
         string findOnCode = "Console.ReadLine()";
 
         int quantidade = 0;
-         
+
         for (int i = 0; i < code.Length; i++)
-        {   try
+        {
+            try
             {
                 if (code.Substring(i, findOnCode.Length) == findOnCode)
                 {
                     quantidade++;
                 }
             }
-            catch{}
+            catch { }
         }
         return quantidade;
     }
-    //Tratação de string para evitar erros
+    //TrataÃ§Ã£o de string para evitar erros
     public string returnCode(string editorCode)
     {
-        
+
         string codigoSemduasBarras = "";
         for (int i = 0; i < editorCode.Length; i++)
         {
@@ -325,8 +326,8 @@ public partial class ExercisesPage : ContentPage
         string codigoSemBarraN = codigoSemduasBarras.Replace("\\n", "\n");
         string codigoSemBarraAspas = codigoSemBarraN.Replace("\\\"", "\"");
         string codigoComMenorQue = codigoSemBarraAspas.Replace("\\u003C", "<");
-        string codigoFinal = codigoComMenorQue;        
-        
+        string codigoFinal = codigoComMenorQue;
+
         return codigoFinal;
     }
 
@@ -335,11 +336,11 @@ public partial class ExercisesPage : ContentPage
     private async Task<string> returnAnswerWithInput()
     {
         string outputJson = await PuxaOutputExercicio();
-        // Use alguma lógica para encontrar e substituir os marcadores de posição pelos valores do array.
+        // Use alguma lÃ³gica para encontrar e substituir os marcadores de posiÃ§Ã£o pelos valores do array.
         for (int i = 0; i < readLineList.Count; i++)
         {
             string marcador = $"readLineArray[{i}]";
-            outputJson = outputJson.Replace(marcador, readLineList[i].Replace("\n",""));
+            outputJson = outputJson.Replace(marcador, readLineList[i].Replace("\n", ""));
         }
         return outputJson;
     }
@@ -400,7 +401,7 @@ public partial class ExercisesPage : ContentPage
         public string info { get; set; }
     }
 
-    
+
 
 
 }

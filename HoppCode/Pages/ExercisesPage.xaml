@@ -63,13 +63,13 @@
             </StackLayout>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
                 <!--Botões que mudam a página-->
-                <Button Text="Exercicio" 
+                <Button Text="Exercício" 
                     FontSize="16" Grid.Column="0" 
                     HeightRequest="80" 
                     Clicked="ChangePage" x:Name ="btnExercisePart" ClassId="exercisePart" 
@@ -84,7 +84,7 @@
                     Background="#301D72" 
                     TextColor="White"/>
 
-                <Button Text="Saida"     
+                <Button Text="Saída"     
                     FontSize="16" Grid.Column="2" 
                     Clicked="ChangePage" x:Name ="btnOutputPart" ClassId="outputPart" 
                     CornerRadius="0" 
