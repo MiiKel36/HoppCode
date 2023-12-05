@@ -183,7 +183,7 @@
             "Type": "Exercicio",
             "Texto": "Concatene o primeiro grupo de strings e interpole o segundo. Depois, mostre os dois resultados no console.",
             "Output": "Estou aprendendo C#!\nEsse carro custa R$1800!",
-            "Setup": "// Grupo 1\\nstring frase = \\\"Estou aprendendo\\\";\\nstring linguagem = \\\"C#\\\";\\n//precisa retornar \\\"Estou aprendendo C#!\\\"\\n\\n// Grupo 2\\nstring veiculo = \\\"carro\\\";\\ndouble preco = 1800;\\n// precisa retornar \\\"Esse carro custa R$1800!\\\""
+            "Setup": "// Grupo 1\\n        string frase = \\\"Estou aprendendo\\\";\\n        string linguagem = \\\"C#\\\";\\n        //precisa retornar \\\"Estou aprendendo C#!\\\"\\n\\n        // Grupo 2\\n        string veiculo = \\\"carro\\\";\\n        double preco = 1800;\\n        //precisa retornar \\\"Esse carro custa R$1800!\\\""
           },
 
           {
@@ -200,7 +200,7 @@
                 "texto": "@E aqui um exemplo dessas funções colocadas em prática!@~int i = 10; \\ndouble d = 5.25; \\nbool b = true; \\nConsole.WriteLine(Convert.ToString(i)); \\n// converte int para string, \\n//retornando “10” como texto neste caso\\nConsole.WriteLine(Convert.ToDouble(i)); \\n// converte int para double, \\n//retornando 10 como double neste caso\\nConsole.WriteLine(Convert.ToInt32(d)); \\n// converte double para int, \\n//retornando apenas 5 neste caso\\nConsole.WriteLine(Convert.ToString(b)); \\n// converte bool para string, \\n//retornando a palavra “True” \\n//neste caso\\n\\n\\n~@No lugar de Convert.To, podemos optar pela função .Parse().@"
               },
               {
-                "texto": "@É importante ter em mente, no entanto, que esta é uma função apenas utilizada para a conversão de strings. @@Caso tente utilizá-la para uma variável diferente de string, o código irá dar erro.@@Aqui está alguns dos comandos da coleção .Parse():@~int.Parse()// Converte uma string \\n//em um valor inteiro.\\ndouble.Parse() //Converte uma \\n//string em um valor de ponto \\n//flutuante de precisão dupla. \\nbool.Parse() //Converte uma string\\n//em um valor booleano. \\nDateTime.Parse() //Converte uma string em um valor de data e hora. \\n ~~string numeroInt = “13”;\\nstring numeroDouble = “19.54”;\\nstring boolean = “False”;\\nstring data = “6/17/2021 8:10:09 AM”;\\n\\nConsole.WriteLine(int32.Parse(numeroInt)); // transforma a string em int, retornando 13 neste caso\\nConsole.WriteLine(double.Parse(numeroDouble));// transforma a string em double, retornando 19.54 neste caso\\nConsole.WriteLine(bool.Parse(boolean)); // transforma a string em Boolean, retornando False neste caso\\nConsole.WriteLine(DateTime.Parse(data)); // transforma a string em formato de data e hora, retornando 6/17/2021 8:10:09 AM neste caso\\n~"
+                "texto": "@É importante ter em mente, no entanto, que esta é uma função apenas utilizada para a conversão de strings. @@Caso tente utilizá-la para uma variável diferente de string, o código irá dar erro.@@Aqui está alguns dos comandos da coleção .Parse():@~int.Parse()// Converte uma string \\n//em um valor inteiro.\\ndouble.Parse() //Converte uma \\n//string em um valor de ponto \\n//flutuante de precisão dupla. \\nbool.Parse() //Converte uma string\\n//em um valor booleano. \\nDateTime.Parse() //Converte uma string em um valor de data e hora. \\n ~~string numeroInt = \\\"13\\\";\\nstring numeroDouble = \\\"19.54\\\";\\nstring boolean = \\\"False\\\";\\nstring data = \\\"6/17/2021 8:10:09 AM\\\";\\n\\nConsole.WriteLine(int32.Parse(numeroInt)); \\n// transforma a string em int,\\n//retornando 13 neste caso\\nConsole.WriteLine(double.Parse(numeroDouble));\\n// transforma a string em double,\\n//retornando 19.54 neste caso\\nConsole.WriteLine(bool.Parse(boolean));\\n// transforma a string em Boolean,\\n//retornando False neste caso\\nConsole.WriteLine(DateTime.Parse(data)); \\n// transforma a string em formato \\n//de data e hora, retornando \\n//6/17/2021 8:10:09 AM neste caso\\n\\n~"
               }
 
 
@@ -213,7 +213,7 @@
             "Type": "Exercicio",
             "Texto": "Faça o resultado de a + b aparecer no console. Você deve usar somente as variáveis dadas. Use o que aprendeu para resolver o problema.",
             "Output": "36",
-            "Setup": "int a = 26;\\nstring b = “10”; // deve retornar 36"
+            "Setup": "int a = 26;\\n        string b = \\\"10\\\"; // deve retornar 36"
           }
         ]
       },
@@ -229,13 +229,13 @@
                 "texto": "@Todo bom programa interage com o seu usuário, não é?@@Por isso existe a função Console.ReadLine();@"
               },
               {
-                "texto": "@No C#, podemos pegar um valor digitado diretamente no console. Para salvarmos o valor digitado, é preciso atribuir o Console.ReadLine(); a uma variável. Veja o exemplo a seguir.@~Console.WriteLine(‘Qual o seu animal de estimação?’);\\n\\nstring animal = Console.ReadLine();\\n\\nConsole.WriteLine($’então você tem um {animal} de estimação? Legal!’);~"
+                "texto": "@No C#, podemos pegar um valor digitado diretamente no console. Para salvarmos o valor digitado, é preciso atribuir o Console.ReadLine(); a uma variável. Veja o exemplo a seguir.@~Console.WriteLine(\\\"Qual o seu animal de estimação?\\\");\\n\\nstring animal=Console.ReadLine();\\n\\nConsole.WriteLine($\\\"então você tem um {animal} de estimação? Legal!\\\");\\n\\n~"
               },
               {
-                "texto": "@Números com Console.ReadLine();@@A função Console.ReadLine(); requer que o tipo da variável seja uma string, caso contrário código irá dar erro.@~int var = Console.ReadLine(); // error: Cannot implicitly convert type 'string' to 'int'\\n~@Por sorte, a solução é simples! Podemos usar das funções que já vimos nas aulas anteriores.@"
+                "texto": "@Números com Console.ReadLine();@@A função Console.ReadLine(); requer que o tipo da variável seja uma string, caso contrário código irá dar erro.@~int var = Console.ReadLine(); \\n//error: Cannot implicitly convert type 'string' to 'int'\\n~@Por sorte, a solução é simples! Podemos usar das funções que já vimos nas aulas anteriores.@"
               },
               {
-                "texto": "@Isso mesmo, Convert.ToInt32(); ou, se preferir, int.Parse();@~string numero = Console.ReadLine(); // ‘17’\\n\\nConsole.WriteLine(int.Parse(numero)); // 17\\n\\nConsole.WriteLine(Convert.ToInt32(numero)); // 17\\n~"
+                "texto": "@Isso mesmo, Convert.ToInt32(); ou, se preferir, int.Parse();@~string numero = Console.ReadLine(); \\n//\\\"17\\\"\\n\\nConsole.WriteLine(int.Parse(numero));\\n//17\\n\\nConsole.WriteLine(Convert.ToInt32(numero));\\n//17\\n~"
               }
             ]
 
@@ -244,8 +244,8 @@
           {
             "nomeAulaOuExercicio": "Exercício 1",
             "Type": "Exercicio",
-            "Texto": "Use da função Console.ReadLine(); para juntar 3 informações suas usando o seguinte modelo: \\“‘seu nome’ tem ‘sua idade’ anos e vive em ‘ sua cidade’.\\”. Troque os campos entre parênteses para as suas variáveis.",
-            "Output": "{readLineArray[0]} tem {readLineArray[1]} anos e vive em {readLineArray[2]}.",
+            "Texto": "Use da função Console.ReadLine(); para juntar 3 informações suas usando o seguinte modelo: \n\n\\\"‘SEU NOME’ tem ‘SUA IDADE’ anos e vive em ‘SUA CIDADE’\\\"\n\nTroque os campos entre parênteses para as suas variáveis.",
+            "Output": "readLineArray[0] tem readLineArray[1] anos e vive em readLineArray[2]",
             "Setup": "null"
           },
 
@@ -260,19 +260,19 @@
                 "texto": "@Uma única letra maiúscula pode quebrar um sistema inteiro se não for tratada!@@A melhor maneira de contornar esses problemas é deixando todos os caracteres ou no estado maiúsculo ou no estado minúsculo.@"
               },
               {
-                "texto": "@No C#, temos duas funções que fazem exatamente isso.@~string texto = 'EsTe TEXto eStá cHeIO dE lETras mAIUsCUlas E MINUscuLas';\\n\\nConsole.WriteLine(texto.ToUpper()); // resultado: ESTE TEXTO ESTÁ CHEIO DE LETRAS MAIUSCULAS E MINUSCULAS\\n\\nConsole.WriteLine(texto.ToLower()); // resultado: este texto está cheio de letras maiusculas e minusculas\\n~"
+                "texto": "@No C#, temos duas funções que fazem exatamente isso.@@A seguir, lhe mostrarei tais funções em funcionamento@~string texto = \\\"EsTe TEXto eStá cHeIO dE lETras mAIUsCUlas E MINUscuLas\\\";\\n\\nConsole.WriteLine(texto.ToUpper()); \\n//resultado: ESTE TEXTO ESTÁ CHEIO\\n//DE LETRAS MAIUSCULAS E \\n//MINUSCULAS\\n\\nConsole.WriteLine(texto.ToLower());\\n//resultado: este texto está cheio\\n//de letras maiusculas e minusculas\\n\\n\\n~"
               },
               {
-                "texto": "@Caracteres de escape:@@“Caracteres de escape” são junções de caracteres que possuem certas funções dentro de uma string@@Aqui vai uma lista de caracteres e suas funções:@~string caracteresDeEscape = 'Linha 1 Linha 2 Linha 3';\\n\\nConsole.WriteLine(caracteresDeEscape);\\n\\n/* retorna: \\n“Linha 1 \\nLinha 2\\nLinha 3”\\n*/~"
+                "texto": "@Caracteres de escape:@@“Caracteres de escape” são junções de caracteres que possuem certas funções dentro de uma string@@Aqui vai uma lista de caracteres e suas funções:@~string caracteresDeEscape = \\\"Linha 1 \\\\nLinha 2\\\\nLinha 3\\\";\\n\\nConsole.WriteLine(caracteresDeEscape);\\n\\n/* retorna: \\n“Linha 1 \\nLinha 2\\nLinha 3”\\n*/\\n\\n~"
               },
               {
                 "texto": "@Caracteres especiais:@@Imagine que em algum momento você queira adicionar aspas duplas ( “” ) na sua string.@@Isso nos leva a um pequeno problema...@@Para definir o conteúdo de uma string, também usamos aspas duplas.@"
               },
               {
-                "texto": "@... Você já deve imaginar o que acontece se misturarmos dois pares de aspas duplas, não é?@~string texto = “essa string tem “uma parte” com aspas duplas dentro dela mesma!” // ERRO!\\n~"
+                "texto": "@... Você já deve imaginar o que acontece se misturarmos dois pares de aspas duplas, não é?@~string texto = \\\"essa string tem \\\"uma parte\\\" com aspas duplas dentro dela mesma!\\\" \\n//ERRO!\\n\\n~"
               },
               {
-                "texto": "@Por sorte, a resolução é simples: podemos usar uma barra inversa logo antes do caractere especial!@@Isso irá impedir que aconteça problemas como este visto acima.@@Na tabela abaixo, o lado esquerdo é como a string estará escrita no código, e o lado direito é o valor demonstrado quando consultado.@~\\'texto\\' --> 'texto' \\n\\n\\”texto\\” --> ”texto” \\n\\n\\\\texto\\\\ --> \\texto\\~"
+                "texto": "@Por sorte, a resolução é simples: podemos usar uma barra inversa logo antes do caractere especial!@@Isso irá impedir que aconteça problemas como este visto acima.@@Na tabela abaixo, o lado esquerdo é como a string estará escrita no código, e o lado direito é o valor demonstrado quando consultado.@~\\\\'texto\\\\' --> 'texto' \\n\\n\\\\\"texto\\\\\" --> \\\"texto\\\" \\n\\n \\texto\\ --> \\texto\\~"
               },
               {
                 "texto": "@Mais um exemplo:@~Console.WriteLine(\\\"Estes são os caracteres \\\\n\\\" - aspas\n\\\" – aspas duplas\n\\ - barra\\\"); /*\\nretorna:\\n“Estes são os caracteres\\n\" – aspas\\n' - aspas duplas\\n\\ - barra”\\n*/~"
@@ -290,8 +290,8 @@
             "nomeAulaOuExercicio": "Exercício 3",
             "Type": "Exercicio",
             "Texto": "Essa string está horrível! Organize-a: \\nstring lista = ‘— Minhas comidas favoritas – 5. ‘Pastel’; 4. ‘Lasanha’; 3. ‘Hambúrguer’; 2. ‘Coxinha’; 1. ‘Pizza’!!! ‘;\\nConsole.WriteLine(lista);",
-            "Output": "”Pastel”;\n4. ”Lasanha”;\n3. ”Hambúrguer”;\n2. ”Coxinha”;\n1. ”Pizza”!!!”;",
-            "Setup": "string lista = “— Minhas comidas favoritas – 5. “Pastel”; 4. “Lasanha”; 3. “Hambúrguer”; 2. “Coxinha”; 1. “Pizza”!!! ”; Console.WriteLine(lista);\\n/*Resultado esperado: “— Minhas comidas favoritas –\\n5. ”Pastel”;\\n4. ”Lasanha”;\\n3. ”Hambúrguer”;\\n2. ”Coxinha”;\\n1. ”Pizza”!!!”;*/"
+            "Output": "\"Pastel\";\n4. \"Lasanha\";\n3. \"Hambúrguer\";\n2. \"Coxinha\";\n1. \"Pizza\"!!!;",
+            "Setup": "string lista = \\\"— Minhas comidas favoritas – 5. \\\"Pastel\\\"; 4. \\\"Lasanha”; 3. \\\"Hambúrguer\\\"; 2. \\\"Coxinha\\\"; 1. \\\"Pizza\\\"!!! \\\"; Console.WriteLine(lista);\\n        /*Resultado esperado: \\\"— Minhas comidas favoritas –\\n5. \\\"Pastel\\\";\\n4. \\\"Lasanha\\\";\\n3. \\\"Hambúrguer\\\";\\n2.\\\"Coxinha\\\";\\n1. \\\"Pizza\\\"!!!\\\";*/"
           }
         ]
       },

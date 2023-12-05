@@ -145,7 +145,7 @@ public partial class ExercisesPage : ContentPage
         }
         else 
         {
-            lblOutput.Text = $"-- O código esta sendo executado --";
+            
             ExecuteCode();
         }
     }
@@ -154,12 +154,14 @@ public partial class ExercisesPage : ContentPage
     {
         string editorCode = await editorWebView.EvaluateJavaScriptAsync(@"editor.getValue();");
         string code = returnCode(editorCode);
-        
+
         SendCodeToApi(code, "");
     }
     //Executa o codigo caso tenha Console.ReadLine()
     public async void ExecuteCodeWithInput(object sender, EventArgs e)
     {
+        readLineList.Clear();
+
         string editorCode = await editorWebView.EvaluateJavaScriptAsync(@"editor.getValue();");
         string code = returnCode(editorCode);
         int numOfReadLines = verificarQuantasReadLineTem(code);
@@ -172,17 +174,17 @@ public partial class ExercisesPage : ContentPage
             string classIdDesejado = $"entry-{i}";
 
             // Procura a entrada no StackLayout pelo ClassId
-            var entradaDesejada = stackLayout.Children.FirstOrDefault(c => (c is Entry entry) && entry.ClassId == classIdDesejado) as Entry;
+            var BordaEntradaDesejada = stackLayout.Children.FirstOrDefault(c => (c is Border border) && border.ClassId == classIdDesejado) as Border;
+            var entradaDesejada = BordaEntradaDesejada.Content as Entry;
 
             if (entradaDesejada != null)
             {
-                lblOutput.Text = $"-- O código esta sendo executado --";
                 // Obtém o texto do Entry
                 string textoDoEntry = entradaDesejada.Text;
 
                 //Adiciona texto para a list de inputs
                 bool verificadorUltimoEntry = (numOfReadLines == i);
-                readLineList.Add(verificadorUltimoEntry ? textoDoEntry : textoDoEntry + "\\n");
+                readLineList.Add(verificadorUltimoEntry ? textoDoEntry : textoDoEntry + "\n");
                 
             }
 
@@ -190,13 +192,13 @@ public partial class ExercisesPage : ContentPage
         string codeInput = string.Join("", readLineList);
         SendCodeToApi(code, codeInput);
         
-        readLineList.Clear();
         scrollViewIputSection.IsVisible = false;
 
     }
 
     public async void SendCodeToApi(string code, string input)
     {
+        lblOutput.Text = $"-- O código esta sendo executado --";
         //Criao uma variavel contendo os valores que serão enviados para a api
         var values = new Dictionary<string, string>
       {
@@ -229,9 +231,9 @@ public partial class ExercisesPage : ContentPage
         }
         
         //Realiza a verificação se a resposta no json e a do usuário esta certo
-        string respostaCerta = returnAnswerWithInput();
+        string respostaCerta = await returnAnswerWithInput();
         //string respostaUsuario = user.output;
-        
+
         if (respostaCerta == respostaCortadaUsuario || respostaCerta == "null")
         {
             frameDeVerificacao.IsVisible = true;
@@ -264,6 +266,8 @@ public partial class ExercisesPage : ContentPage
                 {
                     CornerRadius = new CornerRadius(10, 10, 10, 10)
                 },
+                ClassId = $"entry-{i}",
+
             };
 
             Entry entry = new Entry()
@@ -317,7 +321,6 @@ public partial class ExercisesPage : ContentPage
                 codigoSemduasBarras += editorCode[i];
             }
         }
-      
         string codigoSemBarraN = codigoSemduasBarras.Replace("\\n", "\n");
         string codigoSemBarraAspas = codigoSemBarraN.Replace("\\\"", "\"");
         string codigoComMenorQue = codigoSemBarraAspas.Replace("\\u003C", "<");
@@ -325,19 +328,21 @@ public partial class ExercisesPage : ContentPage
         
         return codigoFinal;
     }
+
+
     //Teste para usar o readLine
-    private string returnAnswerWithInput()
+    private async Task<string> returnAnswerWithInput()
     {
-        string outputJson = exercicioOutput;
+        string outputJson = await PuxaOutputExercicio();
         // Use alguma lógica para encontrar e substituir os marcadores de posição pelos valores do array.
         for (int i = 0; i < readLineList.Count; i++)
         {
-            string marcador = $"{{readLineArray[{i}]}}";
-            outputJson = outputJson.Replace(marcador, readLineList[i]);
+            string marcador = $"readLineArray[{i}]";
+            outputJson = outputJson.Replace(marcador, readLineList[i].Replace("\n",""));
         }
         return outputJson;
     }
-    public async void PuxaOutputExercicio()
+    public async Task<string> PuxaOutputExercicio()
     {
         CreateLocalStorageFolder createFolder = new CreateLocalStorageFolder();
         string jsonOfAulas = await createFolder.PushAulaJson();
@@ -346,7 +351,7 @@ public partial class ExercisesPage : ContentPage
 
         string textoExercicio = objJson.cSharp.classes[Convert.ToInt32(classe)].aulas[Convert.ToInt32(aula)].Output;
 
-        exercicioOutput = textoExercicio;
+        return textoExercicio;
     }
     public async void PuxaColocaTextoExercicio()
     {
