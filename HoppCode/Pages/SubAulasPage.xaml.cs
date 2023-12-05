@@ -176,15 +176,18 @@ public partial class SubAulasPage : ContentPage
 
                 Label label = frame.Content as Label;
                 string frameId = frame.ClassId;
-
                 WebView webView = new WebView()
                 {
                     Source = "aceeditor2.html",
                     MinimumHeightRequest = 100,
+                    ClassId = frameId,
                 };
+
                 webView.Navigated += async (o, s) => {
 
-                    string textFromLista = listaDosTextos[subAulasPage][labelId - 1];
+                    string webVIewId = webView.ClassId;
+                    int numberOfwebVIewId = Convert.ToInt32(webVIewId.Substring(2));
+                    string textFromLista = listaDosTextos[subAulasPage][numberOfwebVIewId];
 
                     webView.Eval($"SetTextOnCodeEditor(\"{textFromLista}\");");
 
@@ -196,8 +199,10 @@ public partial class SubAulasPage : ContentPage
                     webView.HeightRequest = sizeOfWemView;
                     frame.HeightRequest = sizeOfWemView;
 
+
                     //Console.WriteLine(listaDosTextos[10000]);
                 };
+
 
                 if (frameId.Substring(0, 1) == "C")
                 {
@@ -205,6 +210,7 @@ public partial class SubAulasPage : ContentPage
                     frame.Content = webView;
                     frame.IsVisible = true;
                 }
+ 
                 frame.IsVisible = true;
                 labelId++;
 
@@ -247,8 +253,9 @@ public partial class SubAulasPage : ContentPage
 
         string targetId = $"{labelId}"; // ID do elemento que você deseja modificar
 
-        if (styleList [subAulasPage].Count > labelId)
+        if (styleList[subAulasPage].Count > labelId)
         {
+            int i = 0;
             foreach (Frame frame in styleList [subAulasPage])
             {
                 //Para que a verifiação do ClassId com a substrig seja possivel, preciso definir o class id como uma string
@@ -261,10 +268,14 @@ public partial class SubAulasPage : ContentPage
                     {
                         Source = "aceeditor2.html",
                         MinimumHeightRequest = 100,
+                        ClassId = frameId,
                     };
+                   
                     webView.Navigated += async (o, s) => {
-                        
-                        string textFromLista = listaDosTextos[subAulasPage][labelId - 1];
+
+                        string webVIewId = webView.ClassId;
+                        int numberOfwebVIewId = Convert.ToInt32(webVIewId.Substring(2));
+                        string textFromLista = listaDosTextos[subAulasPage][numberOfwebVIewId];
 
                         webView.Eval($"SetTextOnCodeEditor(\"{textFromLista}\");");
                        
@@ -286,6 +297,7 @@ public partial class SubAulasPage : ContentPage
                         frame.MinimumHeightRequest = 100;
                         frame.Content = webView;
                         frame.IsVisible = true;
+                        //Console.WriteLine(styleList[100000]);
                     }
                     //Caso o balão de texto seja um simples balão de texto
                     else if (frameId.Substring(0, 1) == "T")
@@ -307,6 +319,7 @@ public partial class SubAulasPage : ContentPage
                         }
                     }
                 }
+                i++;
             }
            
             labelId++;

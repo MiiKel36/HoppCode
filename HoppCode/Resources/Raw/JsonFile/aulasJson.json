@@ -139,7 +139,7 @@
                 "texto": "@Para usar, é só iniciar uma frase com barras duplas (//):@~// Isso é um comentario~@Tudo que estiver na mesma linha que a barra dupla será mostrado como um comentário.@"
               },
               {
-                "texto": "~Console.WriteLine('ola'); \\n// Aqui, o Console.WriteLine irá funcionar normalmente\\n~~//Console.WriteLine(\\\"olá\\\"); Aqui, o Console.WriteLine faz parte do comentário, então não irá funcionar\\n~"
+                "texto": "~Console.WriteLine(\\\"ola\\\"); \\n// Aqui, o Console.WriteLine irá funcionar normalmente\\n~~//Console.WriteLine(\\\"olá\\\"); \\n//Aqui, o Console.WriteLine faz parte do comentário, então não irá funcionar\\n~"
               },
               {
                 "texto": "@Talvez, em algum momento,você vai precisar comentar mais de uma linha.@@Seja para cancelar partes do código temporariamente, ou para poder dizer só mais um pouco.@"
@@ -148,7 +148,7 @@
                 "texto": "@Para fazer um comentário de mais de uma linha, coloque uma barra-asterisco (/*) e depois a feche com um asterisco-barra (*/).@@Você pode comentar tudo com as barras duplas, não é necessariamente errado.@@No entanto... Não é muito eficiente.@"
               },
               {
-                "texto": "@Veja:@~// -------\\n// jeito\\n// 'errado'\\n// -------~~/* -------\\n   jeito\\n   'certo'\\n ------- */~@Começaremos a usá-las para fornecer mais detalhes nos códigos de exemplo daqui em diante, então fique esperto!@"
+                "texto": "@Veja:@~// -------\\n// jeito\\n// \\\"errado\\\"\\n// -------~~/* -------\\n   jeito\\n   \\\"certo\\\"\\n ------- */~@Começaremos a usá-las para fornecer mais detalhes nos códigos de exemplo daqui em diante, então fique esperto!@"
               }
             ]
 
@@ -158,32 +158,32 @@
             "Type": "Aula",
             "subAulas": [
               {
-                "texto": "@Dentro do C#, podemos fazer a junção de strings utilizando-se do operador '+'. Podemos juntar um texto de uma variável dentro de um Console.WriteLine(); para se fazer um texto maior. Por exemplo:@~string nome = \\\"João\\\"; \\n Console.WriteLine('Meu nome é ' + nome); // 'Meu nome é João'\\n~"
+                "texto": "@Dentro do C#, podemos fazer a junção de strings utilizando-se do operador '+'. Podemos juntar um texto de uma variável dentro de um Console.WriteLine(); para se fazer um texto maior. Por exemplo:@~string nome = \\\"João\\\"; \\n Console.WriteLine(\\\"Meu nome é \\\" + nome); // Meu nome é João\\n~"
               },
               {
-                "texto": "@Isso também é possível entre duas strings diferentes!@~string texto = \\\"Meu nome é \\\"; \\nstring nome = \\\"João\\\";\\nConsole.WriteLine(texto + nome); //' Meu nome é João'~@Mas cuidado: quando fazemos esse mesmo processo com números (int, double, entre outros), eles se somam!@"
+                "texto": "@Isso também é possível entre duas strings diferentes!@~string texto = \\\"Meu nome é \\\"; \\nstring nome = \\\"João\\\";\\nConsole.WriteLine(texto + nome); //Meu nome é João\\n~@Mas cuidado: quando fazemos esse mesmo processo com números (int, double, entre outros), eles se somam!@~int numero1 = 5; \\nint numero2 = 10; \\nConsole.WriteLine(numero1 + numero2); // 15\\n~"
               },
               {
-                "texto": "~int numero1 = 5; \\nint numero2 = 10; \\nConsole.WriteLine(numero1 + numero2); // 15\\n~@Caso prefira, a concatenação pode ser feita com variáveis também:@~string juncao = texto + nome;\\n Console.WriteLine(juncao); // 'Meu nome é João'~@Enfim, ainda existe outro jeito de juntar variáveis em um texto…@"
+                "texto": "@Caso prefira, a concatenação pode ser feita com variáveis também:@~string juncao = texto + nome;\\nConsole.WriteLine(juncao); // 'Meu nome é João'~@Enfim, ainda existe outro jeito de juntar variáveis em um texto…@"
               },
               {
-                "texto": "@Podemos utilizar as chaves {} em uma string através de interpolação.@@Interpolação seria uma forma especial de string, onde podemos utilizar caracteres especiais para colocar variáveis dentro do texto.@@Para criar uma interpolação, basta digitar um cifrão ($) antes das aspas.@~string texto = 'isto é uma';\\nstring exemplo = $\\\"{texto} interpolação\\\" \\nConsole.WriteLine(exemplo); \\n//retorna \\\"isto é uma interpolação\\\"\\n~"
+                "texto": "@Podemos utilizar as chaves {} em uma string através de interpolação.@@Interpolação seria uma forma especial de string, onde podemos utilizar caracteres especiais para colocar variáveis dentro do texto.@@Para criar uma interpolação, basta digitar um cifrão ($) antes das aspas.@~string texto = \\\"isto é uma\\\";\\nstring exemplo = $\\\"{texto} interpolação\\\" \\nConsole.WriteLine(exemplo); \\n//retorna \\\"isto é uma interpolação\\\"\\n~"
               },
               {
-                "texto": "@Podemos juntar strings e variáveis numéricas utilizando da interpolação.@@Veja o exemplo abaixo:@~string nome = 'João';\\nint idade = 13;~@Temos uma variável que guarda o nome “João” e outra chamada idade, que contém o número 13. Usando da interpolação, vamos enviar um texto no console com essas variáveis:@~Console.WriteLine($\\\"Meu nome é {nome} e eu tenho {idade} anos\\\");\\n //retorna 'Meu nome é João e eu tenho 13 anos'~"
+                "texto": "@Podemos juntar strings e variáveis numéricas utilizando da interpolação.@@Veja o exemplo abaixo:@~string nome = \\\"João\\\";\\nint idade = 13;\\nConsole.WriteLine($\\\"Meu nome é {nome} e tenho {idade} anos\\\");\\n//Meu nome é João e tenho 13 anos~@Temos uma variável que guarda o nome “João” e outra chamada idade, que contém o número 13. Usando da interpolação, vamos enviar um texto no console com essas variáveis:@"
               },
               {
-                "texto": "@Ou então, que tal fazer uma variável do tipo string que guarda outras duas strings em si mesma?@~string pais = 'Brasil';\\n string cidade = 'São Paulo';\\n string texto = $'Eu moro no {pais}, na cidade de {cidade}';\\n Console.WriteLine(texto);// retorna 'Eu moro no Brasil, na cidade de São Paulo'~"
+                "texto": "@Ou então, que tal fazer uma variável do tipo string que guarda outras duas strings em si mesma?@~string pais = \\\"Brasil\\\";\\nstring cidade = \\\"São Paulo\\\";\\nstring texto = $\\\"Eu moro no {pais}, na cidade de {cidade}\\\";\\nConsole.WriteLine(texto);//retorna \\\"Eu moro no Brasil, na cidade de São Paulo\\\"\\n~"
               }
             ]
 
           },
           {
-            "nomeAulaOuExercicio": "Exercício 1",
+            "nomeAulaOuExercicio": "Exercício 5",
             "Type": "Exercicio",
             "Texto": "Concatene o primeiro grupo de strings e interpole o segundo. Depois, mostre os dois resultados no console.",
-            "Output": "Estou aprendendo C#”!\nEsse carro custa R$1800",
-            "Setup": "// Grupo 1\\nstring frase = “Estou aprendendo ”;\\nstring linguagem = “C#”;\\n// precisa retornar “Estou aprendendo C#”!\\n\\n// Grupo 2\\nstring veiculo = “carro”;\\ndouble preco = 1800;\\n// precisa retornar “Esse carro custa R$1800”!"
+            "Output": "Estou aprendendo C#!\nEsse carro custa R$1800!",
+            "Setup": "// Grupo 1\\nstring frase = \\\"Estou aprendendo\\\";\\nstring linguagem = \\\"C#\\\";\\n//precisa retornar \\\"Estou aprendendo C#!\\\"\\n\\n// Grupo 2\\nstring veiculo = \\\"carro\\\";\\ndouble preco = 1800;\\n// precisa retornar \\\"Esse carro custa R$1800!\\\""
           },
 
           {
@@ -191,16 +191,16 @@
             "Type": "Aula",
             "subAulas": [
               {
-                "texto": "@Dentro do C#, podemos atribuir variáveis com os valores de outras.@~int a = 34;\\n int b = a;\\n\\n Console.WriteLine(b); // retorna o número 34~@Até aí tudo bem, não é?@@Porém, quando tentamos atribuir o valor de uma variável de tipo diferente, recebemos um erro:@"
+                "texto": "@Dentro do C#, podemos atribuir variáveis com os valores de outras.@~int a = 34;\\nint b = a;\\n\\nConsole.WriteLine(b); \\n// retorna o número 34~@Até aí tudo bem, não é?@@Porém, quando tentamos atribuir o valor de uma variável de tipo diferente, recebemos um erro:@"
               },
               {
-                "texto": "~double a = 1.64\\n int b = a; // retorna o erro 'Cannot implicitly convert type 'long'~ to 'int'. An explicit conversion exists (are you missing a cast?)'~@Para resolver esse problema, utilizamos do grupo de funções Convert.To. Aqui está uma tabela com todas as conversões possíveis:@~ToBolean  // Converte para um valor Bollean\\nToChar  //Converte para um Character \\nToDouble //Converte para double \\nToInt16 //Converte para int de 16-bit \\nToInt32 //Converte para int de 32 bit \\nToInt64 //Converte para int de 64 bit \\nToString //Converte para string~"
+                "texto": "~double a = 1.64\\nint b = a; \\n//retorna o erro '    Cannot implicitly convert type 'long' to 'int'. An explicit conversion exists (are you missing a cast?)\\n\\n~@Para resolver esse problema, utilizamos do grupo de funções Convert.To. Aqui está uma tabela com todas as conversões possíveis:@@ToBolean - Converte para um valor Bollean\nToChar - Converte para um Character \nToDouble - Converte para double \nToInt16 - Converte para int de 16-bit \nToInt32 - Converte para int de 32 bit \nToInt64 - Converte para int de 64 bit \nToString - Converte para string@"
               },
               {
-                "texto": "@E aqui um exemplo dessas funções colocadas em prática!@~int i = 10; \\ndouble d = 5.25; \\nbool b = true; \\nConsole.WriteLine(Convert.ToString(i)); \\n// converte int para string, retornando “10” como texto neste caso\\nConsole.WriteLine(Convert.ToDouble(i)); \\n// converte int para double, retornando 10 como double neste caso\\nConsole.WriteLine(Convert.ToInt32(d)); \\n// converte double para int, retornando apenas 5 neste caso\\nConsole.WriteLine(Convert.ToString(b)); \\n// converte bool para string, retornando a palavra “True” neste caso\\n~@No lugar de Convert.To, podemos optar pela função .Parse().@"
+                "texto": "@E aqui um exemplo dessas funções colocadas em prática!@~int i = 10; \\ndouble d = 5.25; \\nbool b = true; \\nConsole.WriteLine(Convert.ToString(i)); \\n// converte int para string, \\n//retornando “10” como texto neste caso\\nConsole.WriteLine(Convert.ToDouble(i)); \\n// converte int para double, \\n//retornando 10 como double neste caso\\nConsole.WriteLine(Convert.ToInt32(d)); \\n// converte double para int, \\n//retornando apenas 5 neste caso\\nConsole.WriteLine(Convert.ToString(b)); \\n// converte bool para string, \\n//retornando a palavra “True” \\n//neste caso\\n\\n\\n~@No lugar de Convert.To, podemos optar pela função .Parse().@"
               },
               {
-                "texto": "@É importante ter em mente, no entanto, que esta é uma função apenas utilizada para a conversão de strings. @@Caso tente utilizá-la para uma variável diferente de string, o código irá dar erro.@@Aqui está alguns dos comandos da coleção .Parse():@~int.Parse()// Converte uma string em um valor inteiro.\\ndouble.Parse() //Converte uma string em um valor de ponto flutuante de precisão dupla. \\nbool.Parse() //Converte uma string em um valor booleano. \\nDateTime.Parse() //Converte uma string em um valor de data e hora. \\n ~~string numeroInt = “13”;\\nstring numeroDouble = “19.54”;\\nstring boolean = “False”;\\nstring data = “6/17/2021 8:10:09 AM”;\\n\\nConsole.WriteLine(int32.Parse(numeroInt)); // transforma a string em int, retornando 13 neste caso\\nConsole.WriteLine(double.Parse(numeroDouble));// transforma a string em double, retornando 19.54 neste caso\\nConsole.WriteLine(bool.Parse(boolean)); // transforma a string em Boolean, retornando False neste caso\\nConsole.WriteLine(DateTime.Parse(data)); // transforma a string em formato de data e hora, retornando 6/17/2021 8:10:09 AM neste caso\\n~"
+                "texto": "@É importante ter em mente, no entanto, que esta é uma função apenas utilizada para a conversão de strings. @@Caso tente utilizá-la para uma variável diferente de string, o código irá dar erro.@@Aqui está alguns dos comandos da coleção .Parse():@~int.Parse()// Converte uma string \\n//em um valor inteiro.\\ndouble.Parse() //Converte uma \\n//string em um valor de ponto \\n//flutuante de precisão dupla. \\nbool.Parse() //Converte uma string\\n//em um valor booleano. \\nDateTime.Parse() //Converte uma string em um valor de data e hora. \\n ~~string numeroInt = “13”;\\nstring numeroDouble = “19.54”;\\nstring boolean = “False”;\\nstring data = “6/17/2021 8:10:09 AM”;\\n\\nConsole.WriteLine(int32.Parse(numeroInt)); // transforma a string em int, retornando 13 neste caso\\nConsole.WriteLine(double.Parse(numeroDouble));// transforma a string em double, retornando 19.54 neste caso\\nConsole.WriteLine(bool.Parse(boolean)); // transforma a string em Boolean, retornando False neste caso\\nConsole.WriteLine(DateTime.Parse(data)); // transforma a string em formato de data e hora, retornando 6/17/2021 8:10:09 AM neste caso\\n~"
               }
 
 
@@ -209,7 +209,7 @@
           },
 
           {
-            "nomeAulaOuExercicio": "Exercício 2",
+            "nomeAulaOuExercicio": "Exercício 6",
             "Type": "Exercicio",
             "Texto": "Faça o resultado de a + b aparecer no console. Você deve usar somente as variáveis dadas. Use o que aprendeu para resolver o problema.",
             "Output": "36",
