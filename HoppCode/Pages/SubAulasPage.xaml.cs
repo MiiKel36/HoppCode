@@ -312,7 +312,7 @@ public partial class SubAulasPage : ContentPage
                             {
                                 label.Text += listaDosTextos[subAulasPage][labelId][currentIndex];
                                 currentIndex++;
-                                await Task.Delay(15); // Aguarde 15 milésimos
+                                //await Task.Delay(15); // Aguarde 15 milésimos
                                 
                             }                           
                             break; // Sai do loop após encontrar o Frame desejado
