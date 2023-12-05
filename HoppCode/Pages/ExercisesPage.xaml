@@ -96,18 +96,18 @@
         <!--Onde fica o editor do código-->
             <StackLayout Orientation="Vertical" Background="#311850"  x:Name="codePart" IsVisible="false" >
                 <ScrollView Background="#311850" >
-                    <WebView x:Name="editorWebView" HeightRequest="520" WidthRequest="400" IsVisible="true" Source="aceeditor.html" Margin="0,0,0,35"/>
+                    <WebView x:Name="editorWebView" HeightRequest="520" WidthRequest="400" IsVisible="true" Source="aceeditor.html" Margin="0,15,0,50"/>
                 </ScrollView>
 
 
                 <!--Botão de execução de código-->
                 <StackLayout Orientation="Horizontal" >
-                    <Button Text="Run" 
-                        BackgroundColor="#63329B" 
-                        HorizontalOptions="EndAndExpand" 
-                        WidthRequest="120" HeightRequest="50" 
+                    <Button Text="Executar" 
+                        BackgroundColor="#63329B"  
+                        WidthRequest="150" HeightRequest="50"
+                        HorizontalOptions="EndAndExpand"
                         Clicked="RunCode" x:Name="btnRun" 
-                        Margin="10,-30,5,10"
+                        Margin="0,-30,20,20"
                         TextColor="White">
 
                         
@@ -134,8 +134,8 @@
 
 
                 <Frame x:Name="frameDeVerificacao" IsVisible="false" WidthRequest="300" HeightRequest="150"  HorizontalOptions="Center" VerticalOptions="Start" Margin="0,25,0,0" BackgroundColor="#4D2996" BorderColor="Transparent" Grid.Row="1">
-                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10">
-                        <Label x:Name="lblDeVerificacao" Text="Parabéns, Você acertou"  FontSize="20" HorizontalOptions="StartAndExpand" VerticalOptions="Start" />
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="6">
+                        <Label x:Name="lblDeVerificacao" Text="Parabéns, você conseguiu!"  FontSize="20" HorizontalOptions="StartAndExpand" VerticalOptions="Start" />
                         <Button x:Name="btnPassarPraProxima" Text="Passar" WidthRequest="100" HeightRequest="50" HorizontalOptions="EndAndExpand" VerticalOptions="Start" BackgroundColor="#3E217B" TextColor="White" Clicked="NextPage"/>
                     </StackLayout>
                 </Frame>

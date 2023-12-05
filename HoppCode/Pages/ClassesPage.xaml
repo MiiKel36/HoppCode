@@ -21,7 +21,7 @@
             <ScrollView>
                 <StackLayout>
                     <StackLayout HeightRequest="60" BackgroundColor="#301D72" Padding="5" Margin="0,0,0,35">
-                        <Label Text="HoppCode" FontSize="25" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                        <Label Text="Curso de C#" FontSize="25" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextDecorations="Underline"/>
                     </StackLayout>
 
 
