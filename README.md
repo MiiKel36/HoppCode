@@ -1,5 +1,7 @@
 # HoppCode - Aplicativo Educacional de Programação
 
+<h2> Atenção, este é um projeto ANTIGO, e não esta equivalente com o meu conhecimento atual na área. </h2>
+
 **HoppCode** é um aplicativo móvel desenvolvido para ensinar programação utilizando a linguagem C#. O aplicativo foi criado como parte do Trabalho de Conclusão de Curso (TCC) do curso de Desenvolvimento de Sistemas da ETEC Polivalente de Americana, realizado no ano de 2023. O principal objetivo do HoppCode é proporcionar um aprendizado interativo e prático de programação, ajudando os usuários a desenvolver suas habilidades de codificação de forma eficaz e divertida.
 
 ## Descrição do Aplicativo
